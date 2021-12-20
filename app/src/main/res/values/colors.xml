@@ -17,4 +17,5 @@
     <color name="button_sign_up_color">#FC98C9EA</color>
     <color name="button_sign_in_color">#FC98C9EA</color>
     <color name="button_text_color">#0066a1</color>
+    <color name="text_color_registration">#30ABF3</color>
 </resources>
