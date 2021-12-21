@@ -12,5 +12,5 @@
     <dimen name="text_register_title_screen">26dp</dimen>
     <dimen name="text_register_Description_screen">10dp</dimen>
     <dimen name="text_buttons_Description">12dp</dimen>
-
+    <dimen name="edittext_text_fill">12dp</dimen>
 </resources>
