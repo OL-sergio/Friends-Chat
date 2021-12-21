@@ -20,7 +20,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="?attr/customToolbarColor"
             app:popupTheme="@style/Theme.FriendsChat.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -60,7 +60,6 @@
         android:textSize="@dimen/text_login_title_screen"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
         tools:ignore="SpUsage" />
@@ -230,6 +229,5 @@
         app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
         app:layout_constraintTop_toTopOf="@+id/editTextTextPassword"
         app:srcCompat="@drawable/ic_password_icon" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
