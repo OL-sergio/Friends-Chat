@@ -5,15 +5,22 @@
       <map>
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3328125" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.5484375" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_background_bottom_reund_border.xml" value="0.7669172932330827" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_background_bottom_round_border.xml" value="0.5526041666666667" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_background_top_round_border.xml" value="0.22" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_baseline_chatting.xml" value="0.5526041666666667" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.5484375" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_baseline_search.xml" value="0.3328125" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_baseline_settings.xml" value="0.3328125" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_button_round_border.xml" value="0.4078125" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_chatin2.xml" value="0.5526041666666667" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_chating.xml" value="0.31875" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_chatting.xml" value="0.5526041666666667" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_chatting2.xml" value="0.5526041666666667" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_circle_border.xml" value="0.4078125" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.4078125" />
-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_editetext_round_border.xml" value="0.5526041666666667" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_editetext_round_border.xml" value="0.31875" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_email_icon.xml" value="0.5484375" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.4078125" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_image_circle_border.xml" value="0.4078125" />
@@ -21,6 +28,8 @@
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_launcher_background_icon.xml" value="0.3328125" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.3328125" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_password_icon.xml" value="0.47604166666666664" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_phone.xml" value="0.31875" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_settings_background.xml" value="0.31875" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/activity_login.xml" value="0.45989583333333334" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/activity_main.xml" value="0.45989583333333334" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/activity_register.xml" value="0.45989583333333334" />
@@ -31,7 +40,7 @@
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/fragment_dashboard.xml" value="0.5364583333333334" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/fragment_home.xml" value="0.5364583333333334" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/fragment_search.xml" value="0.31666666666666665" />
-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/fragment_settings.xml" value="0.31666666666666665" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/fragment_settings.xml" value="0.34448160535117056" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/menu/bottom_nav_menu.xml" value="0.5364583333333334" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.4046875" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.5526041666666667" />

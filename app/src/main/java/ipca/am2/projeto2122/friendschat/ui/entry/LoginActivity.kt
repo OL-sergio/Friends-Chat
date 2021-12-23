@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.registration
+package ipca.am2.projeto2122.friendschat.ui.entry
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

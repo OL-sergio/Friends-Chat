@@ -10,12 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FriendsChat" >
         <activity
-            android:name=".ui.registration.RegisterActivity"
+            android:name=".ui.entry.RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.FriendsChat.NoActionBar" />
         <activity
-            android:name=".ui.registration.LoginActivity"
+            android:name=".ui.entry.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ui.intro.SplashActivity"

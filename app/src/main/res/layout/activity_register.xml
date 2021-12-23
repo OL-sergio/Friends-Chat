@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.registration.RegisterActivity">
+    tools:context=".ui.entry.RegisterActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
@@ -124,13 +124,15 @@
         android:id="@+id/button3"
         android:layout_width="300dp"
         android:layout_height="45dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/ic_editetext_round_border"
         android:text="Sign Up"
+        android:textAllCaps="false"
         android:textColor="@color/button_text_color"
         android:textSize="@dimen/text_buttons_Description"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
         tools:ignore="TouchTargetSizeCheck" />
