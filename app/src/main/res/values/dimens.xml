@@ -4,13 +4,13 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-    <dimen name="text_title_splash_screen">34dp</dimen>
-    <dimen name="text_title_welcome_screen">34dp</dimen>
-    <dimen name="text_intro_welcome_screen">16dp</dimen>
-    <dimen name="text_login_title_screen">20dp</dimen>
-    <dimen name="text_login_Description_screen">10dp</dimen>
-    <dimen name="text_register_title_screen">26dp</dimen>
-    <dimen name="text_register_Description_screen">10dp</dimen>
-    <dimen name="text_buttons_Description">12dp</dimen>
-    <dimen name="edittext_text_fill">12dp</dimen>
+    <dimen name="text_title_splash_screen">34sp</dimen>
+    <dimen name="text_title_welcome_screen">34sp</dimen>
+    <dimen name="text_intro_welcome_screen">16sp</dimen>
+    <dimen name="text_login_title_screen">20sp</dimen>
+    <dimen name="text_login_Description_screen">10sp</dimen>
+    <dimen name="text_register_title_screen">26sp</dimen>
+    <dimen name="text_register_Description_screen">10sp</dimen>
+    <dimen name="text_buttons_Description">12sp</dimen>
+    <dimen name="edittext_text_fill">12sp</dimen>
 </resources>

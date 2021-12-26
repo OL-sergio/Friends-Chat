@@ -11,7 +11,7 @@
 
     <style name="ThemeOverlay.App.BottomNavigationView" parent="">
         <item name="colorPrimary">@color/background_img</item>
-        <item name="colorOnPrimary">@color/button_sign_in_color</item>
+        <item name="colorOnPrimary">@color/text_color_Title</item>
     </style>
 
 </resources>
