@@ -20,4 +20,5 @@
     <color name="text_color_registration">#30ABF3</color>
     <color name="text_color_Title">#FC98C9EA</color>
     <color name="text_color_Sub_Title">#0066a1</color>
+    <color name="background_fragments">#FCC9E1F1</color>
 </resources>

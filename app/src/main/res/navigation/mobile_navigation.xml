@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_chatting"
-        android:name="ipca.am2.projeto2122.friendschat.ui.chatting.ChattingFragment"
+        android:name="ipca.am2.projeto2122.friendschat.ui.chat.ChatFragment"
         android:label="Chatting"
-        tools:layout="@layout/fragment_chatting" />
+        tools:layout="@layout/fragment_chat" />
 
     <fragment
         android:id="@+id/navigation_search"
