@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="FullscreenAttrs">
-        <attr name="customButtonColor" format="color" />
-        <attr name="customToolbarColor" format="color"/>
+        <attr name="customToolbarColorPrimary" format="color" />
+        <attr name="customToolbarColorSecondary" format="color"/>
+        <attr name="customToolbarColorThird" format="color"/>
     </declare-styleable>
 
 </resources>

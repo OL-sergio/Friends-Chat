@@ -60,7 +60,6 @@
         android:background="@drawable/ic_editetext_round_border"
         android:text="Sign Up"
         android:textColor="@color/button_text_color"
-        style="?attr/customButtonColor"
         android:textSize="@dimen/text_buttons_Description"
         android:textStyle="bold"
         android:textAllCaps="false"
