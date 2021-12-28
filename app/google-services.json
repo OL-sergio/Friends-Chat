@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "842853587900",
+    "firebase_url": "https://friend-s-chat-dbd7b-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "friend-s-chat-dbd7b",
+    "storage_bucket": "friend-s-chat-dbd7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842853587900:android:acd82f0c3a2582f77ce9b9",
+        "android_client_info": {
+          "package_name": "ipca.am2.projeto2122.friendschat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842853587900-p7qvbpc66oso0ivfi1tm88984mn5gpqb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwaifDGCbS3DMktVJAeslZ9JZ4qg5jel8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842853587900-p7qvbpc66oso0ivfi1tm88984mn5gpqb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
