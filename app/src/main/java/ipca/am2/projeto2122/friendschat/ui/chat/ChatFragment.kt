@@ -11,7 +11,7 @@ import ipca.am2.projeto2122.friendschat.databinding.FragmentChatBinding
 class ChatFragment : Fragment() {
 
 
-    private var _binding: FragmentChatBinding? = null
+    private var _binding : FragmentChatBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
