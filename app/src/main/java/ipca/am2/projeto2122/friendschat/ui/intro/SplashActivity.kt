@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
     private lateinit var _auth      : FirebaseAuth
 
     public override fun onStart() {
-        super.onStart()
+       super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
     }
 
@@ -35,7 +35,7 @@ class SplashActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        if (currentUser != null) {
+       if (currentUser != null) {
             GlobalScope.launch(Dispatchers.Main) {
                 Dispatchers.Main
                 delay(3000)

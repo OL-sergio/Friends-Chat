@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayout
 import ipca.am2.projeto2122.friendschat.databinding.FragmentSearchBinding
+
 
 class SearchFragment : Fragment() {
 
@@ -32,5 +34,9 @@ class SearchFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val TAG = "SearchFragment"
     }
 }
