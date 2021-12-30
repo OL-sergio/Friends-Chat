@@ -32,8 +32,6 @@ class LoginActivity : AppCompatActivity() {
 
         _binding.editTextEmailAddress.setText(Preference(this).longinPrefer)
 
-
-
         _binding.buttonSignIn.setOnClickListener {
 
             val email: String = _binding.editTextEmailAddress.text.toString()
@@ -66,14 +64,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(baseContext, "erro", Toast.LENGTH_SHORT).show()
 
                     }
-
-
                 }
-        }
-        _binding.textViewGoToSignUp.setOnClickListener {
-            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
 }

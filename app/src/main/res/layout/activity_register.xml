@@ -45,7 +45,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_background_top_round_border" />
 
     <TextView
@@ -64,13 +63,13 @@
         tools:ignore="SpUsage" />
 
     <EditText
-        android:id="@+id/editText_User_Name"
+        android:id="@+id/editTextTextEmailAddress"
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/ic_editetext_round_border"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:textSize="@dimen/edittext_text_fill"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,17 +77,17 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/editText_Email_Address"
+        android:id="@+id/editText_User_Name"
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/ic_editetext_round_border"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:inputType="textPersonName"
         android:textSize="@dimen/edittext_text_fill"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_User_Name"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <EditText
@@ -102,23 +101,25 @@
         android:textSize="@dimen/edittext_text_fill"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_Email_Address"
+        app:layout_constraintTop_toBottomOf="@+id/editText_User_Name"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/editText_Password"
+        android:id="@+id/editTextTextPassword"
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/ic_editetext_round_border"
+        android:ems="10"
         android:inputType="textPassword"
         android:textSize="@dimen/edittext_text_fill"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_Phone_Number" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_Phone_Number"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/button_sign_up_user"
+        android:id="@+id/button3"
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_marginTop="32dp"
@@ -131,7 +132,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_Password"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
@@ -144,12 +145,12 @@
         android:textColor="@color/button_sign_in_color"
         android:textSize="@dimen/text_login_Description_screen"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editText_User_Name"
-        app:layout_constraintEnd_toEndOf="@+id/editText_User_Name"
-        app:layout_constraintStart_toStartOf="@+id/editText_User_Name" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress" />
 
     <TextView
-        android:id="@+id/textView_Password"
+        android:id="@+id/textViewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="235dp"
@@ -158,12 +159,12 @@
         android:textColor="@color/button_sign_in_color"
         android:textSize="@dimen/text_login_Description_screen"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editText_Password"
-        app:layout_constraintEnd_toEndOf="@+id/editText_Password"
-        app:layout_constraintStart_toStartOf="@+id/editText_Password" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword" />
 
     <TextView
-        android:id="@+id/textView_go_to_Sign_In"
+        android:id="@+id/textView_Sign_In"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -187,7 +188,7 @@
         android:textSize="@dimen/text_login_Description_screen"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_sign_up_user"
+        app:layout_constraintTop_toBottomOf="@+id/button3"
         tools:ignore="SpUsage" />
 
     <TextView
@@ -200,9 +201,9 @@
         android:textColor="@color/button_sign_in_color"
         android:textSize="@dimen/text_login_Description_screen"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editText_Phone_Number"
-        app:layout_constraintEnd_toEndOf="@+id/editText_Phone_Number"
-        app:layout_constraintStart_toStartOf="@+id/editText_Phone_Number" />
+        app:layout_constraintBottom_toTopOf="@+id/editText_User_Name"
+        app:layout_constraintEnd_toEndOf="@+id/editText_User_Name"
+        app:layout_constraintStart_toStartOf="@+id/editText_User_Name" />
 
     <TextView
         android:id="@+id/textView11"
@@ -214,20 +215,19 @@
         android:textColor="@color/button_sign_in_color"
         android:textSize="@dimen/text_login_Description_screen"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editText_Email_Address"
-        app:layout_constraintEnd_toEndOf="@+id/editText_Email_Address"
-        app:layout_constraintStart_toStartOf="@+id/editText_Email_Address" />
+        app:layout_constraintBottom_toTopOf="@+id/editText_Phone_Number"
+        app:layout_constraintEnd_toEndOf="@+id/editText_Phone_Number"
+        app:layout_constraintStart_toStartOf="@+id/editText_Phone_Number" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:layout_marginStart="250dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText_Password"
-        app:layout_constraintEnd_toEndOf="@+id/editText_Password"
-        app:layout_constraintStart_toStartOf="@+id/editText_Password"
-        app:layout_constraintTop_toTopOf="@+id/editText_Password"
-        app:srcCompat="@drawable/ic_password_icon"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword"
+        app:srcCompat="@drawable/ic_password_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
