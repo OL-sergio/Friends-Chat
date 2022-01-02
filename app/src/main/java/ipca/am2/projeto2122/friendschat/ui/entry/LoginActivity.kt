@@ -31,12 +31,12 @@ class LoginActivity : AppCompatActivity() {
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(_binding.root)
 
-        val toolbar : Toolbar = findViewById(R.id.toolbar_login)
+        val toolbar: Toolbar = findViewById(R.id.toolbar_login)
         setSupportActionBar(toolbar)
 
         supportActionBar!!.title = "Login"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener{
+        toolbar.setNavigationOnClickListener {
             val intent = Intent(this@LoginActivity, WelcomeActivity::class.java)
             startActivity(intent)
             finish()
@@ -50,43 +50,61 @@ class LoginActivity : AppCompatActivity() {
 
         _binding.buttonSignIn.setOnClickListener {
 
-            val email: String = _binding.editTextEmailAddress.text.toString()
-            val password: String = _binding.editTextPassword.text.toString()
+            val email       : String = _binding.editTextEmailAddress.text.toString()
+            val password    : String = _binding.editTextPassword.text.toString()
 
-            _auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
+            when {
+                email == "" -> {
 
-                        Preference(this).longinPrefer = email
-                        val user = Users(email)
-                        val database = Firebase.firestore
+                    Toast.makeText(this@LoginActivity, "Please write Email.", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                password == "" -> {
 
-                        startActivity(Intent(baseContext, MainActivity::class.java))
+                    Toast.makeText(this@LoginActivity, "Please write Password.", Toast.LENGTH_SHORT)
+                        .show()
 
-                        database.collection("user")
-                            .add(user.toHash())
-                            .addOnSuccessListener { documentReference ->
+                }
+                else -> {
+                    _auth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
 
-                                Log.d(SearchFragment.TAG, "DocumentSnapShot added with ID: ${documentReference.id}")
+                                Preference(this).longinPrefer = email
+                                val user = Users(email)
+                                val database = Firebase.firestore
 
-                            }.addOnFailureListener { e ->
+                                startActivity(Intent(baseContext, MainActivity::class.java))
 
-                                Log.w(SearchFragment.TAG, "Error adding Document", e)
+                                database.collection("user")
+                                    .add(user.toHash())
+                                    .addOnSuccessListener { documentReference ->
+
+                                        Log.d(
+                                            SearchFragment.TAG,
+                                            "DocumentSnapShot added with ID: ${documentReference.id}"
+                                        )
+
+                                    }.addOnFailureListener { e ->
+
+                                        Log.w(SearchFragment.TAG, "Error adding Document", e)
+
+                                    }
+
+                            } else {
+
+                                Toast.makeText(baseContext, "Invalid Username or Password", Toast.LENGTH_SHORT).show()
 
                             }
-
-                    } else {
-
-                        Toast.makeText(baseContext, "erro", Toast.LENGTH_SHORT).show()
-
-                    }
+                        }
                 }
-        }
+            }
 
-        _binding.textViewGoToSignUp.setOnClickListener {
-            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-            startActivity(intent)
-            finish()
+            _binding.textViewGoToSignUp.setOnClickListener {
+                val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
     }
 }
