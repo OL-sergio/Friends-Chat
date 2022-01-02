@@ -25,6 +25,7 @@
     <color name="weak">#FF4646</color>
     <color name="medium">#E17958</color>
     <color name="strong">#E6D540</color>
-    <color name="veryStrong">#4BC651</color>
+    <color name="verystrong">#4BC651</color>
+    <color name="darkGray">#665E5D</color>
 
 </resources>

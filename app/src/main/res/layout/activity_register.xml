@@ -8,7 +8,6 @@
     tools:context=".ui.entry.RegisterActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-
         android:id="@+id/appBarLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +20,6 @@
 
 
     <androidx.appcompat.widget.Toolbar
-
         android:id="@+id/toolbar_register"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -54,7 +52,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout3"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_background_top_round_border" />
 
     <TextView
@@ -118,11 +116,11 @@
         android:id="@+id/editText_Password"
         android:layout_width="300dp"
         android:layout_height="45dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/ic_editetext_round_border"
         android:inputType="textPassword"
-        android:textSize="@dimen/edittext_text_fill"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_Phone_Number" />
 
@@ -142,9 +140,11 @@
         android:id="@+id/button_sign_up_user"
         android:layout_width="300dp"
         android:layout_height="45dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/ic_editetext_round_border"
         android:text="Sign Up"
+        android:enabled="false"
         android:textAllCaps="false"
         android:textColor="@color/button_text_color"
         android:textSize="@dimen/text_buttons_Description"
@@ -155,14 +155,18 @@
         app:layout_constraintTop_toBottomOf="@+id/editText_Confirm_Password"
         tools:ignore="TouchTargetSizeCheck" />
 
+
     <TextView
-        android:id="@+id/strength_level_txt"
+        android:id="@+id/textView_Strength_level"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/editText_Password"
+        android:layout_height="10dp"
+        android:layout_marginBottom="6dp"
+        android:gravity="center"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/editText_Password"
         app:layout_constraintEnd_toEndOf="@+id/editText_Password"
-        app:layout_constraintStart_toEndOf="@+id/editText_Password"
-        app:layout_constraintTop_toTopOf="@+id/editText_Password" />
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="@+id/editText_Password" />
 
     <TextView
         android:id="@+id/textView_UserName"
@@ -265,7 +269,7 @@
         app:layout_constraintStart_toStartOf="@+id/editText_Email_Address" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageView_Strength_level"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:layout_marginStart="250dp"

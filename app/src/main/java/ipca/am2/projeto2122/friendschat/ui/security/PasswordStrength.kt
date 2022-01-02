@@ -9,7 +9,7 @@ import java.util.regex.Pattern
 
 class PasswordStrength : TextWatcher {
 
-    val strengthLevel : MutableLiveData<String> = MutableLiveData()
+    val strengthLevel : MutableLiveData<StrengthLevel> = MutableLiveData()
     val strengthColor : MutableLiveData<Int>    = MutableLiveData()
 
     var lowerCase: MutableLiveData<Int>     = MutableLiveData(0)
@@ -45,33 +45,32 @@ class PasswordStrength : TextWatcher {
                 0
             }
 
-            calculateStrenght(char)
+            calculateStrength(char)
         }
     }
 
-    private fun calculateStrenght(password : CharSequence) {
-
-        if (password.length in 0..8){
+    private fun calculateStrength(password: CharSequence) {
+        if(password.length in 0..7){
             strengthColor.value = R.color.weak
-            strengthLevel.value = "Weak"
+            strengthLevel.value = StrengthLevel.Weak
+        }else if(password.length in 8..10){
+            if(lowerCase.value == 1 || upperCase.value == 1 || digit.value == 1 || specialChar.value == 1){
+                strengthColor.value = R.color.medium
+                strengthLevel.value = StrengthLevel.Medium
+            }
+        }else if(password.length in 11..16){
+            if(lowerCase.value == 1 || upperCase.value == 1 || digit.value == 1 || specialChar.value == 1){
+                if(lowerCase.value == 1 && upperCase.value == 1){
+                    strengthColor.value = R.color.strong
+                    strengthLevel.value = StrengthLevel.Strong
+                }
+            }
+        }else if(password.length > 16){
+            if(lowerCase.value == 1 && upperCase.value == 1 && digit.value == 1 && specialChar.value == 1){
+                strengthColor.value = R.color.verystrong
+                strengthLevel.value = StrengthLevel.VeryStrong
+            }
         }
-
-        if (lowerCase.value == 1 && upperCase.value == 1 && password.length in 8..10){
-            strengthColor.value = R.color.medium
-            strengthLevel.value = "Medium"
-        }
-
-        if (lowerCase.value == 1 && upperCase.value == 1 && digit.value == 1  && password.length in 10..13){
-            strengthColor.value = R.color.strong
-            strengthLevel.value = "Strong"
-        }
-
-        if (lowerCase.value == 1 && upperCase.value == 1 && digit.value == 1  && specialChar.value == 1  && password.length > 13){
-            strengthColor.value = R.color.veryStrong
-            strengthLevel.value = "Very Strong"
-        }
-
-
     }
 
     private fun CharSequence.hasLowerCase(): Boolean {
@@ -96,7 +95,7 @@ class PasswordStrength : TextWatcher {
     }
 
     private fun CharSequence.hasSpecialChar(): Boolean {
-        val pattern: Pattern = Pattern.compile("[!@#\$%^&*()_+-{}/.<>|\\[\\]~]]")
+        val pattern: Pattern = Pattern.compile("[!@#\$%^&*()_=+{}/.<>|\\[\\]~-]")
         val hasSpecialChar: Matcher = pattern.matcher(this)
         return hasSpecialChar.find()
 
