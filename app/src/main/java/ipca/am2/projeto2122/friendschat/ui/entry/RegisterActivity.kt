@@ -21,8 +21,8 @@ import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var _binding : ActivityRegisterBinding
-    private lateinit var _auth : FirebaseAuth
+    private lateinit var _binding: ActivityRegisterBinding
+    private lateinit var _auth: FirebaseAuth
 
     private var color: Int = R.color.weak
 
@@ -36,12 +36,12 @@ class RegisterActivity : AppCompatActivity() {
         val passwordStrengthCalculator = PasswordStrength()
         _binding.editTextPassword.addTextChangedListener(passwordStrengthCalculator)
 
-        val toolbar : (Toolbar) = findViewById(R.id.toolbar_register)
+        val toolbar: (Toolbar) = findViewById(R.id.toolbar_register)
         setSupportActionBar(toolbar)
 
         supportActionBar!!.title = "Register"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener{
+        toolbar.setNavigationOnClickListener {
             val intent = Intent(this@RegisterActivity, WelcomeActivity::class.java)
             startActivity(intent)
             finish()
@@ -63,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
         passwordStrengthCalculator.strengthLevel.observe(this, Observer { strengthLevel ->
             displayStrengthLevel(strengthLevel)
         })
-        passwordStrengthCalculator.strengthColor.observe(this, Observer {strengthColor ->
+        passwordStrengthCalculator.strengthColor.observe(this, Observer { strengthColor ->
             color = strengthColor
         })
 
@@ -79,25 +79,42 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun createUser() {
-        val username                : String = _binding.editTextUserName.text.toString()
-        val phonenumber             : String = _binding.editTextPhoneNumber.text.toString()
-        val email                   : String = _binding.editTextEmailAddress.text.toString()
-        val password                : String = _binding.editTextPassword.text.toString()
-        val passwordConfirmation    : String = _binding.editTextConfirmPassword.text.toString()
 
+        val username: String = _binding.editTextUserName.text.toString()
+        val phonenumber: String = _binding.editTextPhoneNumber.text.toString()
+        val email: String = _binding.editTextEmailAddress.text.toString()
+        val password: String = _binding.editTextPassword.text.toString()
+        val passwordConfirmation: String = _binding.editTextConfirmPassword.text.toString()
 
-        _auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this){ task ->
-                if (task.isSuccessful){
+        when {
+            email == "" -> {
 
-                    val intent = Intent(baseContext, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }else{
-                    Toast.makeText(baseContext, "Error Message: " + task
-                        .exception?.message.toString(),Toast.LENGTH_SHORT).show()
-
-                }
+                Toast.makeText(this@RegisterActivity, "Please write Email.", Toast.LENGTH_SHORT)
+                    .show()
             }
+            password == "" -> {
+
+                Toast.makeText(this@RegisterActivity, "Please write Password.", Toast.LENGTH_SHORT)
+                    .show()
+
+            } else -> {
+                _auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+
+                            val intent = Intent(baseContext, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(
+                                baseContext, "Error Message: " + task
+                                    .exception?.message.toString(), Toast.LENGTH_SHORT
+                            ).show()
+
+                        }
+                    }
+            }
+        }
+
     }
 }
