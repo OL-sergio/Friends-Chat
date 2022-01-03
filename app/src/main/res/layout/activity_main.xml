@@ -11,7 +11,10 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.FriendsChat">
+        android:theme="@style/Theme.FriendsChat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main"
@@ -37,10 +40,9 @@
                 android:text="username"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
         </androidx.appcompat.widget.Toolbar>
-
 
 
     </com.google.android.material.appbar.AppBarLayout>

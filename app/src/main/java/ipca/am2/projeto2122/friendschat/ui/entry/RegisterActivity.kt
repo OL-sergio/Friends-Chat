@@ -85,19 +85,17 @@ class RegisterActivity : AppCompatActivity() {
         val email: String = _binding.editTextEmailAddress.text.toString()
         val password: String = _binding.editTextPassword.text.toString()
         val passwordConfirmation: String = _binding.editTextConfirmPassword.text.toString()
-
-        when {
-            email == "" -> {
-
-                Toast.makeText(this@RegisterActivity, "Please write Email.", Toast.LENGTH_SHORT)
-                    .show()
-            }
-            password == "" -> {
-
-                Toast.makeText(this@RegisterActivity, "Please write Password.", Toast.LENGTH_SHORT)
-                    .show()
-
-            } else -> {
+        //
+        if (email.isBlank() || username.isBlank() || phonenumber.isBlank() || password.isBlank() || passwordConfirmation.isBlank()) {
+            Toast.makeText(this, "Email and Password can't be blank", Toast.LENGTH_SHORT).show()
+            return
+        }
+        // password confirmation
+        if (password != passwordConfirmation) {
+            Toast.makeText(this, "Password and Confirm Password do not match", Toast.LENGTH_SHORT)
+                .show()
+            return
+        }
                 _auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
@@ -116,5 +114,4 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-    }
-}
+

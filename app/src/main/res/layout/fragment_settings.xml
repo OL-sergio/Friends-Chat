@@ -9,24 +9,25 @@
 
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imageView_settings_background"
         android:layout_width="0dp"
         android:layout_height="300dp"
         android:src="@drawable/ic_background_bottom_round_border"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageView_settings_user_profile"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/ic_settings_background"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_user_account"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +35,7 @@
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/text_notifications"
+        android:id="@+id/textView_Settings_User_Name"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -46,10 +47,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_background" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textView_PhoneNumber"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -60,10 +61,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_notifications" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_Settings_User_Name" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/textView_Email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -75,11 +76,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/textView_PhoneNumber"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/textView_FullName"
         android:layout_width="200dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
@@ -88,10 +89,10 @@
         android:textColor="@color/text_color_Title"
         android:textSize="@dimen/text_register_title_screen"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_user_profile"
         app:layout_constraintVertical_bias="0.0" />
 
 
@@ -103,9 +104,9 @@
         android:background="@drawable/ic_settings_background"
         android:scaleType="fitXY"
         android:src="@drawable/ic_phone"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_background" />
 
 
     <ImageView
@@ -116,9 +117,9 @@
         android:background="@drawable/ic_settings_background"
         android:scaleType="fitXY"
         android:src="@drawable/ic_chatting"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_background" />
 
     <TextView
         android:id="@+id/textView15"
@@ -128,10 +129,10 @@
         android:textSize="@dimen/text_register_Description_screen"
         android:text="UserName"
         android:paddingHorizontal="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/text_notifications"
-        app:layout_constraintEnd_toEndOf="@+id/text_notifications"
+        app:layout_constraintBottom_toTopOf="@+id/textView_Settings_User_Name"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Settings_User_Name"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text_notifications" />
+        app:layout_constraintStart_toStartOf="@+id/textView_Settings_User_Name" />
 
     <TextView
         android:id="@+id/textView16"
@@ -141,10 +142,10 @@
         android:textSize="@dimen/text_register_Description_screen"
         android:text="Phone Number"
         android:paddingHorizontal="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
-        app:layout_constraintEnd_toEndOf="@+id/textView12"
+        app:layout_constraintBottom_toTopOf="@+id/textView_PhoneNumber"
+        app:layout_constraintEnd_toEndOf="@+id/textView_PhoneNumber"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView12" />
+        app:layout_constraintStart_toStartOf="@+id/textView_PhoneNumber" />
 
     <TextView
         android:id="@+id/textView17"
@@ -154,12 +155,9 @@
         android:textSize="@dimen/text_register_Description_screen"
         android:text="E-mail"
         android:paddingHorizontal="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView13"
-        app:layout_constraintEnd_toEndOf="@+id/textView13"
+        app:layout_constraintBottom_toTopOf="@+id/textView_Email"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Email"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView13" />
-
-
-
+        app:layout_constraintStart_toStartOf="@+id/textView_Email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

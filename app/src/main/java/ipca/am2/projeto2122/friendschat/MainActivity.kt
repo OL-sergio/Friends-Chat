@@ -1,13 +1,17 @@
 package ipca.am2.projeto2122.friendschat
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import ipca.am2.projeto2122.friendschat.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,11 +20,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        supportActionBar?.hide()
-
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val toolbar : Toolbar = findViewById(R.id.toolbar_main)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.title = ""
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val navView: BottomNavigationView = binding.navView
 

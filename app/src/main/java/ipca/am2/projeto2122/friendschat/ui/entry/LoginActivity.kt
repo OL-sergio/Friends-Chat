@@ -1,5 +1,6 @@
 package ipca.am2.projeto2122.friendschat.ui.entry
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ import ipca.am2.projeto2122.friendschat.ui.database.Preference
 import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.ui.model.Users
 import ipca.am2.projeto2122.friendschat.ui.search.SearchFragment
+import ipca.am2.projeto2122.friendschat.ui.settings.SettingsFragment.Companion.TAG
 
 
 class LoginActivity : AppCompatActivity() {
@@ -36,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
         supportActionBar!!.title = "Login"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         toolbar.setNavigationOnClickListener {
             val intent = Intent(this@LoginActivity, WelcomeActivity::class.java)
             startActivity(intent)
@@ -47,6 +50,8 @@ class LoginActivity : AppCompatActivity() {
         _auth = Firebase.auth
 
         _binding.editTextEmailAddress.setText(Preference(this).longinPrefer)
+
+
 
         _binding.buttonSignIn.setOnClickListener {
 
@@ -71,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
                             if (task.isSuccessful) {
 
                                 Preference(this).longinPrefer = email
-                                val user = Users(email)
+                                val user = Users(email,"")
                                 val database = Firebase.firestore
 
                                 startActivity(Intent(baseContext, MainActivity::class.java))
@@ -100,11 +105,13 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-            _binding.textViewGoToSignUp.setOnClickListener {
-                val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
         }
+
+        _binding.textViewGoToSignUp.setOnClickListener {
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 }

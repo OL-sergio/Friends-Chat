@@ -48,7 +48,7 @@
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_settings_background.xml" value="0.31875" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/drawable/ic_user_account.xml" value="0.5526041666666667" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/activity_login.xml" value="0.2046875" />
-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/activity_main.xml" value="0.45989583333333334" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/activity_message_chat.xml" value="0.5" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/activity_splash.xml" value="0.45989583333333334" />
@@ -59,7 +59,7 @@
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/fragment_dashboard.xml" value="0.5364583333333334" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/fragment_home.xml" value="0.5364583333333334" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/fragment_search.xml" value="0.31666666666666665" />
-        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/fragment_settings.xml" value="0.34448160535117056" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/fragment_settings.xml" value="0.22" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/message_left_rowview.xml" value="0.309375" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/message_right_rowview.xml" value="0.309375" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/FriendsChat/app/src/main/res/layout/user_search_rowview.xml" value="0.4" />

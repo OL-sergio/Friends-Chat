@@ -47,6 +47,7 @@ class PasswordStrength : TextWatcher {
 
             calculateStrength(char)
         }
+
     }
 
     private fun calculateStrength(password: CharSequence) {
@@ -70,7 +71,9 @@ class PasswordStrength : TextWatcher {
                 strengthColor.value = R.color.verystrong
                 strengthLevel.value = StrengthLevel.VeryStrong
             }
+
         }
+
     }
 
     private fun CharSequence.hasLowerCase(): Boolean {
@@ -100,5 +103,6 @@ class PasswordStrength : TextWatcher {
         return hasSpecialChar.find()
 
     }
+
 
 }
