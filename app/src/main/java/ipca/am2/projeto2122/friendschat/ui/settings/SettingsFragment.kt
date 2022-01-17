@@ -44,6 +44,7 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.extendedFabSavePhoto.visibility = View.GONE
         binding.extendedFabSavePhoto.setOnClickListener {
 
             val baos = ByteArrayOutputStream()
@@ -91,6 +92,7 @@ class SettingsFragment : Fragment() {
                                     "DocumentSnapshot added with ID: ${documentReference.id}"
                                 )
 
+
                             }.addOnFailureListener { e ->
                                 Log.w(TAG, "Error adding document", e)
 
@@ -98,16 +100,13 @@ class SettingsFragment : Fragment() {
                     }.addOnFailureListener {
 
                     }
+                binding.extendedFabSavePhoto.visibility = View.GONE
             }
         }
-
-
-
             binding.imageViewSettingsUserProfile.setOnClickListener {
             val takePictureInt = Intent (MediaStore.ACTION_IMAGE_CAPTURE)
             startActivityForResult( Intent(MediaStore.ACTION_IMAGE_CAPTURE),
                 CAMARA_PIC_REQUEST )
-
         }
     }
 
@@ -119,8 +118,8 @@ class SettingsFragment : Fragment() {
                     val bm : Bitmap? = data?.extras?.get("data") as? Bitmap?
                     bm?.let {
                         binding.imageViewSettingsUserProfile.setImageBitmap(it)
+                        binding.extendedFabSavePhoto.visibility = View.VISIBLE
                         bitmap = bm
-
                     }
                 }
             }
