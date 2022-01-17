@@ -10,7 +10,8 @@ class Users {
 
     private var email       : String = ""
     private var imageURL    : String = ""
-    var bitmap    : Bitmap? = null
+    var bitmap              : Bitmap? = null
+    var id                  : String? = null
 
     constructor(email: String, imageURL: String) {
         this.email      = email

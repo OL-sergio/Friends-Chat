@@ -1,6 +1,6 @@
 package ipca.am2.projeto2122.friendschat.ui.entry
 
-import android.content.ContentValues.TAG
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,8 +17,8 @@ import ipca.am2.projeto2122.friendschat.databinding.ActivityLoginBinding
 import ipca.am2.projeto2122.friendschat.ui.database.Preference
 import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.ui.model.Users
-import ipca.am2.projeto2122.friendschat.ui.search.SearchFragment
-import ipca.am2.projeto2122.friendschat.ui.settings.SettingsFragment.Companion.TAG
+import ipca.am2.projeto2122.friendschat.ui.settings.SettingsFragment
+
 
 
 class LoginActivity : AppCompatActivity() {
@@ -85,14 +85,13 @@ class LoginActivity : AppCompatActivity() {
                                     .add(user.toHash())
                                     .addOnSuccessListener { documentReference ->
 
-                                        Log.d(
-                                            SearchFragment.TAG,
+                                        Log.d(SettingsFragment.TAG,
                                             "DocumentSnapShot added with ID: ${documentReference.id}"
                                         )
 
                                     }.addOnFailureListener { e ->
 
-                                        Log.w(SearchFragment.TAG, "Error adding Document", e)
+                                        Log.w(SettingsFragment.TAG, "Error adding Document", e)
 
                                     }
 
@@ -104,7 +103,6 @@ class LoginActivity : AppCompatActivity() {
                         }
                 }
             }
-
         }
 
         _binding.textViewGoToSignUp.setOnClickListener {

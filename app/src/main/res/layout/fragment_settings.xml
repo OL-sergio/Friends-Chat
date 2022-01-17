@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".ui.settings.SettingsFragment">
 
 
@@ -24,11 +23,12 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="32dp"
-        android:background="@drawable/ic_settings_background"
         android:scaleType="fitCenter"
+        android:background="@drawable/ic_settings_background"
         android:src="@drawable/ic_user_account"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_background"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -78,6 +78,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_PhoneNumber"
         app:layout_constraintVertical_bias="0.0" />
+
+
 
     <TextView
         android:id="@+id/textView_FullName"
@@ -159,5 +161,24 @@
         app:layout_constraintEnd_toEndOf="@+id/textView_Email"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView_Email" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/extended_fab_save_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="16dp"
+        android:layout_marginStart="32dp"
+        android:text="Save photo"
+        android:textAlignment="center"
+        app:icon="@drawable/ic_add_photo"
+        app:iconPadding="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_background"
+        app:layout_constraintVertical_bias="0.6" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

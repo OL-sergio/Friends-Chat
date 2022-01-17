@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,15 +15,14 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import ipca.am2.projeto2122.friendschat.databinding.FragmentSettingsBinding
+import ipca.am2.projeto2122.friendschat.ui.model.Users
 import java.io.ByteArrayOutputStream
 import java.util.*
+
 
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     private var bitmap : Bitmap? = null
@@ -44,22 +44,21 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _binding!!.imageViewSettingsUserProfile.setOnClickListener {
+        binding.extendedFabSavePhoto.setOnClickListener {
 
             val baos = ByteArrayOutputStream()
-
-            bitmap?.compress(Bitmap.CompressFormat.JPEG,50,baos)
+            bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, baos)
             val data = baos.toByteArray()
 
-            val storage     = Firebase.storage
+            val storage = Firebase.storage
             val storageReference = storage.reference
-            val fileName    = "${UUID.randomUUID()}.jpg"
+            val fileName = "${UUID.randomUUID()}.jpg"
             val createImageReference = storageReference
-                .child("ImageUserProfile/${Firebase.auth.currentUser?.uid}/$fileName")
+                .child("imageUserProfile/${Firebase.auth.currentUser?.uid}/$fileName")
 
             val uploadTask = createImageReference.putBytes(data)
             uploadTask.continueWithTask { task ->
-                if (!task.isSuccessful){
+                if (!task.isSuccessful) {
                     task.exception?.let {
                         throw  it
                     }
@@ -67,37 +66,61 @@ class SettingsFragment : Fragment() {
                 createImageReference.downloadUrl
 
             }
-            uploadTask.addOnFailureListener{
+            uploadTask.addOnFailureListener {
 
 
             }.addOnSuccessListener { task ->
                 storageReference
-                    .child("ImageUserProfile/${Firebase.auth.currentUser?.uid}/$fileName")
+                    .child("imageUserProfile/${Firebase.auth.currentUser?.uid}/$fileName")
                     .downloadUrl.addOnSuccessListener {
-                        mDataBase.collection("ImageUserProfile")
 
-                }
+                        val downloadUri = it.toString()
 
+                        Log.d(TAG, "DocumentSnapshot added with ID: $downloadUri")
+                        val user = Users(
+                            "",
+                            downloadUri
+                        )
 
+                        mDataBase.collection("imageUserProfile")
+                            .add(user.toHash())
+                            .addOnSuccessListener { documentReference ->
+
+                                Log.d(
+                                    TAG,
+                                    "DocumentSnapshot added with ID: ${documentReference.id}"
+                                )
+
+                            }.addOnFailureListener { e ->
+                                Log.w(TAG, "Error adding document", e)
+
+                            }
+                    }.addOnFailureListener {
+
+                    }
             }
         }
 
-        _binding!!.imageViewSettingsUserProfile.setOnClickListener {
+
+
+            binding.imageViewSettingsUserProfile.setOnClickListener {
             val takePictureInt = Intent (MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivityForResult(takePictureInt, CAMARA_PIC_REQUEST )
+            startActivityForResult( Intent(MediaStore.ACTION_IMAGE_CAPTURE),
+                CAMARA_PIC_REQUEST )
 
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK){
             when(requestCode) {
-                CAMARA_PIC_REQUEST ->{
-                    val bm : Bitmap = data!!.extras!!.get("data") as Bitmap
-                    bm.let {
+                CAMARA_PIC_REQUEST -> {
+                    val bm : Bitmap? = data?.extras?.get("data") as? Bitmap?
+                    bm?.let {
                         binding.imageViewSettingsUserProfile.setImageBitmap(it)
                         bitmap = bm
+
                     }
                 }
             }
@@ -106,11 +129,8 @@ class SettingsFragment : Fragment() {
 
     companion object {
         const val CAMARA_PIC_REQUEST = 1001
+        const val TAG = "SearchFragment"
+
     }
 
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
