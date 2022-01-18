@@ -57,7 +57,7 @@ class SettingsFragment : Fragment() {
 
 
 
-        //binding.extendedFabSavePhoto.visibility = View.GONE
+        binding.extendedFabSavePhoto.visibility = View.GONE
         binding.extendedFabSavePhoto.setOnClickListener {
 
             val baos = ByteArrayOutputStream()
@@ -146,6 +146,7 @@ class SettingsFragment : Fragment() {
 
         bm?.let {
             binding.imageViewSettingsUserProfile.setImageBitmap(it)
+            binding.extendedFabSavePhoto.visibility = View.VISIBLE
             bitmap = bm
         }
     }
