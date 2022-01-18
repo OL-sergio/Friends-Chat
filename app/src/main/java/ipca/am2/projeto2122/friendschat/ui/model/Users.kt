@@ -26,6 +26,7 @@ class Users {
     }
 
 
+
     companion object {
         fun fromHash( hashMap: QueryDocumentSnapshot): Users {
             val user = Users(
