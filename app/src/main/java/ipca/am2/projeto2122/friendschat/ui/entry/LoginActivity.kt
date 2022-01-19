@@ -17,8 +17,7 @@ import ipca.am2.projeto2122.friendschat.databinding.ActivityLoginBinding
 import ipca.am2.projeto2122.friendschat.ui.database.Preference
 import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.ui.model.Users
-import ipca.am2.projeto2122.friendschat.ui.settings.SettingsFragment
-
+import ipca.am2.projeto2122.friendschat.ui.settings.AddPhotoProfileActivity
 
 
 class LoginActivity : AppCompatActivity() {
@@ -85,13 +84,13 @@ class LoginActivity : AppCompatActivity() {
                                     .add(user.toHash())
                                     .addOnSuccessListener { documentReference ->
 
-                                        Log.d(SettingsFragment.TAG,
+                                        Log.d(AddPhotoProfileActivity.TAG,
                                             "DocumentSnapShot added with ID: ${documentReference.id}"
                                         )
 
                                     }.addOnFailureListener { e ->
 
-                                        Log.w(SettingsFragment.TAG, "Error adding Document", e)
+                                        Log.w(AddPhotoProfileActivity.TAG, "Error adding Document", e)
 
                                     }
 

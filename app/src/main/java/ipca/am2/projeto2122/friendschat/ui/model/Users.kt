@@ -18,6 +18,8 @@ class Users {
         this.imageURL   = imageURL
     }
 
+    constructor()
+
     fun toHash() : HashMap<String, Any>{
         val hashMap = HashMap<String,Any>()
         hashMap["email"] = email

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
@@ -13,19 +12,16 @@
     <color name="background_img">#0066a1</color>
     <color name="background">#FFFFFF</color>
     <color name="titles_color">#FC98C9EA</color>
-    <color name="sub_titles_color">#0066a1</color>
     <color name="button_sign_up_color">#FC98C9EA</color>
     <color name="button_sign_in_color">#FC98C9EA</color>
     <color name="button_text_color">#0066a1</color>
     <color name="text_color_registration">#30ABF3</color>
     <color name="text_color_Title">#FC98C9EA</color>
-    <color name="text_color_Sub_Title">#0066a1</color>
     <color name="background_fragments">#FCC9E1F1</color>
 
     <color name="weak">#FF4646</color>
     <color name="medium">#E17958</color>
     <color name="strong">#E6D540</color>
     <color name="verystrong">#4BC651</color>
-    <color name="darkGray">#665E5D</color>
 
 </resources>

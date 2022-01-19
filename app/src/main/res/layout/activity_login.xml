@@ -105,8 +105,9 @@
         android:textColor="@color/background_img"
         android:textSize="@dimen/text_buttons_Description"
         android:textStyle="bold"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_Password"
         tools:ignore="TouchTargetSizeCheck" />
