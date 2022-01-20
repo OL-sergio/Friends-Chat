@@ -126,8 +126,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_Phone_Number"
-        tools:ignore="Autofill,LabelFor" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_Phone_Number" />
 
     <EditText
         android:id="@+id/editText_Confirm_Password"
@@ -140,8 +139,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_Password"
-        android:autofillHints=""
-        tools:ignore="LabelFor" />
+        tools:ignore="Autofill,LabelFor" />
 
     <Button
         android:id="@+id/button_sign_up_user"
