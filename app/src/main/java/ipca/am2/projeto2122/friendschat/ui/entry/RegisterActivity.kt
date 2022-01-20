@@ -86,7 +86,7 @@ class RegisterActivity : AppCompatActivity() {
         val password: String = _binding.editTextPassword.text.toString()
         val passwordConfirmation: String = _binding.editTextConfirmPassword.text.toString()
         //
-        if (email.isBlank() || username.isBlank() || phonenumber.isBlank() || password.isBlank() || passwordConfirmation.isBlank()) {
+        if (email.isBlank()   || password.isBlank() || passwordConfirmation.isBlank()) {
             Toast.makeText(this, "Email and Password can't be blank", Toast.LENGTH_SHORT).show()
             return
         }
