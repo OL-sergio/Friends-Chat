@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="60dp"
-        android:hint="User Name"
+        android:hint="@string/user_name"
         android:paddingHorizontal="12dp"
         android:textColor="@color/text_color_registration"
         android:textSize="20sp"
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="60dp"
-        android:hint="Phone Number"
+        android:hint="@string/phone_number"
         android:paddingHorizontal="12dp"
         android:textColor="@color/text_color_registration"
         android:textStyle="bold"
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="60dp"
-        android:hint="E-mail"
+        android:hint="@string/e_mail"
         android:paddingHorizontal="12dp"
         android:textColor="@color/text_color_registration"
         android:textStyle="bold"
@@ -99,7 +99,7 @@
         android:layout_width="200dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
-        android:text="Full Name"
+        android:text="@string/full_name"
         android:textAlignment="center"
         android:textColor="@color/text_color_Title"
         android:textSize="@dimen/text_register_title_screen"
@@ -121,7 +121,8 @@
         android:src="@drawable/ic_phone"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_background" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_background"
+        android:contentDescription="@string/todo" />
 
 
     <ImageView
@@ -134,7 +135,8 @@
         android:src="@drawable/ic_chatting"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_background" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_background"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/textView15"
@@ -142,7 +144,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textSize="@dimen/text_register_Description_screen"
-        android:text="UserName"
+        android:text="@string/user_name"
         android:paddingHorizontal="12dp"
         app:layout_constraintBottom_toTopOf="@+id/textView_Settings_User_Name"
         app:layout_constraintEnd_toEndOf="@+id/textView_Settings_User_Name"
@@ -155,7 +157,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textSize="@dimen/text_register_Description_screen"
-        android:text="Phone Number"
+        android:text="@string/phone_number"
         android:paddingHorizontal="12dp"
         app:layout_constraintBottom_toTopOf="@+id/textView_PhoneNumber"
         app:layout_constraintEnd_toEndOf="@+id/textView_PhoneNumber"
@@ -168,7 +170,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textSize="@dimen/text_register_Description_screen"
-        android:text="E-mail"
+        android:text="@string/e_mail"
         android:paddingHorizontal="12dp"
         app:layout_constraintBottom_toTopOf="@+id/textView_Email"
         app:layout_constraintEnd_toEndOf="@+id/textView_Email"

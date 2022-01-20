@@ -40,7 +40,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout3"
-        app:srcCompat="@drawable/welcome_image" />
+        app:srcCompat="@drawable/welcome_image"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -53,14 +54,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout3"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_background_top_round_border" />
+        app:srcCompat="@drawable/ic_background_top_round_border"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textAlignment="center"
         android:textColor="@color/button_sign_up_color"
         android:textSize="@dimen/text_login_title_screen"
@@ -82,7 +84,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editText_Email_Address"
@@ -96,7 +99,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_User_Name"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editText_Phone_Number"
@@ -105,12 +109,12 @@
         android:layout_marginTop="28dp"
         android:background="@drawable/ic_editetext_round_border"
         android:ems="10"
-        android:inputType="textPhonetic"
+        android:inputType="numberDecimal"
         android:textSize="@dimen/edittext_text_fill"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_Email_Address"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck,TextFields,TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/editText_Password"
@@ -122,7 +126,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_Phone_Number" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_Phone_Number"
+        tools:ignore="Autofill,LabelFor" />
 
     <EditText
         android:id="@+id/editText_Confirm_Password"
@@ -134,7 +139,9 @@
         android:textSize="@dimen/edittext_text_fill"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_Password" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_Password"
+        android:autofillHints=""
+        tools:ignore="LabelFor" />
 
     <Button
         android:id="@+id/button_sign_up_user"
@@ -143,7 +150,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/ic_editetext_round_border"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:enabled="false"
         android:textAllCaps="false"
         android:textColor="@color/button_text_color"
@@ -166,7 +173,8 @@
         app:layout_constraintBottom_toTopOf="@+id/editText_Password"
         app:layout_constraintEnd_toEndOf="@+id/editText_Password"
         app:layout_constraintHorizontal_bias="0.941"
-        app:layout_constraintStart_toStartOf="@+id/editText_Password" />
+        app:layout_constraintStart_toStartOf="@+id/editText_Password"
+        tools:ignore="SmallSp" />
 
     <TextView
         android:id="@+id/textView_UserName"
@@ -174,7 +182,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="225dp"
         android:layout_marginBottom="4dp"
-        android:text="User Name"
+        android:text="@string/user_name"
         android:textColor="@color/button_sign_in_color"
         android:textSize="@dimen/text_login_Description_screen"
         android:textStyle="bold"
@@ -203,7 +211,7 @@
         android:layout_marginStart="54dp"
         android:layout_marginEnd="235dp"
         android:layout_marginBottom="4dp"
-        android:text="Confirmation Password"
+        android:text="@string/confirmation_password"
         android:textColor="@color/button_sign_in_color"
         android:textSize="@dimen/text_login_Description_screen"
         android:textStyle="bold"
@@ -216,7 +224,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="Sign In"
+        android:text="@string/sign_in"
         android:textColor="@color/text_color_registration"
         android:textSize="11sp"
         android:textStyle="bold"
@@ -231,7 +239,7 @@
         android:layout_marginStart="130dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="51dp"
-        android:text="I'm already a menber."
+        android:text="@string/i_m_already_a_member"
         android:textColor="@color/titles_color"
         android:textSize="@dimen/text_login_Description_screen"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -246,7 +254,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="210dp"
         android:layout_marginBottom="4dp"
-        android:text="Phone Number"
+        android:text="@string/phone_number"
         android:textColor="@color/button_sign_in_color"
         android:textSize="@dimen/text_login_Description_screen"
         android:textStyle="bold"
@@ -260,7 +268,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="215dp"
         android:layout_marginBottom="4dp"
-        android:text="Email Address"
+        android:text="@string/email_address"
         android:textColor="@color/button_sign_in_color"
         android:textSize="@dimen/text_login_Description_screen"
         android:textStyle="bold"

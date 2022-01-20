@@ -19,7 +19,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/welcome_image" />
+        app:srcCompat="@drawable/welcome_image"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/textView2"
@@ -27,7 +28,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="350dp"
-        android:text="Friend's Chat"
+        android:text="@string/friend_s_chat"
         android:textAlignment="center"
         android:textColor="@color/titles_color"
         android:textSize="@dimen/text_title_welcome_screen"
@@ -42,7 +43,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Welcome and make friend's!"
+        android:text="@string/welcome_and_make_friend_s"
         android:textAlignment="center"
         android:textColor="@color/background_img"
         android:textSize="@dimen/text_intro_welcome_screen"
@@ -58,7 +59,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/ic_editetext_round_border"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textColor="@color/button_text_color"
         android:textSize="@dimen/text_buttons_Description"
         android:textStyle="bold"
@@ -74,7 +75,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="46dp"
         android:background="@drawable/ic_editetext_round_border"
-        android:text="Sign in"
+        android:text="@string/sign_in"
         android:textColor="@color/button_text_color"
         android:textSize="@dimen/text_buttons_Description"
         android:textStyle="bold"

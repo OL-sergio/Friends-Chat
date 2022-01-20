@@ -24,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/customToolbarColorPrimary"
-            app:popupTheme="@style/Theme.FriendsChat.NoActionBar" />
+            app:popupTheme="@style/Theme.FriendsChat.NoActionBar"
+            tools:ignore="RedundantNamespace" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -37,7 +38,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout3"
-        app:srcCompat="@drawable/welcome_image" />
+        app:srcCompat="@drawable/welcome_image"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -49,14 +51,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_background_top_round_border" />
+        app:srcCompat="@drawable/ic_background_top_round_border"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Sign In"
+        android:text="@string/sign_in"
         android:textAlignment="center"
         android:textColor="@color/button_sign_up_color"
         android:textSize="@dimen/text_login_title_screen"
@@ -79,7 +82,8 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editText_Password"
@@ -92,7 +96,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_EmailAddress"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:importantForAutofill="no" />
 
 
     <Button
@@ -101,7 +106,7 @@
         android:layout_height="45dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/ic_editetext_round_border"
-        android:text="Sign In"
+        android:text="@string/sign_in"
         android:textColor="@color/background_img"
         android:textSize="@dimen/text_buttons_Description"
         android:textStyle="bold"
@@ -118,7 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="210dp"
         android:layout_marginBottom="4dp"
-        android:text="Email Address"
+        android:text="@string/email_address"
         android:textColor="@color/button_sign_in_color"
         android:textSize="@dimen/text_login_Description_screen"
         android:textStyle="bold"
@@ -146,7 +151,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="200dp"
         android:layout_marginTop="4dp"
-        android:text="Forgot Password?"
+        android:text="@string/forgot_password"
         android:textColor="@color/button_sign_up_color"
         android:textSize="@dimen/text_login_Description_screen"
         android:textStyle="bold"
@@ -159,7 +164,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textColor="@color/text_color_registration"
         android:textSize="11sp"
         android:textStyle="bold"
@@ -174,7 +179,7 @@
         android:layout_marginStart="-40dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="50dp"
-        android:text="I'm a new user."
+        android:text="@string/i_m_a_new_user"
         android:textColor="@color/titles_color"
         android:textSize="@dimen/text_login_Description_screen"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -193,7 +198,8 @@
         app:layout_constraintEnd_toEndOf="@+id/editText_Password"
         app:layout_constraintStart_toStartOf="@+id/editText_Password"
         app:layout_constraintTop_toTopOf="@+id/editText_Password"
-        app:srcCompat="@drawable/ic_password_icon" />
+        app:srcCompat="@drawable/ic_password_icon"
+        android:contentDescription="@string/todo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
