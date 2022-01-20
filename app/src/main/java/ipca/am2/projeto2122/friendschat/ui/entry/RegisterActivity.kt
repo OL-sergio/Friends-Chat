@@ -92,7 +92,7 @@ class RegisterActivity : AppCompatActivity() {
         }
         // password confirmation
         if (password != passwordConfirmation) {
-            Toast.makeText(this, "Password and Confirm Password do not match", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "Password do not match", Toast.LENGTH_SHORT)
                 .show()
             return
         }
