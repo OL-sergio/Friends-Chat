@@ -9,7 +9,7 @@ class Users {
 
 
     private var email       : String = ""
-    private var imageURL    : String = ""
+    var imageURL            : String = ""
     var bitmap              : Bitmap? = null
     var id                  : String? = null
 
@@ -18,7 +18,6 @@ class Users {
         this.imageURL   = imageURL
     }
 
-    constructor()
 
     fun toHash() : HashMap<String, Any>{
         val hashMap = HashMap<String,Any>()

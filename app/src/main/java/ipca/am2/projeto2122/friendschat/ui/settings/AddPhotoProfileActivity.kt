@@ -9,19 +9,14 @@ import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.ActivityAddPhotoProfileBinding
-import ipca.am2.projeto2122.friendschat.ui.model.Users
+import ipca.am2.projeto2122.friendschat.ui.model.Photo
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -30,10 +25,7 @@ class AddPhotoProfileActivity : AppCompatActivity() {
 
     private lateinit var _binding : ActivityAddPhotoProfileBinding
 
-
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-    private var currentImagePath: String? = null
-
 
     private var bitmap : Bitmap? = null
     private var mDataBase = Firebase.firestore
@@ -42,6 +34,8 @@ class AddPhotoProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        _binding = ActivityAddPhotoProfileBinding.inflate(layoutInflater)
+        setContentView(_binding.root)
 
         _binding.extendedFabSavePhoto.visibility = View.GONE
         _binding.extendedFabSavePhoto.setOnClickListener {
@@ -77,35 +71,36 @@ class AddPhotoProfileActivity : AppCompatActivity() {
                         val downloadUri = it.toString()
 
                         Log.d(TAG, "DocumentSnapshot added with ID: $downloadUri")
-                        val user = Users(
-                            "",
+                        val photos = Photo(
+                            _binding.textViewPictureAddDescription.text.toString(),
                             downloadUri
                         )
 
                         mDataBase.collection("imageUserProfile")
-                            .add(user.toHash())
+                            .add(photos.toHash())
                             .addOnSuccessListener { documentReference ->
 
                                 Log.d(
                                     TAG,
-                                    "DocumentSnapshot added with ID: ${documentReference.id}"
-                                )
-
+                                    "DocumentSnapshot added with ID: ${documentReference.id}")
 
                             }.addOnFailureListener { e ->
                                 Log.w(TAG, "Error adding document", e)
 
                             }
 
-
-
+                        if (savedInstanceState == null) {
+                            val f = SettingsFragment()
+                            val t: FragmentTransaction = supportFragmentManager.beginTransaction()
+                            t.replace(_binding.extendedFabSavePhoto.id, f).commit()
+                        }
 
                     }.addOnFailureListener {
 
                     }
 
             }
-            _binding.extendedFabSavePhoto.visibility = View.GONE
+
         }
 
         resultLauncher =
@@ -138,7 +133,7 @@ class AddPhotoProfileActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val TAG = "SearchFragment"
+        const val TAG = "AddPhotoProfileActivity"
 
     }
 }
