@@ -75,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
                             if (task.isSuccessful) {
 
                                 Preference(this).longinPrefer = email
-                                val user = Users(email,"")
+                                val user = Users(email,"","","","","","","")
                                 val database = Firebase.firestore
 
                                 startActivity(Intent(baseContext, MainActivity::class.java))

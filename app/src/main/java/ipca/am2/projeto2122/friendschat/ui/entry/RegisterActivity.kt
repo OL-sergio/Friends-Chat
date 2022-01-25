@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.ActivityRegisterBinding
 import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
@@ -17,12 +19,17 @@ import ipca.am2.projeto2122.friendschat.ui.security.PasswordStrength
 import ipca.am2.projeto2122.friendschat.ui.security.StrengthLevel
 
 import java.util.*
+import kotlin.collections.HashMap
 
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var _binding: ActivityRegisterBinding
-    private lateinit var _auth: FirebaseAuth
+    private lateinit var mAuth: FirebaseAuth
+
+    private lateinit var refUsers: DatabaseReference
+    private var firebaseUserID: String = ""
+
 
     private var color: Int = R.color.weak
 
@@ -31,7 +38,7 @@ class RegisterActivity : AppCompatActivity() {
         _binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(_binding.root)
 
-        _auth = FirebaseAuth.getInstance()
+        mAuth = FirebaseAuth.getInstance()
 
         val passwordStrengthCalculator = PasswordStrength()
         _binding.editTextPassword.addTextChangedListener(passwordStrengthCalculator)
@@ -52,6 +59,8 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        mAuth = FirebaseAuth.getInstance()
 
         _binding.buttonSignUpUser.setOnClickListener {
 
@@ -79,15 +88,19 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun createUser() {
-
-        val username: String = _binding.editTextUserName.text.toString()
-        val phonenumber: String = _binding.editTextPhoneNumber.text.toString()
-        val email: String = _binding.editTextEmailAddress.text.toString()
-        val password: String = _binding.editTextPassword.text.toString()
-        val passwordConfirmation: String = _binding.editTextConfirmPassword.text.toString()
-        //
-        if (email.isBlank()   || password.isBlank() || passwordConfirmation.isBlank()) {
+        val userName                : String = _binding.editTextUserName.text.toString()
+        val fullName                : String = _binding.editTextFullName.text.toString()
+        val phoneNumber             : String = _binding.editTextPhoneNumber.text.toString()
+        val email                   : String = _binding.editTextEmailAddress.text.toString()
+        val password                : String = _binding.editTextPassword.text.toString()
+        val passwordConfirmation    : String = _binding.editTextConfirmPassword.text.toString()
+        //Confirm if variables was Strings
+        if (email.isBlank() || password.isBlank() || passwordConfirmation.isBlank()) {
             Toast.makeText(this, "Email and Password can't be blank", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (userName.isBlank() || phoneNumber.isBlank() || fullName.isBlank()) {
+            Toast.makeText(this, "User, Full Name or Phone Number can't be blank", Toast.LENGTH_SHORT).show()
             return
         }
         // password confirmation
@@ -96,22 +109,42 @@ class RegisterActivity : AppCompatActivity() {
                 .show()
             return
         }
-                _auth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
+        mAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    firebaseUserID = mAuth.currentUser!!.uid
+                    refUsers = FirebaseDatabase.getInstance().reference
+                        .child("Users")
+                        .child(firebaseUserID)
 
-                            val intent = Intent(baseContext, LoginActivity::class.java)
-                            startActivity(intent)
-                            finish()
-                        } else {
-                            Toast.makeText(
-                                baseContext, "Error Message: " + task
-                                    .exception?.message.toString(), Toast.LENGTH_SHORT
-                            ).show()
+                    val userHashMap = HashMap<String, Any>()
+                    userHashMap["UID"] = firebaseUserID
+                    userHashMap["USERNAME"] = userName
+                    userHashMap["PHONENUMBER"] = phoneNumber
+                    userHashMap["FULLNAME"] = fullName
+                    userHashMap["PROFILE"] = ""
+                    userHashMap["COVER"] = ""
+                    userHashMap["STATUS"] = "offline"
+                    userHashMap["SEARCH"] = userName.toLowerCase()
 
+                    refUsers.updateChildren(userHashMap)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                val intent = Intent(baseContext, LoginActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            else {
+                                Toast.makeText(
+                                    baseContext, "Error Message: " + task
+                                        .exception?.message.toString(), Toast.LENGTH_SHORT
+                                ).show()
+
+                            }
                         }
-                    }
-            }
-        }
 
+                }
+            }
+    }
+}
 
