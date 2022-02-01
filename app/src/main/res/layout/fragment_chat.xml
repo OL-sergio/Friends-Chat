@@ -8,7 +8,7 @@ android:background="@color/background_splash"
 tools:context=".ui.chat.ChatFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_chatlist"
+        android:id="@+id/recycler_view_chatlist_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ic_background_recyclerview">

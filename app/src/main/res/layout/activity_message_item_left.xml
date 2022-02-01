@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="295dp"
+    android:layout_height="wrap_content"
+    android:padding="9dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image_message_item"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_user_account" />
+
+    <TextView
+        android:id="@+id/textView_show_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_toEndOf="@id/profile_image_message_item"
+        android:background="@drawable/ic_background_edittext_secondary"
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:text="testing purposes"
+        android:textColor="@color/white"/>
+
+    <ImageView
+        android:id="@+id/imageView_view_Image_message_item_left"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_toEndOf="@id/profile_image_message_item"
+        android:paddingStart="6dp"
+        android:visibility="gone"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/textView_isSeen_message_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@+id/textView_show_message" />
+</RelativeLayout>

@@ -1,21 +1,36 @@
 package ipca.am2.projeto2122.friendschat.ui.search
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.google.android.material.tabs.TabLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.FragmentSearchBinding
+import ipca.am2.projeto2122.friendschat.ui.Adapter.UserAdapter
+import ipca.am2.projeto2122.friendschat.ui.model.Users
 
 
 class SearchFragment : Fragment() {
 
 
-    private var _binding: FragmentSearchBinding? = null
+    private var _binding            : FragmentSearchBinding? = null
+    private var recyclerView        : RecyclerView?          = null
+    private var searchUserEditText  : EditText?              = null
+    private var mUsers              : List<Users>?           = null
+    private var userAdapter         : UserAdapter?           = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -25,10 +40,61 @@ class SearchFragment : Fragment() {
     ): View? {
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val view: View = binding.root
+
+        recyclerView = view.findViewById(R.id.recycler_view_chatlist_search)
+        recyclerView!!.setHasFixedSize(true)
+        recyclerView!!.layoutManager = LinearLayoutManager(context)
+        searchUserEditText = view.findViewById(R.id.editText_search_users)
+
+        mUsers = ArrayList()
+        retrieveAllUsers()
+
+        searchUserEditText!!.addTextChangedListener (object : TextWatcher {
+           override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+           override fun afterTextChanged(s: Editable?) {}
 
 
-        return root
+           override fun onTextChanged(cs: CharSequence?, start: Int, before: Int, count: Int) {
+               searchUserEditText(cs.toString().toLowerCase())
+           }
+       })
+
+        return view
+    }
+
+    private fun searchUserEditText(toLowerCase: String) {
+
+    }
+
+
+    private fun retrieveAllUsers() {
+        val firebaseUserID = FirebaseAuth.getInstance().currentUser?.uid
+
+        val referenceUsers = FirebaseDatabase.getInstance().reference.child("Users")
+
+        referenceUsers.addValueEventListener(object : ValueEventListener {
+
+            override fun onCancelled(p0: DatabaseError) {}
+
+            override fun onDataChange(p0: DataSnapshot) {
+                (mUsers as ArrayList<Users>).clear()
+                if (searchUserEditText?.text.toString() == ""){
+                    for (snapshot in p0.children){
+                        val user: Users? = snapshot.getValue(Users::class.java)
+                        if((user?.getUID()).equals(firebaseUserID)){
+                            (mUsers as ArrayList<Users>).add(user!!)
+                        }
+                    }
+                    userAdapter = UserAdapter(context!!, mUsers!!, false)
+                    recyclerView?.adapter = userAdapter
+                }
+
+            }
+
+        })
+
     }
 
     override fun onDestroyView() {

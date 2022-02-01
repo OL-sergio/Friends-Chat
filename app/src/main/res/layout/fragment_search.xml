@@ -7,7 +7,7 @@
     tools:context=".ui.search.SearchFragment">
 
     <EditText
-        android:id="@+id/search_Users"
+        android:id="@+id/editText_search_users"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="6dp"
@@ -16,17 +16,17 @@
         android:layout_marginBottom="6dp"
         android:background="@drawable/ic_background_edittext_secondary"
         android:hint="@string/find_new_friend_s"
+        android:inputType="text"
         android:paddingHorizontal="16dp"
         android:textColorHint="@color/button_text_color"
-        android:inputType="text"
         tools:ignore="Autofill" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_list"
+        android:id="@+id/recyclerview_search_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/search_Users"
-        android:background="@drawable/ic_background_recyclerview"/>
+        android:layout_below="@id/editText_search_users"
+        android:background="@drawable/ic_background_recyclerview" />
 
     <ImageView
         android:layout_width="32dp"

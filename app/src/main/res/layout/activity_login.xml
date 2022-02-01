@@ -93,11 +93,10 @@
         android:background="@drawable/ic_editetext_round_border"
         android:inputType="textPassword"
         android:textSize="@dimen/edittext_text_fill"
+        android:textIsSelectable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_EmailAddress"
-        tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_EmailAddress" />
 
 
     <Button

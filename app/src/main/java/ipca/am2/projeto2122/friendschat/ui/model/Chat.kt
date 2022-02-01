@@ -1,78 +1,75 @@
 package ipca.am2.projeto2122.friendschat.ui.model
 
+import android.content.IntentSender
+
 class Chat {
-    private var uid: String = ""
-    private var username: String = ""
-    private var profile: String = ""
-    private var cover: String = ""
-    private var status: String = ""
-    private var search: String = ""
+    private var sender  : String? = null
+    private var message : String? = null
+    private var receiver: String? = null
+    private var isSeen  : Boolean? = false
+    private var url     : String? = null
+    private var messageID: String? = null
+
 
     constructor()
 
-
     constructor(
-        uid: String,
-        username: String,
-        profile: String,
-        cover: String,
-        status: String,
-        search: String
+        sender: String?,
+        message: String?,
+        receiver: String?,
+        isSeen: Boolean?,
+        url: String?,
+        messageID: String?
     ) {
-        this.uid = uid
-        this.username = username
-        this.profile = profile
-        this.cover = cover
-        this.status = status
-        this.search = search
+        this.sender     = sender
+        this.message    = message
+        this.receiver   = receiver
+        this.isSeen     = isSeen
+        this.url        = url
+        this.messageID  = messageID
     }
 
 
-    fun getUID():String?{
-        return uid
+    fun getSender(): String? {
+        return sender
     }
-    fun setUID(uid: String){
-        this.uid = uid
-    }
-
-
-    fun getUsername():String?{
-        return username
-    }
-    fun setUsername(username:  String){
-        this.username = username
+    fun setSender(sender: String?){
+        this.sender = sender
     }
 
-
-    fun getProfile():String?{
-        return profile
+    fun getMessage(): String? {
+        return message
     }
-    fun setProfile(profile: String){
-        this.profile = profile
-    }
-
-
-    fun getCover():String?{
-        return cover
-    }
-    fun setCover(cover: String){
-        this.cover = cover
+    fun setMessage(message: String?){
+        this.message = message
     }
 
-
-    fun getStatus():String?{
-        return status
+    fun getReceiver(): String? {
+        return receiver
     }
-    fun setStatus(status: String){
-        this.status = status
+    fun setReceiver(receiver: String?){
+        this.receiver = receiver
     }
 
-
-    fun getSearch():String?{
-        return search
+    fun isIsSeen(): Boolean? {
+        return isSeen
     }
-    fun setSearch(search: String){
-        this.search = search
+    fun setIsSeen(isSeen: Boolean?){
+        this.isSeen = isSeen
+    }
+
+    fun getUrl(): String? {
+        return url
+    }
+    fun setUrl(url: String?){
+        this.url = url
+    }
+
+    fun getMessageId(): String? {
+        return messageID
+    }
+    fun setMessageId(messageID: String?){
+        this.messageID = messageID
     }
 
 
