@@ -27,8 +27,8 @@ class UserAdapter(
     private var isChatCheck : Boolean
 
     init {
-        this.mContext   = mContext
-        this.mUsers     = mUsers
+        this.mContext       = mContext
+        this.mUsers         = mUsers
         this.isChatCheck    = isChatCheck
     }
 
