@@ -28,9 +28,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/ic_user_account"
-                android:tint="@android:color/white">
-
-            </de.hdodenhof.circleimageview.CircleImageView>
+                android:tint="@android:color/white" />
 
             <TextView
                 android:id="@+id/user_name"
