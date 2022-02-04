@@ -90,13 +90,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
+                    android:layout_marginStart="-110dp"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
                     android:text="@string/user_name"
                     android:textColor="@color/button_sign_in_color"
                     android:textSize="@dimen/text_login_Description_screen"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    />
 
                 <EditText
                     android:id="@+id/editText_User_Name"
@@ -113,7 +115,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
+                    android:layout_marginStart="-110dp"
+                    android:layout_gravity="center"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
                     android:text="@string/full_name"
@@ -136,7 +139,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
+                    android:layout_marginStart="-100dp"
+                    android:layout_gravity="center"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
                     android:text="@string/email_address"
@@ -159,7 +163,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
+                    android:layout_marginStart="-100dp"
+                    android:layout_gravity="center"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
                     android:text="@string/phone_number"
@@ -183,26 +188,30 @@
                     android:id="@+id/scroll_layout4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:orientation="horizontal"
-                    android:paddingStart="50dp"
+                    android:paddingStart="8dp"
                     android:paddingEnd="16dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
+                            android:layout_marginStart="25dp"
+                            android:layout_gravity="center"
                             android:paddingTop="6dp"
                             android:paddingBottom="6dp"
                             android:text="@string/password"
                             android:textColor="@color/button_sign_in_color"
                             android:textSize="@dimen/text_login_Description_screen"
                             android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textView_Strength_level"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="180dp"
-                            android:layout_marginBottom="6dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginBottom="0dp"
                             android:textSize="8sp"
                             tools:ignore="SmallSp" />
                 </LinearLayout>
@@ -212,8 +221,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingStart="45dp"
+                    android:paddingStart="55dp"
                     android:paddingEnd="16dp">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -223,7 +233,7 @@
                         android:layout_width="300dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginEnd="25dp"
+                        android:layout_marginEnd="40dp"
                         android:background="@drawable/ic_editetext_round_border"
                         android:importantForAutofill="no"
                         android:inputType="textPassword"
@@ -245,7 +255,6 @@
                         app:srcCompat="@drawable/ic_password_icon"
                         tools:ignore="ContentDescription,MissingConstraints" />
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -254,19 +263,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
+                    android:layout_marginStart="-80dp"
+                    android:layout_gravity="center"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
                     android:text="@string/confirmation_password"
                     android:textColor="@color/button_sign_in_color"
                     android:textSize="@dimen/text_login_Description_screen"
-                            android:textStyle="bold" />
+                    android:textStyle="bold" />
                 <LinearLayout
                     android:id="@+id/scroll_layout5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingStart="45dp"
+                    android:paddingStart="55dp"
                     android:paddingEnd="16dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -278,7 +288,7 @@
                             android:layout_width="300dp"
                             android:layout_height="48dp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginEnd="25dp"
+                            android:layout_marginEnd="40dp"
                             android:background="@drawable/ic_editetext_round_border"
                             android:importantForAutofill="no"
                             android:inputType="textPassword"
@@ -322,18 +332,19 @@
 
                 <LinearLayout
                     android:id="@+id/scroll_layout2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="16dp">
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp">
 
                     <TextView
                         android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="110dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="35dp"
                         android:layout_marginBottom="51dp"
                         android:text="@string/i_m_already_a_member"
                         android:textColor="@color/titles_color"
@@ -345,7 +356,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="35dp"
                         android:layout_marginBottom="51dp"
                         android:text="@string/sign_in"
                         android:textColor="@color/text_color_registration"
