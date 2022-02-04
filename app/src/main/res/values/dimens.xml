@@ -10,5 +10,4 @@
     <dimen name="text_register_Description_screen">10sp</dimen>
     <dimen name="text_buttons_Description">12sp</dimen>
     <dimen name="edittext_text_fill">12sp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
 </resources>
