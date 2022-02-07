@@ -37,14 +37,21 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val view: View = binding.root
 
         recyclerView = view.findViewById(R.id.recycler_view_chatlist_search)
-        recyclerView?.setHasFixedSize(true)
-        recyclerView?.layoutManager = LinearLayoutManager(context)
+
+        recyclerView = binding.recyclerviewSearchList
+        recyclerView!!.layoutManager = LinearLayoutManager(view.context,LinearLayoutManager.VERTICAL, false)
+        recyclerView!!.setHasFixedSize(true)
+
+        val adapterUserAdapter = userAdapter
+        binding.recyclerviewSearchList.adapter = adapterUserAdapter
+
+
         searchUserEditText = view.findViewById(R.id.editText_search_users)
 
         mUsers = ArrayList()
@@ -57,50 +64,48 @@ class SearchFragment : Fragment() {
 
 
            override fun onTextChanged(cs: CharSequence?, start: Int, before: Int, count: Int) {
-               searchUserEditText(cs.toString().toLowerCase())
+               searchForUser(cs.toString().toLowerCase())
            }
        })
 
         return view
     }
 
-    private fun searchUserEditText(toLowerCase: String) {
+    private fun searchForUser( search: String) {
 
     }
 
 
     private fun retrieveAllUsers() {
-        val firebaseUserID = FirebaseAuth.getInstance().currentUser?.uid
+        val firebaseUserID = FirebaseAuth.getInstance().currentUser!!.uid
 
         val referenceUsers = FirebaseDatabase.getInstance().reference.child("Users")
 
         referenceUsers.addValueEventListener(object : ValueEventListener {
-
-            override fun onCancelled(p0: DatabaseError) {}
-
             override fun onDataChange(p0: DataSnapshot) {
                 (mUsers as ArrayList<Users>).clear()
-                if (searchUserEditText?.text.toString() == ""){
+                if (searchUserEditText!!.text.toString() == ""){
                     for (snapshot in p0.children){
                         val user: Users? = snapshot.getValue(Users::class.java)
-                        if((user?.getUID()).equals(firebaseUserID)){
-                            (mUsers as ArrayList<Users>).add(user!!)
+                        if(!(user!!.getUID()).equals(firebaseUserID)){
+                            (mUsers as ArrayList<Users>).add(user)
                         }
                     }
                     userAdapter = UserAdapter(context!!, mUsers!!, false)
-                    recyclerView?.adapter = userAdapter
+                    recyclerView!!.adapter = userAdapter
                 }
 
             }
+            override fun onCancelled(p0: DatabaseError) {}
 
         })
 
     }
 
-    override fun onDestroyView() {
+   /* override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
+    }*/
 
 
 }

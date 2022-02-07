@@ -3,7 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/Friends-Chat/app/src/main/res/drawable/ic_add_photo.xml" value="0.2985" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/Friends-Chat/app/src/main/res/drawable/ic_background_bottom_round_border.xml" value="0.2985" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/Friends-Chat/app/src/main/res/drawable/ic_background_recyclerview.xml" value="0.2985" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/Friends-Chat/app/src/main/res/drawable/ic_baseline_search.xml" value="0.2985" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/Friends-Chat/app/src/main/res/drawable/ic_image_circle_border.xml" value="0.2985" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/Friends-Chat/app/src/main/res/drawable/ic_log_out.xml" value="0.2985" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/Friends-Chat/app/src/main/res/drawable/ic_password_icon.xml" value="0.5526041666666667" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/Friends-Chat/app/src/main/res/drawable/ic_phone.xml" value="0.2985" />
+        <entry key="..\:/Users/sergi/AndroidStudioProjects/Friends-Chat/app/src/main/res/drawable/ic_send_message.xml" value="0.2985" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/Friends-Chat/app/src/main/res/drawable/ic_user_account.xml" value="0.30833333333333335" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/Friends-Chat/app/src/main/res/drawable/ic_user_account_blue.xml" value="0.30833333333333335" />
         <entry key="..\:/Users/sergi/AndroidStudioProjects/Friends-Chat/app/src/main/res/layout/activity_add_photo_profile.xml" value="0.1648148148148148" />

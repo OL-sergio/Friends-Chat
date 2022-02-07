@@ -7,8 +7,6 @@ import ipca.am2.projeto2122.friendschat.ui.model.Users as Users
 
 class Users {
 
-
-
     var id                  : String? = null
     private var email       : String = ""
 

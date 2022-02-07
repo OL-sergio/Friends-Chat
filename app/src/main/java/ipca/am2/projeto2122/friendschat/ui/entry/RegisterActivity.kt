@@ -113,8 +113,7 @@ class RegisterActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     firebaseUserID = mAuth.currentUser!!.uid
-                    refUsers = FirebaseDatabase.getInstance().reference
-                        .child("Users")
+                    refUsers = FirebaseDatabase.getInstance().reference.child("Users")
                         .child(firebaseUserID)
 
                     val userHashMap = HashMap<String, Any>()
@@ -122,8 +121,8 @@ class RegisterActivity : AppCompatActivity() {
                     userHashMap["USERNAME"] = userName
                     userHashMap["PHONENUMBER"] = phoneNumber
                     userHashMap["FULLNAME"] = fullName
-                    userHashMap["PROFILE"] = ""
-                    userHashMap["COVER"] = ""
+                    userHashMap["PROFILE"] = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/profileBaseIcon%2FProfile-Icon.png?alt=media&token=18b43258-5839-4f4b-9712-daf99d44a2e2"
+                    userHashMap["COVER"] = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/backgroundBaseIcon%2Fbase_background.jpg?alt=media&token=f18e2d04-1665-4d6d-a23b-310434425e19"
                     userHashMap["STATUS"] = "offline"
                     userHashMap["SEARCH"] = userName.toLowerCase()
 

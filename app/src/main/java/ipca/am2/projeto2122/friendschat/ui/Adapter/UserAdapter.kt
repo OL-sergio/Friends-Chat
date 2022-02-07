@@ -43,9 +43,9 @@ class UserAdapter(
 
         val user: Users = mUsers[position]
 
-        holder.userNameTextView.text = user.getUsername().toString()
+        holder.userNameTextView.text = user.getUsername()
 
-        Picasso.get().load(user.getProfile()).into(holder.profileImageView)
+        //Picasso.get().load(user.getProfile()).into(holder.profileImageView)
 
             if (isChatCheck){
                 if (user.getStatus() == "online"){
@@ -62,6 +62,7 @@ class UserAdapter(
                 holder.onlineImageView.visibility = View.GONE
 
             }
+
         holder.itemView.setOnClickListener {
 
             val options = arrayOf<CharSequence>(
@@ -71,7 +72,7 @@ class UserAdapter(
             val builder : AlertDialog.Builder = AlertDialog.Builder(mContext)
             builder.setTitle("What do you want?")
             builder.setItems(options, DialogInterface.OnClickListener { dialog, position ->
-                if (position ==0 ){
+                if (position == 0 ){
                     val intent = Intent(mContext, MessageChatActivity::class.java )
                     intent.putExtra("visit_id", user.getUID())
                     mContext.startActivity(intent)
