@@ -43,8 +43,8 @@ class SearchFragment : Fragment() {
         val view: View = binding.root
 
         recyclerView = view.findViewById(R.id.recycler_view_chatlist_search)
-        recyclerView!!.setHasFixedSize(true)
-        recyclerView!!.layoutManager = LinearLayoutManager(context)
+        recyclerView?.setHasFixedSize(true)
+        recyclerView?.layoutManager = LinearLayoutManager(context)
         searchUserEditText = view.findViewById(R.id.editText_search_users)
 
         mUsers = ArrayList()

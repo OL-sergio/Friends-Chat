@@ -25,10 +25,7 @@
             app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:popupTheme="@style/Theme.FriendsChat.AppBarOverlay" />
 
-
     </com.google.android.material.appbar.AppBarLayout>
-
-
 
     <ImageView
         android:id="@+id/imageView"
@@ -90,241 +87,288 @@
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="16dp">
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:text="@string/user_name"
-                    android:textColor="@color/button_sign_in_color"
-                    android:textSize="@dimen/text_login_Description_screen"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/editText_User_Name"
-                    android:layout_width="300dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/ic_editetext_round_border"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textSize="@dimen/edittext_text_fill"
-                    tools:ignore="LabelFor,SpeakableTextPresentCheck"
-                    android:importantForAutofill="no" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:text="@string/full_name"
-                    android:textColor="@color/button_sign_in_color"
-                    android:textSize="@dimen/text_login_Description_screen"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/editText_Full_Name"
-                    android:layout_width="300dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/ic_editetext_round_border"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textSize="@dimen/edittext_text_fill"
-                    android:autofillHints=""
-                    tools:ignore="LabelFor" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:text="@string/email_address"
-                    android:textColor="@color/button_sign_in_color"
-                    android:textSize="@dimen/text_login_Description_screen"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/editText_Email_Address"
-                    android:layout_width="300dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/ic_editetext_round_border"
-                    android:ems="10"
-                    android:inputType="textEmailAddress"
-                    android:textSize="@dimen/edittext_text_fill"
-                    android:importantForAutofill="no"
-                    tools:ignore="LabelFor" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:text="@string/phone_number"
-                    android:textColor="@color/button_sign_in_color"
-                    android:textSize="@dimen/text_login_Description_screen"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/editText_Phone_Number"
-                    android:layout_width="300dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/ic_editetext_round_border"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:textSize="@dimen/edittext_text_fill"
-                    tools:ignore="LabelFor,SpeakableTextPresentCheck,TextFields"
-                    android:importantForAutofill="no" />
-
-                <LinearLayout
-                    android:id="@+id/scroll_layout4"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingStart="50dp"
-                    android:paddingEnd="16dp">
+                    android:layout_height="match_parent">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:paddingTop="6dp"
-                            android:paddingBottom="6dp"
-                            android:text="@string/password"
-                            android:textColor="@color/button_sign_in_color"
-                            android:textSize="@dimen/text_login_Description_screen"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/textView_Strength_level"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="180dp"
-                            android:layout_marginBottom="6dp"
-                            android:textSize="8sp"
-                            tools:ignore="SmallSp" />
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="200dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/user_name"
+                        android:textColor="@color/button_sign_in_color"
+                        android:textSize="@dimen/text_login_Description_screen"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/editText_User_Name"
+                        app:layout_constraintEnd_toEndOf="@+id/editText_User_Name"
+                        app:layout_constraintStart_toStartOf="@+id/editText_User_Name" />
 
-                <LinearLayout
-                    android:id="@+id/scroll_layout3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingStart="45dp"
-                    android:paddingEnd="16dp">
+                    <EditText
+                        android:id="@+id/editText_User_Name"
+                        android:layout_width="300dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="32dp"
+                        android:background="@drawable/ic_editetext_round_border"
+                        android:ems="10"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:textSize="@dimen/edittext_text_fill"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="LabelFor,SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="200dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/full_name"
+                        android:textColor="@color/button_sign_in_color"
+                        android:textSize="@dimen/text_login_Description_screen"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/editText_Full_Name"
+                        app:layout_constraintEnd_toEndOf="@+id/editText_Full_Name"
+                        app:layout_constraintStart_toStartOf="@+id/editText_Full_Name" />
+
+                    <EditText
+                        android:id="@+id/editText_Full_Name"
+                        android:layout_width="300dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="28dp"
+                        android:autofillHints=""
+                        android:background="@drawable/ic_editetext_round_border"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textSize="@dimen/edittext_text_fill"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editText_User_Name"
+                        tools:ignore="LabelFor,SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="185dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/email_address"
+                        android:textColor="@color/button_sign_in_color"
+                        android:textSize="@dimen/text_login_Description_screen"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/editText_Email_Address"
+                        app:layout_constraintEnd_toEndOf="@+id/editText_Email_Address"
+                        app:layout_constraintStart_toStartOf="@+id/editText_Email_Address" />
+
+                    <EditText
+                        android:id="@+id/editText_Email_Address"
+                        android:layout_width="300dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="32dp"
+                        android:background="@drawable/ic_editetext_round_border"
+                        android:ems="10"
+                        android:importantForAutofill="no"
+                        android:inputType="textEmailAddress"
+                        android:textSize="@dimen/edittext_text_fill"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editText_Full_Name"
+                        tools:ignore="LabelFor,SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="180dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/phone_number"
+                        android:textColor="@color/button_sign_in_color"
+                        android:textSize="@dimen/text_login_Description_screen"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/editText_Phone_Number"
+                        app:layout_constraintEnd_toEndOf="@+id/editText_Phone_Number"
+                        app:layout_constraintStart_toStartOf="@+id/editText_Phone_Number" />
+
+                    <EditText
+                        android:id="@+id/editText_Phone_Number"
+                        android:layout_width="300dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="28dp"
+                        android:background="@drawable/ic_editetext_round_border"
+                        android:ems="10"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        android:textSize="@dimen/edittext_text_fill"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editText_Email_Address"
+                        tools:ignore="LabelFor,SpeakableTextPresentCheck,TextFields" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="200dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/password"
+                        android:textColor="@color/button_sign_in_color"
+                        android:textSize="@dimen/text_login_Description_screen"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/editText_Password"
+                        app:layout_constraintEnd_toEndOf="@+id/editText_Password"
+                        app:layout_constraintStart_toStartOf="@+id/editText_Password" />
+
+                    <TextView
+                        android:id="@+id/textView_Strength_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="200dp"
+                        android:layout_marginBottom="4dp"
+                        android:textSize="8sp"
+                        app:layout_constraintBottom_toTopOf="@+id/editText_Password"
+                        app:layout_constraintEnd_toEndOf="@+id/editText_Password"
+                        app:layout_constraintStart_toStartOf="@+id/editText_Password"
+                        tools:ignore="SmallSp" />
 
                     <EditText
                         android:id="@+id/editText_Password"
                         android:layout_width="300dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="32dp"
                         android:background="@drawable/ic_editetext_round_border"
-                        android:inputType="textPassword"
                         android:importantForAutofill="no"
-                        tools:ignore="LabelFor" />
+                        android:inputType="textPassword"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editText_Phone_Number"
+                        tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
                     <ImageView
                         android:id="@+id/imageViewStrengthLevel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="12dp"
-                        android:paddingBottom="12dp"
+                        android:layout_width="24dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="240dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/editText_Password"
+                        app:layout_constraintEnd_toEndOf="@+id/editText_Password"
+                        app:layout_constraintStart_toStartOf="@+id/editText_Password"
+                        app:layout_constraintTop_toTopOf="@+id/editText_Password"
                         app:srcCompat="@drawable/ic_password_icon"
                         tools:ignore="ContentDescription,MissingConstraints" />
 
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:text="@string/confirmation_password"
-                    android:textColor="@color/button_sign_in_color"
-                    android:textSize="@dimen/text_login_Description_screen"
-                            android:textStyle="bold" />
-                <LinearLayout
-                    android:id="@+id/scroll_layout5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingStart="45dp"
-                    android:paddingEnd="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="140dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/confirmation_password"
+                        android:textColor="@color/button_sign_in_color"
+                        android:textSize="@dimen/text_login_Description_screen"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/editText_Confirm_Password"
+                        app:layout_constraintEnd_toEndOf="@+id/editText_Confirm_Password"
+                        app:layout_constraintStart_toStartOf="@+id/editText_Confirm_Password" />
 
                     <EditText
                         android:id="@+id/editText_Confirm_Password"
                         android:layout_width="300dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="32dp"
                         android:background="@drawable/ic_editetext_round_border"
+                        android:importantForAutofill="no"
                         android:inputType="textPassword"
-                        tools:ignore="LabelFor,SpeakableTextPresentCheck"
-                        android:importantForAutofill="no" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editText_Password"
+                        tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="12dp"
-                        android:paddingBottom="12dp"
+                        android:layout_width="24dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="240dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/editText_Confirm_Password"
+                        app:layout_constraintEnd_toEndOf="@+id/editText_Confirm_Password"
+                        app:layout_constraintStart_toStartOf="@+id/editText_Confirm_Password"
+                        app:layout_constraintTop_toTopOf="@+id/editText_Confirm_Password"
                         app:srcCompat="@drawable/ic_password_icon"
                         tools:ignore="ContentDescription,MissingConstraints" />
 
-                </LinearLayout>
+                    <Button
+                        android:id="@+id/button_sign_up_user"
+                        android:layout_width="300dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="38dp"
+                        android:background="@drawable/ic_editetext_round_border"
+                        android:enabled="false"
+                        android:text="@string/sign_up"
+                        android:textAllCaps="false"
+                        android:textColor="@color/button_text_color"
+                        android:textSize="@dimen/text_buttons_Description"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editText_Confirm_Password" />
 
-                <Button
-                    android:id="@+id/button_sign_up_user"
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/ic_editetext_round_border"
-                    android:enabled="false"
-                    android:text="@string/sign_up"
-                    android:textAllCaps="false"
-                    android:textColor="@color/button_text_color"
-                    android:textSize="@dimen/text_buttons_Description"
-                    android:textStyle="bold" />
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/button_sign_up_user">
 
-                <LinearLayout
-                    android:id="@+id/scroll_layout2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="16dp">
 
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="110dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="51dp"
-                        android:text="@string/i_m_already_a_member"
-                        android:textColor="@color/titles_color"
-                        android:textSize="@dimen/text_login_Description_screen"
-                        tools:ignore="SpUsage" />
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/textView_go_to_Sign_In"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="51dp"
-                        android:text="@string/sign_in"
-                        android:textColor="@color/text_color_registration"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/textView6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginEnd="55dp"
+                                android:text="@string/i_m_already_a_member"
+                                android:textColor="@color/titles_color"
+                                android:textSize="@dimen/text_login_Description_screen"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="SpUsage" />
 
-                </LinearLayout>
+                            <TextView
+                                android:id="@+id/textView_go_to_Sign_In"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginStart="4dp"
+                                android:text="@string/sign_in"
+                                android:textColor="@color/text_color_registration"
+                                android:textSize="11sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                                app:layout_constraintStart_toEndOf="@+id/textView6"
+                                app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

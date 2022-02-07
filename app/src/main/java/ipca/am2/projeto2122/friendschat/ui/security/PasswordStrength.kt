@@ -51,22 +51,22 @@ class PasswordStrength : TextWatcher {
     }
 
     private fun calculateStrength(password: CharSequence) {
-        if(password.length in 0..7){
+        if(password.length in 0..4){
             strengthColor.value = R.color.weak
             strengthLevel.value = StrengthLevel.Weak
-        }else if(password.length in 8..10){
+        }else if(password.length in 5..8){
             if(lowerCase.value == 1 || upperCase.value == 1 || digit.value == 1 || specialChar.value == 1){
                 strengthColor.value = R.color.medium
                 strengthLevel.value = StrengthLevel.Medium
             }
-        }else if(password.length in 11..16){
+        }else if(password.length in 9..12){
             if(lowerCase.value == 1 || upperCase.value == 1 || digit.value == 1 || specialChar.value == 1){
                 if(lowerCase.value == 1 && upperCase.value == 1){
                     strengthColor.value = R.color.strong
                     strengthLevel.value = StrengthLevel.Strong
                 }
             }
-        }else if(password.length > 16){
+        }else if(password.length > 12){
             if(lowerCase.value == 1 && upperCase.value == 1 && digit.value == 1 && specialChar.value == 1){
                 strengthColor.value = R.color.verystrong
                 strengthLevel.value = StrengthLevel.VeryStrong
