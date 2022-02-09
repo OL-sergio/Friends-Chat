@@ -16,7 +16,7 @@ import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.ActivityLoginBinding
 import ipca.am2.projeto2122.friendschat.ui.database.Preference
 import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
-import ipca.am2.projeto2122.friendschat.ui.model.Users
+import ipca.am2.projeto2122.friendschat.ui.model.PrefEmail
 import ipca.am2.projeto2122.friendschat.ui.settings.AddPhotoProfileActivity
 
 
@@ -75,15 +75,14 @@ class LoginActivity : AppCompatActivity() {
                             if (task.isSuccessful) {
 
                                 Preference(this).longinPrefer = email
-                                val user = Users(email,"","",""
-                                                ,"","","","","")
+                                val email = PrefEmail()
 
                                 val database = Firebase.firestore
 
                                 startActivity(Intent(baseContext, MainActivity::class.java))
 
                                 database.collection("user")
-                                    .add(user.toHash())
+                                    .add(email.setEmailHash())
                                     .addOnSuccessListener { documentReference ->
 
                                         Log.d(AddPhotoProfileActivity.TAG,

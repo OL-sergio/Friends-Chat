@@ -7,11 +7,8 @@ import ipca.am2.projeto2122.friendschat.ui.model.Users as Users
 
 class Users {
 
-    var id                  : String? = null
-    private var email       : String = ""
-
     private var uid         : String = ""
-    private var username    : String = ""
+    private var userName    : String = ""
     private var phoneNumber : String = ""
     private var fullName    : String = ""
     private var profile     : String = ""
@@ -22,10 +19,9 @@ class Users {
     constructor()
 
     constructor(
-        email: String,
 
         uid: String,
-        username: String,
+        userName: String,
         phoneNumber: String,
         fullName: String,
         profile: String,
@@ -35,10 +31,8 @@ class Users {
 
     )
     {
-        this.email      = email
-
         this.uid        = uid
-        this.username   = username
+        this.userName   = userName
         this.phoneNumber= phoneNumber
         this.fullName   = fullName
         this.profile    = profile
@@ -46,23 +40,6 @@ class Users {
         this.status     = status
         this.search     = search
     }
-
-    fun toHash() : HashMap<String, Any>{
-        val hashMap = HashMap<String,Any>()
-        hashMap["email"] = email
-        return hashMap
-    }
-    companion object {
-        fun fromHash( hashMap: QueryDocumentSnapshot): Users {
-            val user = Users(
-                hashMap["email"] as String,
-                "", "", "", "",
-                "", "", "", ""
-            )
-            return user
-        }
-    }
-
 
     fun getUID(): String?{
         return uid
@@ -73,11 +50,11 @@ class Users {
     }
 
     fun getUsername(): String?{
-        return username
+        return userName
     }
 
-    fun setUsername(username: String){
-        this.username = username
+    fun setUsername(userName: String){
+        this.userName = userName
     }
 
     fun getPhoneNumber(): String?{

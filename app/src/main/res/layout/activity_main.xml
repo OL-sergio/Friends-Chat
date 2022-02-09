@@ -24,14 +24,14 @@
             app:popupTheme="@style/Theme.FriendsChat">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
+                android:id="@+id/imageView_toolbar_profile_image"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/ic_user_account"
                 android:tint="@android:color/white" />
 
             <TextView
-                android:id="@+id/user_name"
+                android:id="@+id/textView_toolbar_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="26dp"

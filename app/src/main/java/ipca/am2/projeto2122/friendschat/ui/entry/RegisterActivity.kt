@@ -117,14 +117,14 @@ class RegisterActivity : AppCompatActivity() {
                         .child(firebaseUserID)
 
                     val userHashMap = HashMap<String, Any>()
-                    userHashMap["UID"] = firebaseUserID
-                    userHashMap["USERNAME"] = userName
-                    userHashMap["PHONENUMBER"] = phoneNumber
-                    userHashMap["FULLNAME"] = fullName
-                    userHashMap["PROFILE"] = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/profileBaseIcon%2FProfile-Icon.png?alt=media&token=18b43258-5839-4f4b-9712-daf99d44a2e2"
-                    userHashMap["COVER"] = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/backgroundBaseIcon%2Fbase_background.jpg?alt=media&token=f18e2d04-1665-4d6d-a23b-310434425e19"
-                    userHashMap["STATUS"] = "offline"
-                    userHashMap["SEARCH"] = userName.toLowerCase()
+                    userHashMap["uid"] = firebaseUserID
+                    userHashMap["userName"] = userName
+                    userHashMap["phoneNumber"] = phoneNumber
+                    userHashMap["fullName"] = fullName
+                    userHashMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/profileBaseIcon%2FProfile-Icon.png?alt=media&token=18b43258-5839-4f4b-9712-daf99d44a2e2"
+                    userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/backgroundBaseIcon%2Fbase_background.jpg?alt=media&token=f18e2d04-1665-4d6d-a23b-310434425e19"
+                    userHashMap["status"] = "offline"
+                    userHashMap["search"] = userName.toLowerCase()
 
                     refUsers.updateChildren(userHashMap)
                         .addOnCompleteListener { task ->

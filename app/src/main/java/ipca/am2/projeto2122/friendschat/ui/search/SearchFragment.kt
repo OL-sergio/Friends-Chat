@@ -43,15 +43,13 @@ class SearchFragment : Fragment() {
         val view: View = binding.root
 
         recyclerView = view.findViewById(R.id.recycler_view_chatlist_search)
-
         recyclerView = binding.recyclerviewSearchList
         recyclerView!!.layoutManager = LinearLayoutManager(view.context,LinearLayoutManager.VERTICAL, false)
         recyclerView!!.setHasFixedSize(true)
 
         val adapterUserAdapter = userAdapter
         binding.recyclerviewSearchList.adapter = adapterUserAdapter
-
-
+        
         searchUserEditText = view.findViewById(R.id.editText_search_users)
 
         mUsers = ArrayList()
@@ -92,11 +90,13 @@ class SearchFragment : Fragment() {
                         }
                     }
                     userAdapter = UserAdapter(context!!, mUsers!!, false)
-                    recyclerView!!.adapter = userAdapter
+                    binding.recyclerviewSearchList.adapter = userAdapter
                 }
 
             }
-            override fun onCancelled(p0: DatabaseError) {}
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
 
         })
 
