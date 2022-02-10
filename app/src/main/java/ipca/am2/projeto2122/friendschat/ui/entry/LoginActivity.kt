@@ -75,14 +75,14 @@ class LoginActivity : AppCompatActivity() {
                             if (task.isSuccessful) {
 
                                 Preference(this).longinPrefer = email
-                                val email = PrefEmail()
+                                val emailPref = PrefEmail()
 
                                 val database = Firebase.firestore
 
                                 startActivity(Intent(baseContext, MainActivity::class.java))
 
                                 database.collection("user")
-                                    .add(email.setEmailHash())
+                                    .add(emailPref.setEmailHash())
                                     .addOnSuccessListener { documentReference ->
 
                                         Log.d(AddPhotoProfileActivity.TAG,

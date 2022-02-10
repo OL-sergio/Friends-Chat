@@ -19,6 +19,8 @@ import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.FragmentSearchBinding
 import ipca.am2.projeto2122.friendschat.ui.Adapter.UserAdapter
 import ipca.am2.projeto2122.friendschat.ui.model.Users
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class SearchFragment : Fragment() {
@@ -62,7 +64,7 @@ class SearchFragment : Fragment() {
 
 
            override fun onTextChanged(cs: CharSequence?, start: Int, before: Int, count: Int) {
-               searchForUser(cs.toString().toLowerCase())
+               searchForUser(cs.toString().lowercase(Locale.getDefault()))
            }
        })
 
@@ -71,6 +73,31 @@ class SearchFragment : Fragment() {
 
     private fun searchForUser( search: String) {
 
+        val firebaseUserID = FirebaseAuth.getInstance().currentUser!!.uid
+
+        val queryUsers = FirebaseDatabase.getInstance().reference
+            .child("Users").orderByChild("search")
+            .startAt(search)
+            .endAt(search + "\uf8ff")
+
+        queryUsers.addValueEventListener(object : ValueEventListener{
+
+            override fun onCancelled(p0: DatabaseError) {
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                (mUsers as ArrayList<Users>).clear()
+                for (snapshot in p0.children ){
+
+                 val user : Users? = snapshot.getValue(Users::class.java)
+                 if (!(user!!.getUID()).equals(firebaseUserID)){
+                     (mUsers as ArrayList<Users>).add(user)
+                    }
+                 }
+                userAdapter = UserAdapter(context!!, mUsers!!, false)
+                recyclerView!!.adapter = userAdapter
+            }
+        })
     }
 
 

@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //setSupportActionBar(findViewById(R.id.toolbar_main))
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
         referentUser = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUser!!.uid)
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                 if (p0.exists()){
                     val user: Users? = p0.getValue(Users::class.java)
                     binding.textViewToolbarUserName.text = user?.getUsername().toString()
-                    //Picasso.get().load(user.getProfile()).into(binding.imageViewToolbarProfileImage)
+                    Picasso.get().load(user!!.getProfile()).into(binding.imageViewToolbarProfileImage)
 
                 }
             }
@@ -100,7 +99,6 @@ class MainActivity : AppCompatActivity() {
                 FirebaseAuth.getInstance().signOut()
 
                 val intent = Intent(this@MainActivity, WelcomeActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 finish()
 

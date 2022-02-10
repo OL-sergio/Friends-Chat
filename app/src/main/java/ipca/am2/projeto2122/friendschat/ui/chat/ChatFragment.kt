@@ -11,7 +11,6 @@ import ipca.am2.projeto2122.friendschat.databinding.FragmentChatBinding
 
 class ChatFragment : Fragment() {
 
-
     private var _binding : FragmentChatBinding? = null
 
     // This property is only valid between onCreateView and
@@ -30,21 +29,5 @@ class ChatFragment : Fragment() {
 
         return root
     }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.main_activity_nav_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_sign_out){
-            Firebase.auth.signOut()
-            requireActivity().finish()
-        }
-
-
-        return super.onOptionsItemSelected(item)
-    }
-
 
 }

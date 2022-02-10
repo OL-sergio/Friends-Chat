@@ -26,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/editText_search_users"
+
         android:background="@drawable/ic_background_recyclerview"
         app:layoutManager="LinearLayoutManager" />
 

@@ -44,8 +44,7 @@ class UserAdapter(
         val user: Users = mUsers[position]
 
         holder.userNameTextView.text = user!!.getUsername().toString()
-
-        //Picasso.get().load(user.getProfile()).placeholder(R.drawable.ic_user_account).into(holder.profileImageView)
+        Picasso.get().load(user.getProfile()).placeholder(R.drawable.ic_user_account).into(holder.profileImageView)
 
             if (isChatCheck){
                 if (user.getStatus() == "online"){

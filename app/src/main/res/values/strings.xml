@@ -25,6 +25,10 @@
     <string name="email_address">Email Address</string>
     <string name="full_name">Full Name</string>
     <string name="sign_out">sign_out</string>
+    <string name="chatting">Chatting</string>
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
+
     <!-- Preference Titles -->
 
     <!-- Messages Preferences -->

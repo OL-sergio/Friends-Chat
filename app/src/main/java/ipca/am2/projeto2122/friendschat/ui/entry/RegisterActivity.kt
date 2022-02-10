@@ -124,12 +124,12 @@ class RegisterActivity : AppCompatActivity() {
                     userHashMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/profileBaseIcon%2FProfile-Icon.png?alt=media&token=18b43258-5839-4f4b-9712-daf99d44a2e2"
                     userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/backgroundBaseIcon%2Fbase_background.jpg?alt=media&token=f18e2d04-1665-4d6d-a23b-310434425e19"
                     userHashMap["status"] = "offline"
-                    userHashMap["search"] = userName.toLowerCase()
+                    userHashMap["search"] = userName.lowercase(Locale.getDefault())
 
                     refUsers.updateChildren(userHashMap)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                val intent = Intent(baseContext, LoginActivity::class.java)
+                                val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                                 startActivity(intent)
                                 finish()
                             }
