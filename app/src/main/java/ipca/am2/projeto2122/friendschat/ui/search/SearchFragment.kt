@@ -70,7 +70,7 @@ class SearchFragment : Fragment() {
 
         return view
     }
-
+     // Find users with string that are register on the data database.
     private fun searchForUser( search: String) {
 
         val firebaseUserID = FirebaseAuth.getInstance().currentUser!!.uid
@@ -100,7 +100,7 @@ class SearchFragment : Fragment() {
         })
     }
 
-
+    // Gets all Users that are register on the Database.
     private fun retrieveAllUsers() {
         val firebaseUserID = FirebaseAuth.getInstance().currentUser!!.uid
 
