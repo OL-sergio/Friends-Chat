@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_chatting"
-        android:name="ipca.am2.projeto2122.friendschat.ui.chat.ChatFragment"
+        android:name="ipca.am2.projeto2122.friendschat.ui.fragments.frag.chat.ChatFragment"
         android:label="Chatting"
         tools:layout="@layout/fragment_chat" />
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="ipca.am2.projeto2122.friendschat.ui.search.SearchFragment"
+        android:name="ipca.am2.projeto2122.friendschat.ui.fragments.frag.search.SearchFragment"
         android:label="Search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="ipca.am2.projeto2122.friendschat.ui.settings.SettingsFragment"
+        android:name="ipca.am2.projeto2122.friendschat.ui.fragments.frag.settings.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" >
         <action
@@ -31,6 +31,6 @@
 
     <fragment
         android:id="@+id/navigation_add_picture_profile"
-        android:name="ipca.am2.projeto2122.friendschat.ui.settings.SettingsFragment"
+        android:name="ipca.am2.projeto2122.friendschat.ui.fragments.frag.settings.SettingsFragment"
         tools:layout="@layout/fragment_add_picture_profile" />
 </navigation>

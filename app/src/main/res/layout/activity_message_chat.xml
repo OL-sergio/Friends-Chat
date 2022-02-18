@@ -6,41 +6,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/button_text_color"
-    tools:context=".ui.MessageChatActivity">
+    tools:context=".MessageChatActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/toolbar_Send_Message_Chat"
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.FriendsChat">
+        android:theme="@style/Theme.FriendsChat.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_Message_Chat"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:background="?attr/customToolbarColorPrimary"
-            app:popupTheme="@style/Theme.FriendsChat" >
+            app:popupTheme="@style/Theme.FriendsChat.AppBarOverlay">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView_Profile_Image_MChat"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:src="@drawable/ic_user_account">
-
-            </de.hdodenhof.circleimageview.CircleImageView>
+                android:src="@drawable/ic_user_account" />
 
             <TextView
                 android:id="@+id/toolbar_textView_Username_MChat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
                 android:layout_marginStart="25dp"
-                android:textColor="@android:color/white"
                 android:text="@string/user_name"
-                android:textStyle="bold">
-
-            </TextView>
-
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -50,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/relative_layout_bottom"
-        android:layout_below="@+id/toolbar_Send_Message_Chat"
+        android:layout_below="@+id/appBarLayout"
         android:background="@drawable/ic_background_recyclerview">
 
     </androidx.recyclerview.widget.RecyclerView>

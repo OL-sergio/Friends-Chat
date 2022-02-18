@@ -1,5 +1,6 @@
 package ipca.am2.projeto2122.friendschat.ui.intro
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +9,8 @@ import com.google.firebase.auth.ktx.*
 import com.google.firebase.ktx.Firebase
 import ipca.am2.projeto2122.friendschat.MainActivity
 import ipca.am2.projeto2122.friendschat.databinding.ActivitySplashBinding
-import ipca.am2.projeto2122.friendschat.ui.entry.LoginActivity
 import kotlinx.coroutines.*
+
 
 
 @DelicateCoroutinesApi
@@ -25,7 +26,6 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         _binder = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(_binder.root)
 

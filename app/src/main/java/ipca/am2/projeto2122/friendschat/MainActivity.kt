@@ -24,18 +24,19 @@ import ipca.am2.projeto2122.friendschat.ui.model.Users
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var _binding: ActivityMainBinding
     private var referentUser : DatabaseReference?    = null
     private var firebaseUser : FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(_binding.root)
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
-        referentUser = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUser!!.uid)
+        referentUser = FirebaseDatabase.getInstance().reference
+            .child("Users")
+            .child(firebaseUser!!.uid)
 
         val toolbar : Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
 
-        val navView: BottomNavigationView = binding.navView
+        val navView: BottomNavigationView = _binding.navView
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
@@ -67,8 +68,8 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()){
                     val user: Users? = p0.getValue(Users::class.java)
-                    binding.textViewToolbarUserName.text = user?.getUsername().toString()
-                    Picasso.get().load(user!!.getProfile()).into(binding.imageViewToolbarProfileImage)
+                    _binding.textViewToolbarUserName.text = user?.getUsername().toString()
+                    Picasso.get().load(user!!.getProfile()).into(_binding.imageViewToolbarProfileImage)
 
                 }
             }

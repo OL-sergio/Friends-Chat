@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import ipca.am2.projeto2122.friendschat.R
-import ipca.am2.projeto2122.friendschat.ui.MessageChatActivity
+import ipca.am2.projeto2122.friendschat.MessageChatActivity
 import ipca.am2.projeto2122.friendschat.ui.model.Users
 
 
@@ -43,7 +43,7 @@ class UserAdapter(
 
         val user: Users = mUsers[position]
 
-        holder.userNameTextView.text = user!!.getUsername().toString()
+        holder.userNameTextView.text = user.getUsername().toString()
         Picasso.get().load(user.getProfile()).placeholder(R.drawable.ic_user_account).into(holder.profileImageView)
 
             if (isChatCheck){
@@ -73,7 +73,7 @@ class UserAdapter(
             builder.setItems(options, DialogInterface.OnClickListener { dialog, position ->
                 if (position == 0 ){
                     val intent = Intent(mContext, MessageChatActivity::class.java )
-                    intent.putExtra("visit_id", user.getUID())
+                    intent.putExtra("visitUser_id", user.getUID())
                     mContext.startActivity(intent)
                 }
             })

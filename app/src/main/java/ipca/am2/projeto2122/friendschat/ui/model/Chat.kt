@@ -3,52 +3,52 @@ package ipca.am2.projeto2122.friendschat.ui.model
 import android.content.IntentSender
 
 class Chat {
-    private var sender  : String? = null
-    private var message : String? = null
-    private var receiver: String? = null
-    private var isSeen  : Boolean? = false
-    private var url     : String? = null
-    private var messageID: String? = null
+    private var senderId        : String? = null
+    private var senderMessage   : String? = null
+    private var receiverMessage : String? = null
+    private var isSeen          : Boolean? = false
+    private var uRl             : String? = null
+    private var messageID       : String? = null
 
 
     constructor()
 
     constructor(
-        sender: String?,
-        message: String?,
-        receiver: String?,
-        isSeen: Boolean?,
-        url: String?,
-        messageID: String?
+        senderId        : String?,
+        senderMessage   : String?,
+        receiver        : String?,
+        isSeen          : Boolean?,
+        uRl             : String?,
+        messageID       : String?
     ) {
-        this.sender     = sender
-        this.message    = message
-        this.receiver   = receiver
-        this.isSeen     = isSeen
-        this.url        = url
-        this.messageID  = messageID
+        this.senderId           = senderId
+        this.senderMessage      = senderMessage
+        this.receiverMessage    = receiver
+        this.isSeen             = isSeen
+        this.uRl                = uRl
+        this.messageID          = messageID
     }
 
 
     fun getSender(): String? {
-        return sender
+        return senderId
     }
-    fun setSender(sender: String?){
-        this.sender = sender
+    fun setSender(senderId: String?){
+        this.senderId = senderId
     }
 
     fun getMessage(): String? {
-        return message
+        return senderMessage
     }
-    fun setMessage(message: String?){
-        this.message = message
+    fun setMessage(senderMessage: String?){
+        this.senderMessage = senderMessage
     }
 
     fun getReceiver(): String? {
-        return receiver
+        return receiverMessage
     }
     fun setReceiver(receiver: String?){
-        this.receiver = receiver
+        this.receiverMessage = receiver
     }
 
     fun isIsSeen(): Boolean? {
@@ -59,10 +59,10 @@ class Chat {
     }
 
     fun getUrl(): String? {
-        return url
+        return uRl
     }
     fun setUrl(url: String?){
-        this.url = url
+        this.uRl = url
     }
 
     fun getMessageId(): String? {

@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.settings
+package ipca.am2.projeto2122.friendschat.ui.fragments.frag.settings
 
 import android.app.Activity
 import android.content.Intent

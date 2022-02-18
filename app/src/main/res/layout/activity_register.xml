@@ -13,18 +13,14 @@
         android:theme="@style/Theme.FriendsChat.AppBarOverlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ExtraText">
-
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_register"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/customToolbarColorPrimary"
-            app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:popupTheme="@style/Theme.FriendsChat.AppBarOverlay" />
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView

@@ -17,7 +17,7 @@ import ipca.am2.projeto2122.friendschat.databinding.ActivityLoginBinding
 import ipca.am2.projeto2122.friendschat.ui.database.Preference
 import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.ui.model.PrefEmail
-import ipca.am2.projeto2122.friendschat.ui.settings.AddPhotoProfileActivity
+import ipca.am2.projeto2122.friendschat.ui.fragments.frag.settings.AddPhotoProfileActivity
 
 
 class LoginActivity : AppCompatActivity() {

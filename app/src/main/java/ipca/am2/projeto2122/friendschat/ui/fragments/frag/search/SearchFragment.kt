@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.search
+package ipca.am2.projeto2122.friendschat.ui.fragments.frag.search
 
 import android.os.Bundle
 import android.text.Editable
