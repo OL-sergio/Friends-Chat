@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -12,8 +13,6 @@ import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import ipca.am2.projeto2122.friendschat.databinding.ActivityMessageChatBinding
 import ipca.am2.projeto2122.friendschat.ui.Adapter.ChatAdapter
-import ipca.am2.projeto2122.friendschat.ui.fragments.frag.chat.ChatFragment
-import ipca.am2.projeto2122.friendschat.ui.fragments.frag.settings.AddPhotoProfileActivity
 import ipca.am2.projeto2122.friendschat.ui.model.Chat
 import ipca.am2.projeto2122.friendschat.ui.model.Users
 
@@ -22,25 +21,31 @@ class MessageChatActivity : AppCompatActivity() {
 
     private var _binding    : ActivityMessageChatBinding? = null
 
-    var mChatList : List<Chat>?     = null
+    var mChatList                   : List<Chat>?     = null
+    var chatsAdapter                : ChatAdapter?    = null
     lateinit var recyclerViewChats  : RecyclerView
 
     var firebaseUser                : FirebaseUser?         = null
-    var chatsAdapter                : ChatAdapter?          = null
     var referenceDatabase           : DatabaseReference?    = null
 
     var userIdVisit                 : String? = ""
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMessageChatBinding.inflate(layoutInflater)
         setContentView(_binding!!.root)
 
-
         userIdVisit = intent.getStringExtra("visitUser_id")
+
         firebaseUser = FirebaseAuth.getInstance().currentUser
+
+
+        recyclerViewChats = _binding!!.recyclerViewChats
+        recyclerViewChats.setHasFixedSize(true)
+        val linearLayoutManager = LinearLayoutManager(applicationContext)
+        linearLayoutManager.stackFromEnd = true
+        recyclerViewChats.layoutManager = linearLayoutManager
+
         referenceDatabase = FirebaseDatabase.getInstance().reference
             .child("Users")
             .child(userIdVisit!!)
@@ -48,12 +53,10 @@ class MessageChatActivity : AppCompatActivity() {
         //val toolbarChatMessenger : Toolbar = findViewById(R.id.toolbar_Message_Chat)
         val toolbarChatMessenger = _binding!!.toolbarMessageChat
         setSupportActionBar(toolbarChatMessenger)
-
         supportActionBar!!.title = ""
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
-
         toolbarChatMessenger.setNavigationOnClickListener{
             finish()
         }
@@ -66,7 +69,7 @@ class MessageChatActivity : AppCompatActivity() {
                 _binding!!.toolbarTextViewUsernameMChat.text = visitUser!!.getUsername()
                 Picasso.get().load(visitUser.getProfile()).into(_binding!!.imageViewProfileImageMChat)
 
-                getMessagesToUser(firebaseUser!!.uid, userIdVisit!!, visitUser.getProfile())
+                getMessages(firebaseUser!!.uid, userIdVisit!!, visitUser.getProfile())
                 
             }
 
@@ -80,7 +83,7 @@ class MessageChatActivity : AppCompatActivity() {
 
             val sendMessage = _binding!!.textViewTextMessage.text.toString()
                 if (sendMessage.isEmpty()){
-                    Toast.makeText(this@MessageChatActivity, "", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MessageChatActivity, "Message is empty", Toast.LENGTH_LONG).show()
                 }else{
                     sendMessageToVisitUser(firebaseUser!!.uid, userIdVisit!!, sendMessage )
 
@@ -122,7 +125,7 @@ class MessageChatActivity : AppCompatActivity() {
                                 .child("ChatLists")
                                 .child(userIdVisit!!)
                                 .child(firebaseUser!!.uid)
-                            chatsListReceiverReference.child("id").setValue(firebaseUser?.uid)
+                            chatsListReceiverReference.child("id").setValue(firebaseUser!!.uid)
                         }
 
                         override fun onCancelled(p0: DatabaseError) {
@@ -133,20 +136,22 @@ class MessageChatActivity : AppCompatActivity() {
             }
     }
         //Retrieve all messages from the intent user
-    private fun getMessagesToUser(senderId : String?, receiverId : String?, receiverImageUrl : String?) {
+    private fun getMessages(senderId : String?, receiverID : String?, receiverImageUrl : String?) {
         mChatList = ArrayList()
             val userReference = FirebaseDatabase.getInstance().reference.child("Chats")
 
             userReference.addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(p0: DataSnapshot) {
                     (mChatList as ArrayList<Chat>).clear()
+
                     for (snapshot in p0.children){
                         val chat = snapshot.getValue(Chat::class.java)
-                        if (chat!!.getReceiver().equals(senderId) && chat.getSender().equals(receiverId)
-                            || chat.getReceiver().equals(receiverId) && chat.getSender().equals(senderId))
+
+                        if (chat!!.getReceiver().equals(senderId) && chat.getSender().equals(receiverID)
+                            || chat.getReceiver().equals(receiverID) && chat.getSender().equals(senderId))
                             (mChatList as ArrayList<Chat>).add(chat)
                     }
-                    chatsAdapter = ChatAdapter(this@MessageChatActivity, (mChatList as ArrayList<Chat>), receiverId!!)
+                    chatsAdapter = ChatAdapter(this@MessageChatActivity, (mChatList as ArrayList<Chat>), receiverImageUrl!!)
                     _binding!!.recyclerViewChats.adapter = chatsAdapter
                 }
 

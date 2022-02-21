@@ -1,20 +1,18 @@
 package ipca.am2.projeto2122.friendschat.ui.Adapter
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import ipca.am2.projeto2122.friendschat.R
-
 import ipca.am2.projeto2122.friendschat.ui.model.Chat
 
 
@@ -27,7 +25,7 @@ class ChatAdapter (
             private val mContext    : Context
             private val mChatList   : List<Chat>
             private val imageURL    : String
-            var fireBaseUser : FirebaseUser = FirebaseAuth.getInstance().currentUser!!
+            private var fireBaseUser : FirebaseUser = FirebaseAuth.getInstance().currentUser!!
 
             init {
                 this.mChatList  = mChatList
@@ -37,7 +35,7 @@ class ChatAdapter (
 
 
     override fun getItemViewType(position: Int): Int {
-       return if (mChatList[position].getSender().equals(fireBaseUser!!.uid)){
+       return if (mChatList[position].getSender().equals(fireBaseUser.uid)){
            1
        }else{
            0
@@ -45,11 +43,11 @@ class ChatAdapter (
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var userProfileImage   : CircleImageView? = null
-        var showTextMessage    : TextureView? = null
-        var leftImageView      : ImageView? = null
-        var rightImageView     : ImageView? = null
-        var textIsSeen         : TextureView? = null
+        var userProfileImage    : CircleImageView?  = null
+        var showTextMessage     : TextView?         = null
+        var leftImageView       : ImageView?        = null
+        var rightImageView      : ImageView?        = null
+        var textIsSeen          : TextView?         = null
 
           init {
             userProfileImage = itemView.findViewById(R.id.imageView_settings_user_profile)
@@ -57,11 +55,8 @@ class ChatAdapter (
             leftImageView    = itemView.findViewById(R.id.imageView_view_Image_message_item_left)
             rightImageView   = itemView.findViewById(R.id.imageView_view_Image_message_item_right)
             textIsSeen       = itemView.findViewById(R.id.textView_isSeen_message_item)
-
         }
-
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
         return if (position == 1) {
@@ -77,24 +72,27 @@ class ChatAdapter (
         }
     }
 
-
-
+    override fun getItemCount(): Int {
+        return mChatList.size
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val chat : Chat = mChatList[position]
 
-        Picasso.get().load(imageURL).into(holder.userProfileImage)
 
         if (chat.getMessage().equals("sent you an image") && !chat.getUrl().equals("")) {
+            if (chat.getSender().equals(fireBaseUser.uid)){
+                holder.showTextMessage!!.visibility = View.GONE
 
+            } else{
+                holder.showTextMessage!!.text = chat.getMessage()
+                Log.d("CHAT", chat.getMessage().toString())
 
-
+            }
         }
+
     }
 
-    override fun getItemCount(): Int {
-        return mChatList.size
-    }
 }
 
 

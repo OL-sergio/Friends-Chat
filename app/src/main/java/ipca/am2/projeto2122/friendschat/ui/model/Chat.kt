@@ -3,12 +3,12 @@ package ipca.am2.projeto2122.friendschat.ui.model
 import android.content.IntentSender
 
 class Chat {
-    private var senderId        : String? = null
-    private var senderMessage   : String? = null
-    private var receiverMessage : String? = null
-    private var isSeen          : Boolean? = false
-    private var uRl             : String? = null
-    private var messageID       : String? = null
+    private var senderId        : String?   = null
+    private var senderMessage   : String?   = null
+    private var receiverMessage : String?   = null
+    private var isSeen          : Boolean?  = false
+    private var uRl             : String?   = null
+    private var messageID       : String?   = null
 
 
     constructor()

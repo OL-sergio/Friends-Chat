@@ -40,9 +40,9 @@ class AddPhotoProfileActivity : AppCompatActivity() {
         _binding.extendedFabSavePhoto.visibility = View.GONE
         _binding.extendedFabSavePhoto.setOnClickListener {
 
-            val baos = ByteArrayOutputStream()
-            bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-            val data = baos.toByteArray()
+            val streamOutput = ByteArrayOutputStream()
+            bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, streamOutput)
+            val data = streamOutput.toByteArray()
 
             val storage = Firebase.storage
             val storageReference = storage.reference
