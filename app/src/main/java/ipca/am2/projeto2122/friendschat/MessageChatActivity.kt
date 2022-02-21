@@ -1,5 +1,6 @@
 package ipca.am2.projeto2122.friendschat
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,13 +12,15 @@ import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import ipca.am2.projeto2122.friendschat.databinding.ActivityMessageChatBinding
 import ipca.am2.projeto2122.friendschat.ui.Adapter.ChatAdapter
+import ipca.am2.projeto2122.friendschat.ui.fragments.frag.chat.ChatFragment
+import ipca.am2.projeto2122.friendschat.ui.fragments.frag.settings.AddPhotoProfileActivity
 import ipca.am2.projeto2122.friendschat.ui.model.Chat
 import ipca.am2.projeto2122.friendschat.ui.model.Users
 
 
 class MessageChatActivity : AppCompatActivity() {
 
-    private lateinit var _binding    : ActivityMessageChatBinding
+    private var _binding    : ActivityMessageChatBinding? = null
 
     var mChatList : List<Chat>?     = null
     lateinit var recyclerViewChats  : RecyclerView
@@ -33,7 +36,7 @@ class MessageChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMessageChatBinding.inflate(layoutInflater)
-        setContentView(_binding.root)
+        setContentView(_binding!!.root)
 
 
         userIdVisit = intent.getStringExtra("visitUser_id")
@@ -42,12 +45,15 @@ class MessageChatActivity : AppCompatActivity() {
             .child("Users")
             .child(userIdVisit!!)
 
-        val toolbarChatMessenger : Toolbar = findViewById(R.id.toolbar_Message_Chat)
+        //val toolbarChatMessenger : Toolbar = findViewById(R.id.toolbar_Message_Chat)
+        val toolbarChatMessenger = _binding!!.toolbarMessageChat
         setSupportActionBar(toolbarChatMessenger)
+
         supportActionBar!!.title = ""
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
+
         toolbarChatMessenger.setNavigationOnClickListener{
             finish()
         }
@@ -57,8 +63,8 @@ class MessageChatActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
               val visitUser : Users? = p0.getValue(Users::class.java)
 
-                _binding.toolbarTextViewUsernameMChat.text = visitUser!!.getUsername()
-                Picasso.get().load(visitUser.getProfile()).into(_binding.imageViewProfileImageMChat)
+                _binding!!.toolbarTextViewUsernameMChat.text = visitUser!!.getUsername()
+                Picasso.get().load(visitUser.getProfile()).into(_binding!!.imageViewProfileImageMChat)
 
                 getMessagesToUser(firebaseUser!!.uid, userIdVisit!!, visitUser.getProfile())
                 
@@ -70,16 +76,16 @@ class MessageChatActivity : AppCompatActivity() {
 
         })
 
-        _binding.imageViewSendMessage.setOnClickListener {
+        _binding?.imageViewSendMessage?.setOnClickListener {
 
-            val sendMessage = _binding.textViewTextMessage.text.toString()
+            val sendMessage = _binding!!.textViewTextMessage.text.toString()
                 if (sendMessage.isEmpty()){
                     Toast.makeText(this@MessageChatActivity, "", Toast.LENGTH_LONG).show()
                 }else{
                     sendMessageToVisitUser(firebaseUser!!.uid, userIdVisit!!, sendMessage )
 
                 }
-            _binding.textViewTextMessage.setText("")
+            _binding!!.textViewTextMessage.setText("")
 
 
         }
@@ -116,7 +122,7 @@ class MessageChatActivity : AppCompatActivity() {
                                 .child("ChatLists")
                                 .child(userIdVisit!!)
                                 .child(firebaseUser!!.uid)
-                            chatsListReceiverReference.child("id").setValue(firebaseUser!!.uid)
+                            chatsListReceiverReference.child("id").setValue(firebaseUser?.uid)
                         }
 
                         override fun onCancelled(p0: DatabaseError) {
@@ -126,7 +132,7 @@ class MessageChatActivity : AppCompatActivity() {
                 }
             }
     }
-        //Retrieve all messages sent intent user
+        //Retrieve all messages from the intent user
     private fun getMessagesToUser(senderId : String?, receiverId : String?, receiverImageUrl : String?) {
         mChatList = ArrayList()
             val userReference = FirebaseDatabase.getInstance().reference.child("Chats")
@@ -141,7 +147,7 @@ class MessageChatActivity : AppCompatActivity() {
                             (mChatList as ArrayList<Chat>).add(chat)
                     }
                     chatsAdapter = ChatAdapter(this@MessageChatActivity, (mChatList as ArrayList<Chat>), receiverId!!)
-                    _binding.recyclerViewChats.adapter = chatsAdapter
+                    _binding!!.recyclerViewChats.adapter = chatsAdapter
                 }
 
                 override fun onCancelled(p0: DatabaseError) {}

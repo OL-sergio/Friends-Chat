@@ -1,6 +1,7 @@
 package ipca.am2.projeto2122.friendschat.ui.entry
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -43,12 +44,12 @@ class RegisterActivity : AppCompatActivity() {
         val passwordStrengthCalculator = PasswordStrength()
         _binding.editTextPassword.addTextChangedListener(passwordStrengthCalculator)
 
-        val toolbar: (Toolbar) = findViewById(R.id.toolbar_register)
-        setSupportActionBar(toolbar)
+        val toolbarRegister = _binding.toolbarRegister
+        setSupportActionBar(toolbarRegister)
 
         supportActionBar!!.title = "Register"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener {
+        toolbarRegister.setNavigationOnClickListener {
             val intent = Intent(this@RegisterActivity, WelcomeActivity::class.java)
             startActivity(intent)
             finish()
@@ -129,7 +130,7 @@ class RegisterActivity : AppCompatActivity() {
                     refUsers.updateChildren(userHashMap)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                                val intent = Intent(baseContext, LoginActivity::class.java)
                                 startActivity(intent)
                                 finish()
                             }

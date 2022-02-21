@@ -20,31 +20,32 @@ import com.squareup.picasso.Picasso
 import ipca.am2.projeto2122.friendschat.databinding.ActivityMainBinding
 import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.ui.model.Users
+import java.lang.NullPointerException
 
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var _binding: ActivityMainBinding
+    private var _binding: ActivityMainBinding? = null
     private var referentUser : DatabaseReference?    = null
     private var firebaseUser : FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(_binding.root)
+        setContentView(_binding!!.root)
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
         referentUser = FirebaseDatabase.getInstance().reference
             .child("Users")
             .child(firebaseUser!!.uid)
 
-        val toolbar : Toolbar = findViewById(R.id.toolbar_main)
-        setSupportActionBar(toolbar)
+        val toolbarMain = _binding!!.toolbarMain
+        setSupportActionBar(toolbarMain)
         supportActionBar!!.title = ""
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
 
 
-        val navView: BottomNavigationView = _binding.navView
+        val navView: BottomNavigationView = _binding!!.navView
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
@@ -68,8 +69,8 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()){
                     val user: Users? = p0.getValue(Users::class.java)
-                    _binding.textViewToolbarUserName.text = user?.getUsername().toString()
-                    Picasso.get().load(user!!.getProfile()).into(_binding.imageViewToolbarProfileImage)
+                    _binding!!.textViewToolbarUserName.text = user?.getUsername().toString()
+                    Picasso.get().load(user!!.getProfile()).into(_binding!!.imageViewToolbarProfileImage)
 
                 }
             }

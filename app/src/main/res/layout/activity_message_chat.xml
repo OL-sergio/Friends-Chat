@@ -46,9 +46,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/relative_layout_bottom"
         android:layout_below="@+id/appBarLayout"
-        android:background="@drawable/ic_background_recyclerview">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:background="@drawable/ic_background_recyclerview" />
 
     <RelativeLayout
         android:id="@+id/relative_layout_bottom"

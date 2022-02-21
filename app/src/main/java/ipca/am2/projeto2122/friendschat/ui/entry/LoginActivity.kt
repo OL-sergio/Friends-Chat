@@ -32,19 +32,17 @@ class LoginActivity : AppCompatActivity() {
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(_binding.root)
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar_login)
-        setSupportActionBar(toolbar)
+        val toolbarLogin = _binding.toolbarLogin
+        setSupportActionBar(toolbarLogin)
 
         supportActionBar!!.title = "Login"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        toolbar.setNavigationOnClickListener {
+        toolbarLogin.setNavigationOnClickListener {
             val intent = Intent(this@LoginActivity, WelcomeActivity::class.java)
             startActivity(intent)
             finish()
-
         }
-
 
         _auth = Firebase.auth
 
