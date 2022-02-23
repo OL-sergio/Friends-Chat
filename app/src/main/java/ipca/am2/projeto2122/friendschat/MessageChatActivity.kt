@@ -35,11 +35,20 @@ class MessageChatActivity : AppCompatActivity() {
         _binding = ActivityMessageChatBinding.inflate(layoutInflater)
         setContentView(_binding!!.root)
 
+        val toolbarChatMessenger = _binding!!.toolbarMessageChat
+        setSupportActionBar(toolbarChatMessenger)
+        supportActionBar!!.title = ""
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeButtonEnabled(true)
+        toolbarChatMessenger.setNavigationOnClickListener{
+            finish()
+        }
+
+        intent = intent
         userIdVisit = intent.getStringExtra("visitUser_id")
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
-
-
         recyclerViewChats = _binding!!.recyclerViewChats
         recyclerViewChats.setHasFixedSize(true)
         val linearLayoutManager = LinearLayoutManager(applicationContext)
@@ -51,15 +60,6 @@ class MessageChatActivity : AppCompatActivity() {
             .child(userIdVisit!!)
 
         //val toolbarChatMessenger : Toolbar = findViewById(R.id.toolbar_Message_Chat)
-        val toolbarChatMessenger = _binding!!.toolbarMessageChat
-        setSupportActionBar(toolbarChatMessenger)
-        supportActionBar!!.title = ""
-        supportActionBar!!.setDisplayShowTitleEnabled(false)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setHomeButtonEnabled(true)
-        toolbarChatMessenger.setNavigationOnClickListener{
-            finish()
-        }
 
         //get database reference visit user id
         referenceDatabase!!.addValueEventListener(object : ValueEventListener {
@@ -135,12 +135,17 @@ class MessageChatActivity : AppCompatActivity() {
                 }
             }
     }
+
         //Retrieve all messages from the intent user
     private fun getMessages(senderId : String?, receiverID : String?, receiverImageUrl : String?) {
         mChatList = ArrayList()
             val userReference = FirebaseDatabase.getInstance().reference.child("Chats")
 
             userReference.addValueEventListener(object : ValueEventListener{
+                override fun onCancelled(p0: DatabaseError) {
+
+                }
+
                 override fun onDataChange(p0: DataSnapshot) {
                     (mChatList as ArrayList<Chat>).clear()
 
@@ -148,16 +153,13 @@ class MessageChatActivity : AppCompatActivity() {
                         val chat = snapshot.getValue(Chat::class.java)
 
                         if (chat!!.getReceiver().equals(senderId) && chat.getSender().equals(receiverID)
-                            || chat.getReceiver().equals(receiverID) && chat.getSender().equals(senderId))
+                            || chat.getReceiver().equals(receiverID) && chat.getSender().equals(senderId)){
                             (mChatList as ArrayList<Chat>).add(chat)
+                        }
+                        chatsAdapter = ChatAdapter(this@MessageChatActivity, (mChatList as ArrayList<Chat>), receiverImageUrl!!)
+                        _binding!!.recyclerViewChats.adapter = chatsAdapter
                     }
-                    chatsAdapter = ChatAdapter(this@MessageChatActivity, (mChatList as ArrayList<Chat>), receiverImageUrl!!)
-                    _binding!!.recyclerViewChats.adapter = chatsAdapter
                 }
-
-                override fun onCancelled(p0: DatabaseError) {}
-
-
             })
 
     }

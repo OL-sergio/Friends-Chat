@@ -99,7 +99,6 @@ class UserAdapter(
             offlineImageView = itemView.findViewById(R.id.layout_search_image_offline)
             lastMessageText  = itemView.findViewById(R.id.layout_search_last_message)
         }
-
     }
 }
 

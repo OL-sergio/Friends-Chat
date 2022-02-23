@@ -84,7 +84,11 @@ class ChatAdapter (
             if (chat.getSender().equals(fireBaseUser.uid)){
                 holder.showTextMessage!!.visibility = View.GONE
 
-            } else{
+            } else if(chat.getSender().equals(fireBaseUser.uid)){
+                holder.showTextMessage!!.visibility = View.GONE
+            }
+
+            else{
                 holder.showTextMessage!!.text = chat.getMessage()
                 Log.d("CHAT", chat.getMessage().toString())
 
