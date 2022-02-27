@@ -1,10 +1,9 @@
 package ipca.am2.projeto2122.friendschat
 
-import android.content.Intent
+
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -23,12 +22,13 @@ class MessageChatActivity : AppCompatActivity() {
 
     var mChatList                   : List<Chat>?     = null
     var chatsAdapter                : ChatAdapter?    = null
-    lateinit var recyclerViewChats  : RecyclerView
+
+    private lateinit var recyclerViewChats  : RecyclerView
 
     var firebaseUser                : FirebaseUser?         = null
-    var referenceDatabase           : DatabaseReference?    = null
+    private var referenceDatabase           : DatabaseReference?    = null
 
-    var userIdVisit                 : String? = ""
+    var userVisitID                 : String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +46,7 @@ class MessageChatActivity : AppCompatActivity() {
         }
 
         intent = intent
-        userIdVisit = intent.getStringExtra("visitUser_id")
+        userVisitID = intent.getStringExtra(VISIT_USER_ID)
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
         recyclerViewChats = _binding!!.recyclerViewChats
@@ -56,8 +56,8 @@ class MessageChatActivity : AppCompatActivity() {
         recyclerViewChats.layoutManager = linearLayoutManager
 
         referenceDatabase = FirebaseDatabase.getInstance().reference
-            .child("Users")
-            .child(userIdVisit!!)
+            .child(USERS)
+            .child(userVisitID!!)
 
         //val toolbarChatMessenger : Toolbar = findViewById(R.id.toolbar_Message_Chat)
 
@@ -69,7 +69,7 @@ class MessageChatActivity : AppCompatActivity() {
                 _binding!!.toolbarTextViewUsernameMChat.text = visitUser!!.getUsername()
                 Picasso.get().load(visitUser.getProfile()).into(_binding!!.imageViewProfileImageMChat)
 
-                getMessages(firebaseUser!!.uid, userIdVisit!!, visitUser.getProfile())
+                getMessagesSentUser(firebaseUser!!.uid, userVisitID, visitUser.getProfile())
                 
             }
 
@@ -83,49 +83,50 @@ class MessageChatActivity : AppCompatActivity() {
 
             val sendMessage = _binding!!.textViewTextMessage.text.toString()
                 if (sendMessage.isEmpty()){
-                    Toast.makeText(this@MessageChatActivity, "Message is empty", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MessageChatActivity, MESSAGE_EMPTY, Toast.LENGTH_LONG).show()
                 }else{
-                    sendMessageToVisitUser(firebaseUser!!.uid, userIdVisit!!, sendMessage )
+                    sendMessageToVisitUser(firebaseUser!!.uid, userVisitID!!, sendMessage )
 
                 }
             _binding!!.textViewTextMessage.setText("")
-
-
         }
 
     }
+
+
+
         // Send message to intent user
-    private fun sendMessageToVisitUser(senderId: String?, receiverID: String?, sendMessage: String) {
+    private fun sendMessageToVisitUser(senderID: String?, receiverID: String?, message: String) {
         val referenceDatabase   = FirebaseDatabase.getInstance().reference
         val keyMessage  = referenceDatabase.push().key
 
         val messageSendToHasMap = HashMap<String, Any?>()
-        messageSendToHasMap["senderId"] = senderId
-        messageSendToHasMap["senderMessage"] = sendMessage
-        messageSendToHasMap["receiverMessage"] = receiverID
+        messageSendToHasMap["senderID"] = senderID
+        messageSendToHasMap["receiverID"] = receiverID
+        messageSendToHasMap["message"] = message
         messageSendToHasMap["isSeen"] = false
         messageSendToHasMap["uRl"] = ""
         messageSendToHasMap["messageID"] = keyMessage
-        referenceDatabase.child("Chats").child(keyMessage!!)
+        referenceDatabase.child(CHATS).child(keyMessage!!)
             .setValue(messageSendToHasMap)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
 
                     val chatsListReference = FirebaseDatabase.getInstance().reference
-                        .child("ChatLists")
+                        .child(CHATS_LISTS)
                         .child(firebaseUser!!.uid)
-                        .child(userIdVisit!!)
+                        .child(userVisitID!!)
 
                     chatsListReference.addValueEventListener(object : ValueEventListener{
                         override fun onDataChange(p0: DataSnapshot) {
-                            if (p0.exists()){
-                                chatsListReference.child("id").setValue(userIdVisit)
+                            if (!p0.exists()){
+                                chatsListReference.child(ID).setValue(userVisitID)
                             }
                             val chatsListReceiverReference = FirebaseDatabase.getInstance().reference
-                                .child("ChatLists")
-                                .child(userIdVisit!!)
+                                .child(CHATS_LISTS)
+                                .child(userVisitID!!)
                                 .child(firebaseUser!!.uid)
-                            chatsListReceiverReference.child("id").setValue(firebaseUser!!.uid)
+                            chatsListReceiverReference.child(ID).setValue(firebaseUser!!.uid)
                         }
 
                         override fun onCancelled(p0: DatabaseError) {
@@ -137,9 +138,9 @@ class MessageChatActivity : AppCompatActivity() {
     }
 
         //Retrieve all messages from the intent user
-    private fun getMessages(senderId : String?, receiverID : String?, receiverImageUrl : String?) {
+    private fun getMessagesSentUser(senderID : String?, receiverID : String?, receiverImageUrl : String?) {
         mChatList = ArrayList()
-            val userReference = FirebaseDatabase.getInstance().reference.child("Chats")
+            val userReference = FirebaseDatabase.getInstance().reference.child(CHATS)
 
             userReference.addValueEventListener(object : ValueEventListener{
                 override fun onCancelled(p0: DatabaseError) {
@@ -148,12 +149,11 @@ class MessageChatActivity : AppCompatActivity() {
 
                 override fun onDataChange(p0: DataSnapshot) {
                     (mChatList as ArrayList<Chat>).clear()
-
                     for (snapshot in p0.children){
                         val chat = snapshot.getValue(Chat::class.java)
 
-                        if (chat!!.getReceiver().equals(senderId) && chat.getSender().equals(receiverID)
-                            || chat.getReceiver().equals(receiverID) && chat.getSender().equals(senderId)){
+                        if (chat!!.getReceiverID().equals(senderID) && chat.getSenderID().equals(receiverID)
+                            || chat.getReceiverID().equals(receiverID) && chat.getSenderID().equals(senderID)){
                             (mChatList as ArrayList<Chat>).add(chat)
                         }
                         chatsAdapter = ChatAdapter(this@MessageChatActivity, (mChatList as ArrayList<Chat>), receiverImageUrl!!)
@@ -162,5 +162,14 @@ class MessageChatActivity : AppCompatActivity() {
                 }
             })
 
+    }
+
+    companion object {
+        const val USERS = "Users"
+        const val VISIT_USER_ID = "visitUser_id"
+        const val MESSAGE_EMPTY = "Message is empty"
+        const val CHATS = "Chats"
+        const val CHATS_LISTS = "ChatsLists"
+        const val ID = "id"
     }
 }

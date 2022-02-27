@@ -27,7 +27,7 @@
             android:layout_alignParentEnd="true"
             android:background="@drawable/ic_image_circle_border"
             android:padding="8dp"
-            android:text="testing purposes"
+            android:text="@string/testing_purposes"
             android:textColor="@color/white"
             android:textSize="18sp" />
 

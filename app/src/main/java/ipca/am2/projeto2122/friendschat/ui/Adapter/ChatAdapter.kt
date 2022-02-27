@@ -1,6 +1,7 @@
 package ipca.am2.projeto2122.friendschat.ui.Adapter
 
 import android.content.Context
+import android.nfc.Tag
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -35,7 +36,7 @@ class ChatAdapter (
 
 
     override fun getItemViewType(position: Int): Int {
-       return if (mChatList[position].getSender().equals(fireBaseUser.uid)){
+       return if (mChatList[position].getSenderID().equals(fireBaseUser.uid)){
            1
        }else{
            0
@@ -79,24 +80,27 @@ class ChatAdapter (
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val chat : Chat = mChatList[position]
 
-
-        if (chat.getMessage().equals("sent you an image") && !chat.getUrl().equals("")) {
-            if (chat.getSender().equals(fireBaseUser.uid)){
+        if (chat.getMessage().equals(SEND_IMAGE) && !chat.getUrl().equals(URl)) {
+            if (chat.getSenderID().equals(fireBaseUser.uid)){
                 holder.showTextMessage!!.visibility = View.GONE
 
-            } else if(chat.getSender().equals(fireBaseUser.uid)){
+            } else if(!chat.getSenderID().equals(fireBaseUser.uid)){
                 holder.showTextMessage!!.visibility = View.GONE
             }
 
             else{
                 holder.showTextMessage!!.text = chat.getMessage()
-                Log.d("CHAT", chat.getMessage().toString())
+                Log.d( TAG, chat.getMessage().toString() )
 
             }
         }
-
     }
 
+    companion object{
+        const val URl = ""
+        const val TAG = "CHAT"
+        const val SEND_IMAGE = "sent you an image"
+    }
 }
 
 
