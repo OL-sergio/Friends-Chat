@@ -68,9 +68,10 @@
             android:layout_toStartOf="@+id/imageView_Attach_Image_File"
             android:background="@drawable/ic_background_edittext_secondary"
             android:hint="@string/write_message_here"
+            android:inputType="text"
             android:paddingHorizontal="12dp"
             android:textColorHint="@color/background"
-            android:inputType="text" />
+            android:autofillHints="" />
 
         <ImageView
             android:id="@+id/imageView_Send_Message"

@@ -1,7 +1,6 @@
 package ipca.am2.projeto2122.friendschat.ui.Adapter
 
 import android.content.Context
-import android.nfc.Tag
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.ui.model.Chat
@@ -89,8 +87,8 @@ class ChatAdapter (
             }
 
             else{
-                holder.showTextMessage!!.text = chat.getMessage()
-                Log.d( TAG, chat.getMessage().toString() )
+                holder.showTextMessage?.text = chat.getMessage()
+
 
             }
         }
@@ -98,7 +96,7 @@ class ChatAdapter (
 
     companion object{
         const val URl = ""
-        const val TAG = "CHAT"
+        const val TAG = "Chat"
         const val SEND_IMAGE = "sent you an image"
     }
 }

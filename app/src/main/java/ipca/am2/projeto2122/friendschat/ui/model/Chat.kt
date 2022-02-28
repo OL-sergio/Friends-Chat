@@ -72,8 +72,8 @@ class Chat {
             return uRl
         }
 
-        fun setUrl(url: String?) {
-            this.uRl = url
+        fun setUrl(uRl: String?) {
+            this.uRl = uRl
         }
 
 }

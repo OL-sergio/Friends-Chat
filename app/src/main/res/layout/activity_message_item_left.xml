@@ -20,9 +20,9 @@
         android:layout_toEndOf="@id/profile_image_message_item"
         android:background="@drawable/ic_background_edittext_secondary"
         android:padding="8dp"
-        android:textSize="18sp"
-        android:text="testing purposes"
-        android:textColor="@color/white"/>
+        android:text="@string/testing_purposes"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
     <ImageView
         android:id="@+id/imageView_view_Image_message_item_left"

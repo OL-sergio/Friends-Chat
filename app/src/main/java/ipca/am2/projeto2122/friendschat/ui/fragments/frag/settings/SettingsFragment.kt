@@ -1,5 +1,6 @@
 package ipca.am2.projeto2122.friendschat.ui.fragments.frag.settings
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -46,6 +47,7 @@ class SettingsFragment : Fragment() {
 
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -74,7 +76,7 @@ class SettingsFragment : Fragment() {
                         photos.add(addPhoto)
 
                     }
-                    mAdapter?.notifyDataSetChanged()
+                    mAdapter!!.notifyDataSetChanged()
                 }
 
             }
