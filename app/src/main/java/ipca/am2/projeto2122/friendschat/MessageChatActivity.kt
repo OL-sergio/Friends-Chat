@@ -17,7 +17,6 @@ import ipca.am2.projeto2122.friendschat.ui.model.Users
 
 class MessageChatActivity : AppCompatActivity() {
 
-
     private var _binding                    : ActivityMessageChatBinding? = null
     private var referenceDatabase           : DatabaseReference?    = null
     private var recyclerViewChats           : RecyclerView?  = null
@@ -47,11 +46,15 @@ class MessageChatActivity : AppCompatActivity() {
         userVisitID = intent.getStringExtra(VISIT_USER_ID)
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
+
         recyclerViewChats = _binding!!.recyclerViewChats
         recyclerViewChats!!.setHasFixedSize(true)
         val linearLayoutManager = LinearLayoutManager(applicationContext)
-        linearLayoutManager.stackFromEnd = true
+       // linearLayoutManager.stackFromEnd = true
         recyclerViewChats!!.layoutManager = linearLayoutManager
+
+        val adapterChatAdapter = chatsAdapter
+        _binding!!.recyclerViewChats.adapter = adapterChatAdapter
 
         referenceDatabase = FirebaseDatabase.getInstance().reference
             .child(USERS)
@@ -78,14 +81,13 @@ class MessageChatActivity : AppCompatActivity() {
 
         _binding!!.imageViewSendMessage.setOnClickListener {
 
-            val sendMessage = _binding!!.textViewTextMessage.text.toString()
+            val sendMessage = _binding!!.editTextTextMessage.text.toString()
                 if (sendMessage.isEmpty()){
                     Toast.makeText(this@MessageChatActivity, MESSAGE_EMPTY, Toast.LENGTH_LONG).show()
                 }else{
-                    sendMessageToVisitUser(firebaseUser!!.uid, userVisitID!!, sendMessage  )
-
+                    sendMessageToVisitUser(firebaseUser!!.uid, userVisitID!!, sendMessage )
                 }
-            _binding!!.textViewTextMessage.setText("")
+            _binding!!.editTextTextMessage.setText("")
         }
 
     }
@@ -138,10 +140,6 @@ class MessageChatActivity : AppCompatActivity() {
             val userReference = FirebaseDatabase.getInstance().reference.child(CHATS)
 
             userReference.addValueEventListener(object : ValueEventListener{
-                override fun onCancelled(p0: DatabaseError) {
-
-                }
-
                 override fun onDataChange(p0: DataSnapshot) {
                     (mChatList as ArrayList<Chat>).clear()
                     for (snapshot in p0.children){
@@ -152,9 +150,12 @@ class MessageChatActivity : AppCompatActivity() {
 
                                     (mChatList as ArrayList<Chat>).add(chat)
                         }
-                        chatsAdapter = ChatAdapter(this@MessageChatActivity, (mChatList as ArrayList<Chat>), receiverImageUrl!!)
+                        chatsAdapter = ChatAdapter(baseContext, (mChatList as ArrayList<Chat>), receiverImageUrl!!)
                         _binding!!.recyclerViewChats.adapter = chatsAdapter
                     }
+                }
+                override fun onCancelled(p0: DatabaseError) {
+
                 }
             })
 

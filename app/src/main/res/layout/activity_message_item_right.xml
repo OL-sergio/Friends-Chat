@@ -37,8 +37,8 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_alignParentEnd="true"
-            android:visibility="gone"
-            android:contentDescription="@string/todo" />
+            android:contentDescription="@string/todo"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/textView_isSeen_message_item"
