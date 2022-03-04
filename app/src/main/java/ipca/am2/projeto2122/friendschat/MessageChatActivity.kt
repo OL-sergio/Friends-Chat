@@ -168,7 +168,7 @@ class MessageChatActivity : AppCompatActivity() {
         const val VISIT_USER_ID = "visitUser_id"
         const val MESSAGE_EMPTY = "Please write something"
         const val CHATS = "Chats"
-        const val CHATS_LISTS = "ChatLists"
+        const val CHATS_LISTS = "ChatList"
         const val ID = "id"
     }
 }

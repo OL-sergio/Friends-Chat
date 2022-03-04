@@ -13,6 +13,8 @@ import kotlinx.coroutines.*
 
 
 
+
+@SuppressLint("CustomSplashScreen")
 @DelicateCoroutinesApi
 class SplashActivity : AppCompatActivity() {
 
