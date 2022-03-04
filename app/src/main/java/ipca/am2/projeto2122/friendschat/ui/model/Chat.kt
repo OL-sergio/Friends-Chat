@@ -10,7 +10,6 @@ class Chat {
     private var uRl                 : String?   = null
 
     constructor()
-
     constructor(
         senderID      : String?,
         messageID     : String?,
@@ -18,7 +17,6 @@ class Chat {
         message       : String?,
         isSeen        : Boolean?,
         uRl           : String?
-
     ) {
         this.senderID = senderID
         this.receiverID = receiverID

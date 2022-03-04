@@ -93,19 +93,19 @@ class MessageChatActivity : AppCompatActivity() {
     }
 
         // Send message to intent user
-    private fun sendMessageToVisitUser(senderID: String?, receiverID: String?, message: String) {
+    private fun sendMessageToVisitUser(senderId: String, receiverId: String?, message: String) {
         val referenceDatabase   = FirebaseDatabase.getInstance().reference
         val keyMessage  = referenceDatabase.push().key
 
-        val messageSendToHasMap = HashMap<String, Any?>()
-        messageSendToHasMap["senderID"] = senderID
-        messageSendToHasMap["receiverID"] = receiverID
-        messageSendToHasMap["message"] = message
-        messageSendToHasMap["isSeen"] = false
-        messageSendToHasMap["uRl"] = ""
-        messageSendToHasMap["messageID"] = keyMessage
+        val messageSendToHashMap = HashMap<String, Any?>()
+        messageSendToHashMap["senderID"] = senderId
+        messageSendToHashMap["receiverID"] = receiverId
+        messageSendToHashMap["message"] = message
+        messageSendToHashMap["isSeen"] = false
+        messageSendToHashMap["uRl"] = ""
+        messageSendToHashMap["messageID"] = keyMessage
         referenceDatabase.child(CHATS).child(keyMessage!!)
-            .setValue(messageSendToHasMap)
+            .setValue(messageSendToHashMap)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
 
@@ -132,25 +132,27 @@ class MessageChatActivity : AppCompatActivity() {
                     })
                 }
             }
+
     }
 
         //Retrieve all messages from the intent user
-    private fun getMessagesSentUser(senderID : String, receiverID : String?, receiverImageUrl : String?) {
+    private fun getMessagesSentUser(senderId : String, receiverId : String?, receiverImageUrl : String?) {
         mChatList = ArrayList()
             val userReference = FirebaseDatabase.getInstance().reference.child(CHATS)
 
             userReference.addValueEventListener(object : ValueEventListener{
+
                 override fun onDataChange(p0: DataSnapshot) {
                     (mChatList as ArrayList<Chat>).clear()
                     for (snapshot in p0.children){
                         val chat = snapshot.getValue(Chat::class.java)
 
-                        if (chat!!.getReceiverID().equals(senderID) && chat.getSenderID().equals(receiverID)
-                            || chat.getReceiverID().equals(receiverID) && chat.getSenderID().equals(senderID)){
+                        if (chat?.getReceiverID().equals(senderId) && chat!!.getSenderID().equals(receiverId)
+                            || chat!!.getReceiverID().equals(receiverId) && chat.getSenderID().equals(senderId)){
 
                                     (mChatList as ArrayList<Chat>).add(chat)
                         }
-                        chatsAdapter = ChatAdapter(baseContext, (mChatList as ArrayList<Chat>), receiverImageUrl!!)
+                        chatsAdapter = ChatAdapter(baseContext!!, (mChatList!! as ArrayList<Chat>), receiverImageUrl!!)
                         _binding!!.recyclerViewChats.adapter = chatsAdapter
                     }
                 }

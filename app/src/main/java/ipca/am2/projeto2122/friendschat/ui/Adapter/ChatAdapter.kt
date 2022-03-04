@@ -13,7 +13,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import ipca.am2.projeto2122.friendschat.R
-import ipca.am2.projeto2122.friendschat.databinding.ActivityMessageChatBinding
 import ipca.am2.projeto2122.friendschat.ui.model.Chat
 
 
@@ -23,19 +22,6 @@ class ChatAdapter (
     imageURL    : String
         ): RecyclerView.Adapter<ChatAdapter.ViewHolder?>() {
 
-
-
-            private val mContext    : Context
-            private val mChatList   : List<Chat>
-            private val imageURL    : String
-            private var fireBaseUser : FirebaseUser = FirebaseAuth.getInstance().currentUser!!
-
-            init {
-                this.mChatList  = mChatList
-                this.mContext   = mContext
-                this.imageURL   = imageURL
-            }
-
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var userProfileImage    : CircleImageView?  = null
         var showTextMessage     : TextView?         = null
@@ -43,7 +29,7 @@ class ChatAdapter (
         var rightImageView      : ImageView?        = null
         var textIsSeen          : TextView?         = null
 
-          init {
+        init {
             userProfileImage = itemView.findViewById(R.id.imageView_settings_user_profile)
             showTextMessage  = itemView.findViewById(R.id.textView_show_message)
             leftImageView    = itemView.findViewById(R.id.imageView_view_Image_message_item_left)
@@ -52,8 +38,19 @@ class ChatAdapter (
         }
     }
 
+            private val mContext    : Context?
+            private val mChatList   : List<Chat>
+            private val imageURL    : String
+            var firebaseUser : FirebaseUser = FirebaseAuth.getInstance().currentUser!!
+
+            init {
+                this.mChatList  = mChatList
+                this.mContext   = mContext
+                this.imageURL   = imageURL
+            }
+
     override fun getItemViewType(position: Int): Int {
-        return if (mChatList[position].getSenderID().equals(fireBaseUser.uid)){
+        return if (mChatList[position].getSenderID().equals(firebaseUser.uid)){
             1
         }else{
             0
@@ -85,12 +82,12 @@ class ChatAdapter (
         //Picasso.get().load(imageURL).into(holder.userProfileImage)
 
         if (chat.getMessage().equals(SEND_IMAGE) && !chat.getUrl().equals(URl)) {
-            if (chat.getSenderID().equals(fireBaseUser.uid)){
+            if (chat.getSenderID().equals(firebaseUser.uid)){
                 holder.showTextMessage!!.visibility = View.GONE
                 holder.rightImageView!!.visibility = View.VISIBLE
                 Picasso.get().load(chat.getUrl()).into(holder.rightImageView)
 
-            } else if (!chat.getSenderID().equals(fireBaseUser.uid)) {
+            } else if (!chat.getSenderID().equals(firebaseUser.uid)) {
                 holder.showTextMessage!!.visibility = View.GONE
                 holder.leftImageView!!.visibility = View.VISIBLE
                 Picasso.get().load(chat.getUrl()).into(holder.leftImageView)

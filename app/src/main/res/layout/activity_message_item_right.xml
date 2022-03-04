@@ -29,6 +29,7 @@
             android:background="@drawable/ic_image_circle_border"
             android:padding="8dp"
             android:text="@string/testing_purposes"
+            android:visibility="visible"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
