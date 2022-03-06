@@ -82,12 +82,12 @@ class ChatAdapter (
         //Picasso.get().load(imageURL).into(holder.userProfileImage)
 
         if (chat.getMessage().equals(SEND_IMAGE) && !chat.getUrl().equals(URl)) {
-            if (chat.getSenderID().equals(firebaseUser.uid)){
+            if (chat.getSenderID().equals(firebaseUser!!.uid)){
                 holder.showTextMessage!!.visibility = View.GONE
                 holder.rightImageView!!.visibility = View.VISIBLE
                 Picasso.get().load(chat.getUrl()).into(holder.rightImageView)
 
-            } else if (!chat.getSenderID().equals(firebaseUser.uid)) {
+            } else if (!chat.getSenderID().equals(firebaseUser!!.uid)) {
                 holder.showTextMessage!!.visibility = View.GONE
                 holder.leftImageView!!.visibility = View.VISIBLE
                 Picasso.get().load(chat.getUrl()).into(holder.leftImageView)

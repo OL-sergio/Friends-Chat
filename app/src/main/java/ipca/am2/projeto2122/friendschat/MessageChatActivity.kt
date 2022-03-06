@@ -147,8 +147,8 @@ class MessageChatActivity : AppCompatActivity() {
                     for (snapshot in p0.children){
                         val chat = snapshot.getValue(Chat::class.java)
 
-                        if (chat?.getReceiverID().equals(senderId) && chat!!.getSenderID().equals(receiverId)
-                            || chat!!.getReceiverID().equals(receiverId) && chat.getSenderID().equals(senderId)){
+                        if ((chat!!.getReceiverID().equals(senderId) && chat.getSenderID().equals(receiverId))
+                            || (chat.getReceiverID().equals(receiverId) && chat.getSenderID().equals(senderId))){
 
                                     (mChatList as ArrayList<Chat>).add(chat)
                         }
