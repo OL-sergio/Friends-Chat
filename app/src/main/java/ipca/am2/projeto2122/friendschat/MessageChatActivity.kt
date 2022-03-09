@@ -1,5 +1,6 @@
 package ipca.am2.projeto2122.friendschat
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +11,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import ipca.am2.projeto2122.friendschat.databinding.ActivityMessageChatBinding
+import ipca.am2.projeto2122.friendschat.databinding.FragmentChatBinding
 import ipca.am2.projeto2122.friendschat.ui.Adapter.ChatAdapter
+import ipca.am2.projeto2122.friendschat.ui.intro.SplashActivity
 import ipca.am2.projeto2122.friendschat.ui.model.Chat
 import ipca.am2.projeto2122.friendschat.ui.model.Users
 
@@ -19,7 +22,7 @@ class MessageChatActivity : AppCompatActivity() {
 
     private var _binding                    : ActivityMessageChatBinding? = null
     private var referenceDatabase           : DatabaseReference?    = null
-    private var recyclerViewChats           : RecyclerView?  = null
+    private lateinit var recyclerViewChats  : RecyclerView
 
     var mChatList                   : List<Chat>?     = null
     var chatsAdapter                : ChatAdapter?    = null
@@ -31,6 +34,7 @@ class MessageChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMessageChatBinding.inflate(layoutInflater)
         setContentView(_binding!!.root)
+        intent = intent
 
         val toolbarChatMessenger = _binding!!.toolbarMessageChat
         setSupportActionBar(toolbarChatMessenger)
@@ -42,7 +46,6 @@ class MessageChatActivity : AppCompatActivity() {
             finish()
         }
 
-        intent = intent
         userVisitID = intent.getStringExtra(VISIT_USER_ID)
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
@@ -130,6 +133,7 @@ class MessageChatActivity : AppCompatActivity() {
                         }
 
                     })
+                    val referenceDatabase = FirebaseDatabase.getInstance().reference.child(USERS).child(firebaseUser!!.uid)
                 }
             }
 
@@ -147,8 +151,8 @@ class MessageChatActivity : AppCompatActivity() {
                     for (snapshot in p0.children){
                         val chat = snapshot.getValue(Chat::class.java)
 
-                        if ((chat!!.getReceiverID().equals(senderId) && chat.getSenderID().equals(receiverId))
-                            || (chat.getReceiverID().equals(receiverId) && chat.getSenderID().equals(senderId))){
+                        if((chat!!.getReceiverID() == senderId && chat.getSenderID() == receiverId) ||
+                            (chat.getReceiverID() == receiverId && chat.getSenderID() == senderId)){
 
                                     (mChatList as ArrayList<Chat>).add(chat)
                         }

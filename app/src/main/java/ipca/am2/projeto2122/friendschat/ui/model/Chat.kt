@@ -2,12 +2,12 @@ package ipca.am2.projeto2122.friendschat.ui.model
 
 
 class Chat {
-    private var senderID            : String?   = null
-    private var receiverID          : String?   = null
-    private var messageID           : String?   = null
-    private var message             : String?   = null
+    private var senderID            : String?   = ""
+    private var receiverID          : String?   = ""
+    private var messageID           : String?   = ""
+    private var message             : String?   = ""
     private var isSeen              : Boolean?  = false
-    private var uRl                 : String?   = null
+    private var uRl                 : String?   = ""
 
     constructor()
     constructor(
@@ -31,7 +31,7 @@ class Chat {
         }
 
         fun setSenderID(senderID: String?) {
-            this.senderID = senderID
+            this.senderID = senderID!!
         }
 
         fun getReceiverID(): String? {
@@ -39,7 +39,7 @@ class Chat {
         }
 
         fun setReceiverID(receiverID: String?) {
-            this.receiverID = receiverID
+            this.receiverID = receiverID!!
         }
 
         fun getMessageId(): String? {
@@ -47,7 +47,7 @@ class Chat {
         }
 
         fun setMessageId(messageID: String?) {
-            this.messageID = messageID
+            this.messageID = messageID!!
         }
 
         fun getMessage(): String? {
@@ -55,7 +55,7 @@ class Chat {
         }
 
         fun setMessage(message: String?) {
-            this.message = message
+            this.message = message!!
         }
 
         fun isIsSeen(): Boolean? {
@@ -63,7 +63,7 @@ class Chat {
         }
 
         fun setIsSeen(isSeen: Boolean?) {
-            this.isSeen = isSeen
+            this.isSeen = isSeen!!
         }
 
         fun getUrl(): String? {
@@ -71,7 +71,7 @@ class Chat {
         }
 
         fun setUrl(uRl: String?) {
-            this.uRl = uRl
+            this.uRl = uRl!!
         }
 
 }

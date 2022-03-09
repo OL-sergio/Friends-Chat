@@ -20,25 +20,9 @@ class ChatAdapter (
     mContext    : Context,
     mChatList   : List<Chat>,
     imageURL    : String
-        ): RecyclerView.Adapter<ChatAdapter.ViewHolder?>() {
+        ): RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 
-    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var userProfileImage    : CircleImageView?  = null
-        var showTextMessage     : TextView?         = null
-        var leftImageView       : ImageView?        = null
-        var rightImageView      : ImageView?        = null
-        var textIsSeen          : TextView?         = null
-
-        init {
-            userProfileImage = itemView.findViewById(R.id.imageView_settings_user_profile)
-            showTextMessage  = itemView.findViewById(R.id.textView_show_message)
-            leftImageView    = itemView.findViewById(R.id.imageView_view_Image_message_item_left)
-            rightImageView   = itemView.findViewById(R.id.imageView_view_Image_message_item_right)
-            textIsSeen       = itemView.findViewById(R.id.textView_isSeen_message_item)
-        }
-    }
-
-            private val mContext    : Context?
+            private val mContext    : Context
             private val mChatList   : List<Chat>
             private val imageURL    : String
             var firebaseUser : FirebaseUser = FirebaseAuth.getInstance().currentUser!!
@@ -48,14 +32,6 @@ class ChatAdapter (
                 this.mContext   = mContext
                 this.imageURL   = imageURL
             }
-
-    override fun getItemViewType(position: Int): Int {
-        return if (mChatList[position].getSenderID().equals(firebaseUser.uid)){
-            1
-        }else{
-            0
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
         return if (position == 1) {
@@ -87,22 +63,50 @@ class ChatAdapter (
                 holder.rightImageView!!.visibility = View.VISIBLE
                 Picasso.get().load(chat.getUrl()).into(holder.rightImageView)
 
-            } else if (!chat.getSenderID().equals(firebaseUser!!.uid)) {
+            }
+            else if (!chat.getSenderID().equals(firebaseUser!!.uid)) {
                 holder.showTextMessage!!.visibility = View.GONE
                 holder.leftImageView!!.visibility = View.VISIBLE
                 Picasso.get().load(chat.getUrl()).into(holder.leftImageView)
             }
                 else{
-                holder.showTextMessage!!.text = chat.getMessage()
-                Log.d(TAG, chat.getMessage().toString())
+                holder.showTextMessage!!.setText(chat.getMessage())
+                holder.showTextMessage!!.visibility = View.VISIBLE
 
             }
+        }
+        if (position == mChatList.size - 1){
+
+        }else{
+
+        }
+    }
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        var userProfileImage    : CircleImageView?  = null
+        var showTextMessage     : TextView?         = null
+        var leftImageView       : ImageView?        = null
+        var rightImageView      : ImageView?        = null
+        var textIsSeen          : TextView?         = null
+
+        init {
+            userProfileImage = itemView.findViewById(R.id.imageView_settings_user_profile)
+            showTextMessage  = itemView.findViewById(R.id.textView_show_message)
+            leftImageView    = itemView.findViewById(R.id.imageView_view_Image_message_item_left)
+            rightImageView   = itemView.findViewById(R.id.imageView_view_Image_message_item_right)
+            textIsSeen       = itemView.findViewById(R.id.textView_isSeen_message_item)
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (mChatList[position].getSenderID().equals(firebaseUser!!.uid)){
+            1
+        }else{
+            0
         }
     }
 
     companion object{
         const val URl = ""
-        const val TAG = "Chat"
         const val SEND_IMAGE = "sent you an image"
     }
 }
