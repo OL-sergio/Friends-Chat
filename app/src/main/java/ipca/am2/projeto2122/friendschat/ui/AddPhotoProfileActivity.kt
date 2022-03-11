@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.fragments.frag.settings
+package ipca.am2.projeto2122.friendschat.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -16,6 +16,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import ipca.am2.projeto2122.friendschat.databinding.ActivityAddPhotoProfileBinding
+import ipca.am2.projeto2122.friendschat.ui.fragments.frag.settings.SettingsFragment
 import ipca.am2.projeto2122.friendschat.ui.model.Photo
 import java.io.ByteArrayOutputStream
 import java.util.*

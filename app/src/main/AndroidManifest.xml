@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FriendsChat">
         <activity
-            android:name="ipca.am2.projeto2122.friendschat.ui.fragments.frag.settings.AddPhotoProfileActivity"
+            android:name="ipca.am2.projeto2122.friendschat.ui.AddPhotoProfileActivity"
             android:exported="false"
             android:label="@string/title_activity_add_photo_profile"
             android:theme="@style/Theme.FriendsChat.NoActionBar" />

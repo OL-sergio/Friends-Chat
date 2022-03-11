@@ -1,6 +1,5 @@
 package ipca.am2.projeto2122.friendschat.ui.fragments.frag.settings
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +16,9 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.FragmentSettingsBinding
+import ipca.am2.projeto2122.friendschat.ui.AddPhotoProfileActivity
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.IMAGE_USER_PROFILE
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.TAG
 import ipca.am2.projeto2122.friendschat.ui.model.Photo
 
 
@@ -66,7 +68,7 @@ class SettingsFragment : Fragment() {
         binding.recyclerViewPhotos.adapter = mAdapter
 
 
-        mDatabase.collection("imageUserProfile")
+        mDatabase.collection(IMAGE_USER_PROFILE)
             .addSnapshotListener{ documents, e ->
                 documents?.let {
                     photos.clear()
@@ -128,9 +130,5 @@ class SettingsFragment : Fragment() {
         }
 
     }
-    companion object{
-        const val TAG = "SettingsFragment"
-    }
-
 }
 

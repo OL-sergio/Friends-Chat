@@ -15,6 +15,19 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.ActivityRegisterBinding
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.COVER
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.COVER_URL
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.FIREBASE_UID
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.FULL_NAME
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.PHONE_NUMBER
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.PROFILE
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.PROFILE_URL
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.SEARCH
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.SEARCH_NAME
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.STATUS
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.STATUS_OFFLINE
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.USERS
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.USER_NAME
 import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.ui.security.PasswordStrength
 import ipca.am2.projeto2122.friendschat.ui.security.StrengthLevel
@@ -114,18 +127,18 @@ class RegisterActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     firebaseUserID = mAuth.currentUser!!.uid
-                    refUsers = FirebaseDatabase.getInstance().reference.child("Users")
+                    refUsers = FirebaseDatabase.getInstance().reference.child(USERS)
                         .child(firebaseUserID)
 
                     val userHashMap = HashMap<String, Any>()
-                    userHashMap["uid"] = firebaseUserID
-                    userHashMap["userName"] = userName
-                    userHashMap["phoneNumber"] = phoneNumber
-                    userHashMap["fullName"] = fullName
-                    userHashMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/profileBaseIcon%2FProfile-Icon.png?alt=media&token=18b43258-5839-4f4b-9712-daf99d44a2e2"
-                    userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/backgroundBaseIcon%2Fbase_background.jpg?alt=media&token=f18e2d04-1665-4d6d-a23b-310434425e19"
-                    userHashMap["status"] = "offline"
-                    userHashMap["search"] = userName.lowercase(Locale.getDefault())
+                    userHashMap[FIREBASE_UID] = firebaseUserID
+                    userHashMap[USER_NAME] = userName
+                    userHashMap[PHONE_NUMBER] = phoneNumber
+                    userHashMap[FULL_NAME] = fullName
+                    userHashMap[PROFILE] = PROFILE_URL
+                    userHashMap[COVER] = COVER_URL
+                    userHashMap[STATUS] = STATUS_OFFLINE
+                    userHashMap[SEARCH_NAME] = userName.lowercase(Locale.getDefault())
 
                     refUsers.updateChildren(userHashMap)
                         .addOnCompleteListener { task ->

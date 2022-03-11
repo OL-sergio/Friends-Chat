@@ -6,18 +6,17 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import ipca.am2.projeto2122.friendschat.MainActivity
-import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.ActivityLoginBinding
 import ipca.am2.projeto2122.friendschat.ui.database.Preference
 import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.ui.model.PrefEmail
-import ipca.am2.projeto2122.friendschat.ui.fragments.frag.settings.AddPhotoProfileActivity
+import ipca.am2.projeto2122.friendschat.ui.AddPhotoProfileActivity
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.EMPTY_STRING
 
 
 class LoginActivity : AppCompatActivity() {
@@ -56,12 +55,12 @@ class LoginActivity : AppCompatActivity() {
             val password    : String = _binding.editTextPassword.text.toString()
 
             when {
-                email == "" -> {
+                email == EMPTY_STRING -> {
 
                     Toast.makeText(this@LoginActivity, "Please write Email.", Toast.LENGTH_SHORT)
                         .show()
                 }
-                password == "" -> {
+                password == EMPTY_STRING -> {
 
                     Toast.makeText(this@LoginActivity, "Please write Password.", Toast.LENGTH_SHORT)
                         .show()
@@ -83,7 +82,8 @@ class LoginActivity : AppCompatActivity() {
                                     .add(emailPref.setEmailHash())
                                     .addOnSuccessListener { documentReference ->
 
-                                        Log.d(AddPhotoProfileActivity.TAG,
+                                        Log.d(
+                                            AddPhotoProfileActivity.TAG,
                                             "DocumentSnapShot added with ID: ${documentReference.id}"
                                         )
 

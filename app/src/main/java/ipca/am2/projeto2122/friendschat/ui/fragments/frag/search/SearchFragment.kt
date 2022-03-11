@@ -18,6 +18,9 @@ import com.google.firebase.database.ValueEventListener
 import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.FragmentSearchBinding
 import ipca.am2.projeto2122.friendschat.ui.Adapter.UserAdapter
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.EMPTY_STRING
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.SEARCH
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.USERS
 import ipca.am2.projeto2122.friendschat.ui.model.Users
 import java.util.*
 import kotlin.collections.ArrayList
@@ -46,7 +49,8 @@ class SearchFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recycler_view_chatlist_search)
         recyclerView = binding.recyclerviewSearchList
-        recyclerView!!.layoutManager = LinearLayoutManager(view.context,LinearLayoutManager.VERTICAL, false)
+        recyclerView!!.layoutManager = LinearLayoutManager(view.context,
+            LinearLayoutManager.VERTICAL, false)
         recyclerView!!.setHasFixedSize(true)
 
         val adapterUserAdapter = userAdapter
@@ -76,7 +80,7 @@ class SearchFragment : Fragment() {
         val firebaseUserID = FirebaseAuth.getInstance().currentUser!!.uid
 
         val queryUsers = FirebaseDatabase.getInstance().reference
-            .child("Users").orderByChild("search")
+            .child(USERS).orderByChild(SEARCH)
             .startAt(search)
             .endAt(search + "\uf8ff")
 
@@ -104,12 +108,12 @@ class SearchFragment : Fragment() {
     private fun retrieveAllUsers() {
         val firebaseUserID = FirebaseAuth.getInstance().currentUser!!.uid
 
-        val referenceUsers = FirebaseDatabase.getInstance().reference.child("Users")
+        val referenceUsers = FirebaseDatabase.getInstance().reference.child(USERS)
 
         referenceUsers.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 (mUsers as ArrayList<Users>).clear()
-                if (searchUserEditText!!.text.toString() == ""){
+                if (searchUserEditText!!.text.toString() == EMPTY_STRING){
                     for (snapshot in p0.children){
                         val user: Users? = snapshot.getValue(Users::class.java)
                         if(!(user!!.getUID()).equals(firebaseUserID)){
@@ -122,6 +126,7 @@ class SearchFragment : Fragment() {
 
             }
             override fun onCancelled(p0: DatabaseError) {
+
 
             }
 
