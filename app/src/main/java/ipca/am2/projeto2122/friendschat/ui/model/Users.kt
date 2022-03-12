@@ -9,6 +9,7 @@ class Users {
 
     private var uid         : String = ""
     private var userName    : String = ""
+    private var email       : String = "EmailTest"
     private var phoneNumber : String = ""
     private var fullName    : String = ""
     private var profile     : String = ""
@@ -22,6 +23,7 @@ class Users {
 
         uid: String,
         userName: String,
+        email: String,
         phoneNumber: String,
         fullName: String,
         profile: String,
@@ -31,14 +33,15 @@ class Users {
 
     )
     {
-        this.uid        = uid
-        this.userName   = userName
-        this.phoneNumber= phoneNumber
-        this.fullName   = fullName
-        this.profile    = profile
-        this.cover      = cover
-        this.status     = status
-        this.search     = search
+        this.uid         = uid
+        this.userName    = userName
+        this.email       = email
+        this.phoneNumber = phoneNumber
+        this.fullName    = fullName
+        this.profile     = profile
+        this.cover       = cover
+        this.status      = status
+        this.search      = search
     }
 
     fun getUID(): String?{
@@ -55,6 +58,14 @@ class Users {
 
     fun setUsername(userName: String){
         this.userName = userName
+    }
+
+    fun getEmail(): String?{
+        return email
+    }
+
+    fun setEmail(email: String){
+        this.email = email
     }
 
     fun getPhoneNumber(): String?{

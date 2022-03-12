@@ -1,14 +1,10 @@
 package ipca.am2.projeto2122.friendschat.ui.entry
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -17,12 +13,12 @@ import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.ActivityRegisterBinding
 import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.COVER
 import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.COVER_URL
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.EMAIL
 import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.FIREBASE_UID
 import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.FULL_NAME
 import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.PHONE_NUMBER
 import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.PROFILE
 import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.PROFILE_URL
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.SEARCH
 import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.SEARCH_NAME
 import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.STATUS
 import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.STATUS_OFFLINE
@@ -93,8 +89,8 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun displayStrengthLevel(strengthLevel: StrengthLevel) {
-        _binding.buttonSignUpUser.isEnabled = strengthLevel == StrengthLevel.VeryStrong
 
+        _binding.buttonSignUpUser.isEnabled = strengthLevel == StrengthLevel.VeryStrong
         _binding.textViewStrengthLevel.text = strengthLevel.name
         _binding.textViewStrengthLevel.setTextColor(ContextCompat.getColor(this, color))
         _binding.imageViewStrengthLevel.setColorFilter(ContextCompat.getColor(this, color))
@@ -135,6 +131,7 @@ class RegisterActivity : AppCompatActivity() {
                     userHashMap[USER_NAME] = userName
                     userHashMap[PHONE_NUMBER] = phoneNumber
                     userHashMap[FULL_NAME] = fullName
+                    userHashMap[EMAIL] = email
                     userHashMap[PROFILE] = PROFILE_URL
                     userHashMap[COVER] = COVER_URL
                     userHashMap[STATUS] = STATUS_OFFLINE

@@ -175,11 +175,8 @@ class MessageChatActivity : AppCompatActivity() {
 
                         (mChatList as ArrayList<Chat>).add(chat)
                     }
-                    chatsAdapter = ChatAdapter(
-                        baseContext!!,
-                        (mChatList!! as ArrayList<Chat>),
-                        receiverImageUrl!!
-                    )
+                    chatsAdapter = ChatAdapter(baseContext!!, (mChatList!! as ArrayList<Chat>),
+                        receiverImageUrl!!)
                     _binding!!.recyclerViewChats.adapter = chatsAdapter
                 }
             }

@@ -15,8 +15,8 @@ import ipca.am2.projeto2122.friendschat.databinding.ActivityLoginBinding
 import ipca.am2.projeto2122.friendschat.ui.database.Preference
 import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.ui.model.PrefEmail
-import ipca.am2.projeto2122.friendschat.ui.AddPhotoProfileActivity
 import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.EMPTY_STRING
+import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.TAG
 
 
 class LoginActivity : AppCompatActivity() {
@@ -82,14 +82,12 @@ class LoginActivity : AppCompatActivity() {
                                     .add(emailPref.setEmailHash())
                                     .addOnSuccessListener { documentReference ->
 
-                                        Log.d(
-                                            AddPhotoProfileActivity.TAG,
-                                            "DocumentSnapShot added with ID: ${documentReference.id}"
+                                        Log.d(TAG,"DocumentSnapShot added with ID: ${documentReference.id}"
                                         )
 
                                     }.addOnFailureListener { e ->
 
-                                        Log.w(AddPhotoProfileActivity.TAG, "Error adding Document", e)
+                                        Log.w(TAG,"Error adding Document", e)
 
                                     }
 

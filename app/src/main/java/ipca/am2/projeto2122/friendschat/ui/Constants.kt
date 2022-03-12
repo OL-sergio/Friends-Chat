@@ -34,6 +34,7 @@ public class Constants {
         const val USER_NAME = "userName"
         const val PHONE_NUMBER = "phoneNumber"
         const val FULL_NAME = "fullName"
+        const val EMAIL = "email"
         const val PROFILE = "profile"
         const val COVER = "cover"
         const val STATUS = "status"
@@ -41,5 +42,8 @@ public class Constants {
         const val STATUS_OFFLINE = "offline"
         const val PROFILE_URL = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/profileBaseIcon%2FProfile-Icon.png?alt=media&token=18b43258-5839-4f4b-9712-daf99d44a2e2"
         const val COVER_URL = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/backgroundBaseIcon%2Fbase_background.jpg?alt=media&token=f18e2d04-1665-4d6d-a23b-310434425e19"
+
+        // Settings String
+        const val USER_IMAGES = "User Images"
     }
 }
