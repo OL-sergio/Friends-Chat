@@ -2,8 +2,11 @@ package ipca.am2.projeto2122.friendschat.ui.fragments.settings
 
 import android.app.Activity
 import android.content.Intent
+import android.content.Intent.ACTION_GET_CONTENT
+import android.content.Intent.ACTION_PICK
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,6 +44,7 @@ class SettingsFragment : Fragment() {
     private var imageUri : Uri? = null
     private val RequestCode = 438
     private var coverChecker : String = EMPTY_STRING
+
 
 
     var firebaseCurrentUser         : FirebaseUser?      = null
@@ -108,9 +112,8 @@ class SettingsFragment : Fragment() {
 
 
     private fun pickImage() {
-       val intent = Intent()
-        intent.type = IMAGE_USER
-        intent.action = Intent.ACTION_GET_CONTENT
+       val intent = Intent(Intent.ACTION_PICK)
+
         startActivityForResult(intent, RequestCode)
 
     }
