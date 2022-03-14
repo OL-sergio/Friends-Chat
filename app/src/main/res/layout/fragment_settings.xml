@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.frag.settings.SettingsFragment">
+    android:background="@color/background"
+    tools:context=".ui.fragments.settings.SettingsFragment">
 
 
     <ImageView
@@ -14,7 +15,6 @@
         android:layout_height="300dp"
         android:src="@drawable/ic_background_bottom_round_border"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
@@ -23,7 +23,7 @@
         android:id="@+id/imageView_settings_user_profile"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/ic_settings_background"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_user_account"
@@ -81,15 +81,14 @@
         app:layout_constraintVertical_bias="0.0" />
 
 
-
     <TextView
         android:id="@+id/textView_FullName"
-        android:layout_width="200dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:text="@string/full_name"
         android:textAlignment="center"
-        android:textColor="@color/text_color_Title"
+        android:textColor="@color/background"
         android:textSize="@dimen/text_register_title_screen"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_background"
@@ -97,7 +96,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_settings_user_profile"
         app:layout_constraintVertical_bias="0.0" />
-
 
     <ImageView
         android:id="@+id/profile_image"

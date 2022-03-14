@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.fragments.frag.search
+package ipca.am2.projeto2122.friendschat.ui.fragments.search
 
 import android.os.Bundle
 import android.text.Editable
@@ -18,9 +18,9 @@ import com.google.firebase.database.ValueEventListener
 import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.FragmentSearchBinding
 import ipca.am2.projeto2122.friendschat.ui.Adapter.UserAdapter
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.EMPTY_STRING
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.SEARCH
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.USERS
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.SEARCH
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
 import ipca.am2.projeto2122.friendschat.ui.model.Users
 import java.util.*
 import kotlin.collections.ArrayList
@@ -133,11 +133,5 @@ class SearchFragment : Fragment() {
         })
 
     }
-
-   /* override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }*/
-
 
 }

@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.fragments.frag.chat
+package ipca.am2.projeto2122.friendschat.ui.fragments.chat
 
 import android.os.Bundle
 import android.view.*

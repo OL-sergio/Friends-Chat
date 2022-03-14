@@ -1,5 +1,6 @@
 package ipca.am2.projeto2122.friendschat.ui.entry
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -11,23 +12,23 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.ActivityRegisterBinding
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.COVER
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.COVER_URL
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.EMAIL
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.FIREBASE_UID
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.FULL_NAME
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.PHONE_NUMBER
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.PROFILE
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.PROFILE_URL
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.SEARCH_NAME
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.STATUS
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.STATUS_OFFLINE
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.USERS
-import ipca.am2.projeto2122.friendschat.ui.Constants.Companion.USER_NAME
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.COVER
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.COVER_URL
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMAIL
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.FIREBASE_UID
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.FULL_NAME
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.PHONE_NUMBER
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.PROFILE
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.PROFILE_URL
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.SEARCH_NAME
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.STATUS
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.STATUS_OFFLINE
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USER_NAME
 import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.ui.security.PasswordStrength
 import ipca.am2.projeto2122.friendschat.ui.security.StrengthLevel
-
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -38,8 +39,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
 
     private lateinit var refUsers: DatabaseReference
-    private var firebaseUserID: String = ""
-
+    private var firebaseUserID: String = EMPTY_STRING
 
     private var color: Int = R.color.weak
 
@@ -140,7 +140,7 @@ class RegisterActivity : AppCompatActivity() {
                     refUsers.updateChildren(userHashMap)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                val intent = Intent(baseContext, LoginActivity::class.java)
+                                val intent = Intent(applicationContext, LoginActivity::class.java)
                                 startActivity(intent)
                                 finish()
                             }
@@ -155,6 +155,7 @@ class RegisterActivity : AppCompatActivity() {
 
                 }
             }
+
     }
 }
 

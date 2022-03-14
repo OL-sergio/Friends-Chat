@@ -5,13 +5,12 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@color/background_splash"
-tools:context=".ui.fragments.frag.chat.ChatFragment">
+tools:context=".ui.fragments.chat.ChatFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_chatlist_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/ic_background_recyclerview">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:background="@drawable/ic_background_recyclerview" />
 
 </RelativeLayout>

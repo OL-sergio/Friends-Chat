@@ -14,17 +14,14 @@
 
     <application
         android:usesCleartextTraffic="true"
+        android:hardwareAccelerated="false"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FriendsChat">
-        <activity
-            android:name="ipca.am2.projeto2122.friendschat.ui.AddPhotoProfileActivity"
-            android:exported="false"
-            android:label="@string/title_activity_add_photo_profile"
-            android:theme="@style/Theme.FriendsChat.NoActionBar" />
+
         <activity
             android:name=".MessageChatActivity"
             android:exported="false" />
@@ -33,9 +30,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.entry.RegisterActivity"
-            android:exported="false"
-            android:label="@string/title_activity_register"
-            android:theme="@style/Theme.FriendsChat.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".ui.entry.LoginActivity"
             android:exported="false" />

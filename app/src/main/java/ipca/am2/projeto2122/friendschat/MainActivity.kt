@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import ipca.am2.projeto2122.friendschat.databinding.ActivityMainBinding
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
 import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.ui.model.Users
 import java.lang.NullPointerException
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
         referentUser = FirebaseDatabase.getInstance().reference
-            .child("Users")
+            .child(USERS)
             .child(firebaseUser!!.uid)
 
         val toolbarMain = _binding!!.toolbarMain

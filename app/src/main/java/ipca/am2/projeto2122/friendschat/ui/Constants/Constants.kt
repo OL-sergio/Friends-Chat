@@ -1,24 +1,22 @@
-package ipca.am2.projeto2122.friendschat.ui
+package ipca.am2.projeto2122.friendschat.ui.Constants
 
 
 public class Constants {
 
     companion object {
 
-
+        // Global Strings
         const val EMPTY_STRING = ""
-
         const val ID = "id"
         const val USERS = "Users"
         const val CHATS = "Chats"
         const val VISIT_USER_ID = "visitUser_id"
         const val CHATS_LISTS = "ChatList"
         const val SEARCH = "search"
-        const val IMAGE_USER_PROFILE = "imageUserProfile"
 
+        //
         const val MESSAGE_EMPTY = "Please write something"
-
-        const val TAG = "SettingsFragment"
+        const val TAG = "Login Activity"
 
 
         // Hashmap Strings message chat
@@ -40,10 +38,11 @@ public class Constants {
         const val STATUS = "status"
         const val SEARCH_NAME = "search"
         const val STATUS_OFFLINE = "offline"
-        const val PROFILE_URL = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/profileBaseIcon%2FProfile-Icon.png?alt=media&token=18b43258-5839-4f4b-9712-daf99d44a2e2"
-        const val COVER_URL = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/backgroundBaseIcon%2Fbase_background.jpg?alt=media&token=f18e2d04-1665-4d6d-a23b-310434425e19"
+        const val PROFILE_URL = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/imageUsers%2FProfile-Icon.png?alt=media&token=5c46a417-9164-4bea-b4e9-8f59a24fcd6c"
+        const val COVER_URL = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/imageUsers%2Fbase_background.png?alt=media&token=847e3e06-72bb-4ede-b858-c4806f80cced"
 
         // Settings String
-        const val USER_IMAGES = "User Images"
+        const val IMAGE_USER = "imageUsers/"
+        const val USERS_REFERENCE = " Users image"
     }
 }

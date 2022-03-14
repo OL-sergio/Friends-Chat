@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background_splash"
-    tools:context=".ui.fragments.frag.search.SearchFragment">
+    tools:context=".ui.fragments.search.SearchFragment">
 
     <EditText
         android:id="@+id/editText_search_users"
