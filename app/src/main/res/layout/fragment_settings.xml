@@ -10,30 +10,30 @@
 
 
     <ImageView
-        android:id="@+id/imageView_settings_background"
+        android:id="@+id/imageView_settings_user_background"
         android:layout_width="0dp"
         android:layout_height="300dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_background_bottom_round_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView_settings_user_profile"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/ic_settings_background"
-        android:scaleType="fitCenter"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="250dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_user_account"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_background"
+        android:background="@drawable/ic_settings_background"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_user_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_Settings_User_Name"
@@ -48,7 +48,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_background" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_user_background" />
 
     <TextView
         android:id="@+id/textView_PhoneNumber"
@@ -87,11 +87,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="@string/full_name"
-        android:textAlignment="center"
-        android:textColor="@color/background"
+        android:textAlignment="textStart"
+        android:paddingStart="12dp"
+        android:textColor="@color/button_sign_in_color"
         android:textSize="@dimen/text_register_title_screen"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_background"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_user_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_settings_user_profile"
@@ -105,9 +106,9 @@
         android:background="@drawable/ic_settings_background"
         android:scaleType="fitXY"
         android:src="@drawable/ic_phone"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_background"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_user_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_background"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_user_background"
         android:contentDescription="@string/todo" />
 
 
@@ -119,9 +120,9 @@
         android:background="@drawable/ic_settings_background"
         android:scaleType="fitXY"
         android:src="@drawable/ic_chatting"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_background"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_settings_user_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_background"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_settings_user_background"
         android:contentDescription="@string/todo" />
 
     <TextView

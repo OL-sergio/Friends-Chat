@@ -23,12 +23,9 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
-import com.squareup.picasso.Request
-import io.grpc.Context
 import ipca.am2.projeto2122.friendschat.databinding.FragmentSettingsBinding
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.COVER
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.IMAGE_USER
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.PROFILE
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS_REFERENCE
@@ -42,7 +39,7 @@ class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
     private var imageUri : Uri? = null
-    private val RequestCode = 438
+    private val mRequestCode = 438
     private var coverChecker : String = EMPTY_STRING
 
 
@@ -69,7 +66,7 @@ class SettingsFragment : Fragment() {
         val viewFullName        = _binding!!.textViewFullName
         val viewPhoneNumber     = _binding!!.textViewPhoneNumber
         val viewUserEmail       = _binding!!.textViewEmail
-        val viewBackCover       = _binding!!.imageViewSettingsBackground
+        val viewBackgroundCover = _binding!!.imageViewSettingsUserBackground
         val viewImageProfile    = _binding!!.imageViewSettingsUserProfile
 
         userReferenceDatabase!!.addValueEventListener(object : ValueEventListener{
@@ -82,7 +79,7 @@ class SettingsFragment : Fragment() {
                         viewFullName.text = user.getFullName()
                         viewPhoneNumber.text = user.getPhoneNumber()
                         viewUserEmail.text = user.getEmail()
-                        Picasso.get().load(user.getCover()).into(viewBackCover)
+                        Picasso.get().load(user.getCover()).into(viewBackgroundCover)
                         Picasso.get().load(user.getProfile()).into(viewImageProfile)
 
                    }
@@ -94,7 +91,8 @@ class SettingsFragment : Fragment() {
             }
         })
 
-        viewBackCover.setOnClickListener {
+        viewBackgroundCover.setOnClickListener {
+            coverChecker = PROFILE
             pickImage()
 
         }
@@ -110,18 +108,18 @@ class SettingsFragment : Fragment() {
     }
 
 
-
     private fun pickImage() {
-       val intent = Intent(Intent.ACTION_PICK)
 
-        startActivityForResult(intent, RequestCode)
-
+        val intent =  Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(intent, mRequestCode)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode,  data)
 
-        if (RequestCode == requestCode && resultCode == Activity.RESULT_OK && data!!.data != null){
+        if (requestCode == mRequestCode  && resultCode == Activity.RESULT_OK && data!!.data != null){
             imageUri = data.data
             Toast.makeText(context, "Uploading Image...", Toast.LENGTH_LONG).show()
             uploadImageToDatabase()
@@ -148,18 +146,18 @@ class SettingsFragment : Fragment() {
             }).addOnCompleteListener { task ->
                 if (task.isSuccessful){
                     val downLoadUrl = task.result
-                    val mUrl = downLoadUrl.toString()
+                    val mUri = downLoadUrl.toString()
 
                     if (coverChecker == COVER){
-                        val mapCoverImage = HashMap<String, Any>()
-                        mapCoverImage[COVER] = mUrl
-                        userReferenceDatabase!!.updateChildren(mapCoverImage)
+                        val mapProfileImage  = HashMap<String, Any>()
+                        mapProfileImage[PROFILE] = mUri
+                        userReferenceDatabase!!.updateChildren(mapProfileImage)
                         coverChecker = EMPTY_STRING
 
                     } else {
-                        val mapProfileImage  = HashMap<String, Any>()
-                        mapProfileImage[PROFILE] = mUrl
-                        userReferenceDatabase!!.updateChildren(mapProfileImage)
+                        val mapCoverImage = HashMap<String, Any>()
+                        mapCoverImage[COVER] = mUri
+                        userReferenceDatabase!!.updateChildren(mapCoverImage)
                         coverChecker = EMPTY_STRING
                     }
                 }
