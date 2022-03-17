@@ -1,6 +1,7 @@
 package ipca.am2.projeto2122.friendschat.ui.fragments.settings
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
 import android.content.Intent.ACTION_PICK
@@ -128,6 +129,10 @@ class SettingsFragment : Fragment() {
     }
 
     private fun uploadImageToDatabase() {
+        val progressBar = ProgressDialog(context)
+        progressBar.setMessage("Image is Uploading")
+        progressBar.show()
+
         if (imageUri != null){
             val fileReference = referenceStorage!!.child(System
                 .currentTimeMillis().toString() + ".png")
@@ -137,12 +142,11 @@ class SettingsFragment : Fragment() {
 
             uploadTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>>{ task ->
                 if (!task.isSuccessful){
-                 task.exception!!.let{
+                    task.exception!!.let{
                      throw it
-                 }
+                    }
                 }
                 return@Continuation fileReference.downloadUrl
-
             }).addOnCompleteListener { task ->
                 if (task.isSuccessful){
                     val downLoadUrl = task.result
@@ -160,6 +164,7 @@ class SettingsFragment : Fragment() {
                         userReferenceDatabase!!.updateChildren(mapCoverImage)
                         coverChecker = EMPTY_STRING
                     }
+                    progressBar.dismiss()
                 }
 
             }
