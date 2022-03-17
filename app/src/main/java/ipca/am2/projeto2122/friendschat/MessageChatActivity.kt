@@ -146,8 +146,6 @@ class MessageChatActivity : AppCompatActivity() {
                         }
 
                     })
-                    val referenceDatabase = FirebaseDatabase.getInstance().reference.child(USERS)
-                        .child(firebaseUser!!.uid)
                 }
             }
 
