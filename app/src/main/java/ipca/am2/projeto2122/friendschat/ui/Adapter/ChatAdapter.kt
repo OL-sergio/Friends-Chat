@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import ipca.am2.projeto2122.friendschat.R
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
 import ipca.am2.projeto2122.friendschat.ui.model.Chat
 
 
@@ -25,7 +26,7 @@ class ChatAdapter (
             private val mContext    : Context
             private val mChatList   : List<Chat>
             private val imageURL    : String
-            var firebaseUser : FirebaseUser = FirebaseAuth.getInstance().currentUser!!
+            private var firebaseUser : FirebaseUser = FirebaseAuth.getInstance().currentUser!!
 
             init {
                 this.mChatList  = mChatList
@@ -57,14 +58,14 @@ class ChatAdapter (
 
         //Picasso.get().load(imageURL).into(holder.userProfileImage)
 
-        if (chat.getMessage() == SEND_IMAGE && !chat.getUrl().equals(URl)) {
-            if (chat.getSenderID() == firebaseUser!!.uid){
+        if (chat.getMessage() == SEND_IMAGE && !chat.getUrl().equals(EMPTY_STRING)) {
+            if (chat.getSenderID() == firebaseUser.uid){
                 holder.showTextMessage!!.visibility = View.GONE
                 holder.rightImageView!!.visibility = View.VISIBLE
                 Picasso.get().load(chat.getUrl()).into(holder.rightImageView)
 
             }
-            else if (chat.getSenderID() != firebaseUser!!.uid) {
+            else if (chat.getSenderID() != firebaseUser.uid) {
                 holder.showTextMessage!!.visibility = View.GONE
                 holder.leftImageView!!.visibility = View.VISIBLE
                 Picasso.get().load(chat.getUrl()).into(holder.leftImageView)
@@ -92,7 +93,7 @@ class ChatAdapter (
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (mChatList[position].getSenderID().equals(firebaseUser!!.uid)){
+        return if (mChatList[position].getSenderID().equals(firebaseUser.uid)){
             1
         }else{
             0
@@ -100,7 +101,6 @@ class ChatAdapter (
     }
 
     companion object{
-        const val URl = ""
         const val SEND_IMAGE = "sent you an image"
     }
 }
