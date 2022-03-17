@@ -76,10 +76,10 @@ class SettingsFragment : Fragment() {
                    val user: Users? = snapshot.getValue(Users::class.java)
 
                    if (context != null){
-                        viewUserName.text = user!!.getUsername()
-                        viewFullName.text = user.getFullName()
-                        viewPhoneNumber.text = user.getPhoneNumber()
-                        viewUserEmail.text = user.getEmail()
+                        viewUserName.text = user!!.getUsername().toString()
+                        viewFullName.text = user.getFullName().toString()
+                        viewPhoneNumber.text = user.getPhoneNumber().toString()
+                        viewUserEmail.text = user.getEmail().toString()
                         Picasso.get().load(user.getCover()).into(viewBackgroundCover)
                         Picasso.get().load(user.getProfile()).into(viewImageProfile)
 

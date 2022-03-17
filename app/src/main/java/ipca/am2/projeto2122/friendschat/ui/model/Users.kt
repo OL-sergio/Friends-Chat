@@ -9,7 +9,7 @@ class Users {
 
     private var uid         : String = ""
     private var userName    : String = ""
-    private var email       : String = "EmailTest"
+    private var email       : String = ""
     private var phoneNumber : String = ""
     private var fullName    : String = ""
     private var profile     : String = ""
