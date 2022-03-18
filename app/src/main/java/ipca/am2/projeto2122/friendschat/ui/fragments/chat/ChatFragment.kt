@@ -15,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import ipca.am2.projeto2122.friendschat.databinding.FragmentChatBinding
 import ipca.am2.projeto2122.friendschat.ui.Adapter.UserAdapter
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.CHATS_LISTS
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
 import ipca.am2.projeto2122.friendschat.ui.model.ChatList
 import ipca.am2.projeto2122.friendschat.ui.model.Users
 
@@ -26,31 +27,32 @@ class ChatFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private var mUserAdapter    : UserAdapter? = null
+    private var userAdapter     : UserAdapter? = null
     private var mUsers          : List<Users>? = null
     private var mUsersChatList  : List<ChatList>? = null
-    private var mFirebaseUser   : FirebaseUser? = null
-    lateinit var recyclerViewListChat : RecyclerView
+    private var firebaseUser    : FirebaseUser? = null
+    private lateinit var recyclerViewChatListWithMessages : RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentChatBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        recyclerViewListChat = _binding!!.recyclerViewChatListMessages
-        recyclerViewListChat.setHasFixedSize(true)
-        recyclerViewListChat.layoutManager = LinearLayoutManager(context)
+        recyclerViewChatListWithMessages = _binding!!.recyclerViewChatListMessages
+        recyclerViewChatListWithMessages.setHasFixedSize(true)
+        recyclerViewChatListWithMessages.layoutManager = LinearLayoutManager(context,
+             LinearLayoutManager.VERTICAL, false)
 
-        mFirebaseUser = FirebaseAuth.getInstance().currentUser
+        firebaseUser = FirebaseAuth.getInstance().currentUser
         mUsersChatList = ArrayList()
 
         val referenceDatabase = FirebaseDatabase.getInstance().reference
             .child(CHATS_LISTS)
-            .child(mFirebaseUser!!.uid)
+            .child(firebaseUser!!.uid)
 
         referenceDatabase.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
@@ -69,6 +71,30 @@ class ChatFragment : Fragment() {
     }
 
     private fun retrieveChatList() {
+        mUsers = ArrayList()
+
+        val referenceDatabase = FirebaseDatabase.getInstance().reference.child(USERS)
+        referenceDatabase.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                (mUsers as ArrayList).clear()
+                for (snapshot in p0.children){
+                 val user = snapshot.getValue(Users::class.java)
+                    for (eachChatList in mUsersChatList!!){
+                     if (user!!.getUID().equals(eachChatList.getID())){
+                         (mUsers as ArrayList).add(user)
+                     }
+                    }
+                }
+                userAdapter = context?.let { UserAdapter(it,(mUsers as ArrayList<Users>), true) }
+                recyclerViewChatListWithMessages.adapter = userAdapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+
+        })
 
     }
 

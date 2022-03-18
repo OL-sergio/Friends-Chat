@@ -47,9 +47,8 @@ class SearchFragment : Fragment() {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val view: View = binding.root
 
-        recyclerView = view.findViewById(R.id.recycler_view_chatlist_search)
-        recyclerView = binding.recyclerviewSearchList
-        recyclerView!!.layoutManager = LinearLayoutManager(view.context,
+        recyclerView = _binding!!.recyclerviewSearchList
+        recyclerView!!.layoutManager = LinearLayoutManager(context,
             LinearLayoutManager.VERTICAL, false)
         recyclerView!!.setHasFixedSize(true)
 
@@ -120,7 +119,7 @@ class SearchFragment : Fragment() {
                             (mUsers as ArrayList<Users>).add(user)
                         }
                     }
-                    userAdapter = UserAdapter(context!!, mUsers!!, false)
+                    userAdapter = context?.let { UserAdapter(it, mUsers!!, false) }
                     binding.recyclerviewSearchList.adapter = userAdapter
                 }
 
