@@ -1,6 +1,5 @@
-package ipca.am2.projeto2122.friendschat.ui.entry
+package ipca.am2.projeto2122.friendschat.ui.Activitys.entry
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -26,7 +25,7 @@ import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.STATUS
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.STATUS_OFFLINE
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USER_NAME
-import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
+import ipca.am2.projeto2122.friendschat.ui.Activitys.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.ui.security.PasswordStrength
 import ipca.am2.projeto2122.friendschat.ui.security.StrengthLevel
 import java.util.*

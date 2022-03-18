@@ -15,9 +15,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.FragmentSearchBinding
-import ipca.am2.projeto2122.friendschat.ui.Adapter.UserAdapter
+import ipca.am2.projeto2122.friendschat.ui.Adapters.UserAdapter
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.SEARCH
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS

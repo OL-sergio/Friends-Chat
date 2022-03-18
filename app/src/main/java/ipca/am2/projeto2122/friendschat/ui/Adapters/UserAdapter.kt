@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.Adapter
+package ipca.am2.projeto2122.friendschat.ui.Adapters
 
 import android.content.Context
 import android.content.DialogInterface
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import ipca.am2.projeto2122.friendschat.R
-import ipca.am2.projeto2122.friendschat.MessageChatActivity
+import ipca.am2.projeto2122.friendschat.ui.Activitys.MessageChatActivity
 import ipca.am2.projeto2122.friendschat.ui.model.Users
 
 
@@ -65,11 +65,12 @@ class UserAdapter(
         holder.itemView.setOnClickListener {
 
             val options = arrayOf<CharSequence>(
-                "Send Message"
+                "Send a message"
             )
 
             val builder : AlertDialog.Builder = AlertDialog.Builder(mContext)
             builder.setTitle("What do you want?")
+
             builder.setItems(options, DialogInterface.OnClickListener { dialog, position ->
                 if (position == 0 ){
                     val intent = Intent(mContext, MessageChatActivity::class.java )

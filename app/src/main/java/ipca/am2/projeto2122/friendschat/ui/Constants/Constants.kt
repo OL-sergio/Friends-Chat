@@ -21,15 +21,18 @@ public class Constants {
         const val TAG = "Login Activity"
 
 
-        // Hashmap Strings message chat
+        // Message Chat Strings
         const val SENDER_ID = "senderID"
         const val RECEIVER_ID = "receiverID"
         const val MESSAGE = "message"
         const val IS_SEEN = "isSeen"
         const val URL = "uRl"
         const val MESSAGE_ID = "messageID"
+        const val TAG_CHAT = "CHAT"
+        const val SEND_IMAGE = "Sent you an image"
 
-        // Hashmap Strings on Register
+
+        // Register Strings
         const val FIREBASE_UID = "uid"
         const val USER_NAME = "userName"
         const val PHONE_NUMBER = "phoneNumber"

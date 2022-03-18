@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -19,9 +18,8 @@ import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import ipca.am2.projeto2122.friendschat.databinding.ActivityMainBinding
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
-import ipca.am2.projeto2122.friendschat.ui.intro.WelcomeActivity
+import ipca.am2.projeto2122.friendschat.ui.Activitys.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.ui.model.Users
-import java.lang.NullPointerException
 
 
 class MainActivity : AppCompatActivity() {

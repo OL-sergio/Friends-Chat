@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.intro
+package ipca.am2.projeto2122.friendschat.ui.Activitys.intro
 
 import android.annotation.SuppressLint
 import android.content.Intent

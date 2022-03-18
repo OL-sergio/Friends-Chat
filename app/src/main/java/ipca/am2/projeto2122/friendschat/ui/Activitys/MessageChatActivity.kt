@@ -1,6 +1,5 @@
-package ipca.am2.projeto2122.friendschat
+package ipca.am2.projeto2122.friendschat.ui.Activitys
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +10,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import ipca.am2.projeto2122.friendschat.databinding.ActivityMessageChatBinding
-import ipca.am2.projeto2122.friendschat.ui.Adapter.ChatAdapter
+import ipca.am2.projeto2122.friendschat.ui.Adapters.ChatAdapter
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.CHATS
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.CHATS_LISTS
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
@@ -62,10 +61,10 @@ class MessageChatActivity : AppCompatActivity() {
         firebaseUser = FirebaseAuth.getInstance().currentUser
 
         recyclerViewChats = _binding!!.recyclerViewChats
-        recyclerViewChats!!.setHasFixedSize(true)
-        val linearLayoutManager = LinearLayoutManager(applicationContext)
-        // linearLayoutManager.stackFromEnd = true
-        recyclerViewChats!!.layoutManager = linearLayoutManager
+        recyclerViewChats.setHasFixedSize(true)
+        val linearLayoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false )
+        linearLayoutManager.stackFromEnd = true
+        recyclerViewChats.layoutManager = linearLayoutManager
 
         val adapterChatAdapter = chatsAdapter
         _binding!!.recyclerViewChats.adapter = adapterChatAdapter
@@ -102,7 +101,7 @@ class MessageChatActivity : AppCompatActivity() {
             } else {
                 sendMessageToVisitUser(firebaseUser!!.uid, userVisitID!!, sendMessage)
             }
-            _binding!!.editTextTextMessage.setText("")
+            _binding!!.editTextTextMessage.setText(EMPTY_STRING)
         }
 
     }
