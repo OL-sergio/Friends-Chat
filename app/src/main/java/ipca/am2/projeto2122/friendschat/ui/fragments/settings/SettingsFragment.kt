@@ -27,7 +27,11 @@ import com.squareup.picasso.Picasso
 import ipca.am2.projeto2122.friendschat.databinding.FragmentSettingsBinding
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.COVER
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.IMAGE_TYPE
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.INTENT_IMAGE
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.PROFILE
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.UPLOADING
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.UPLOADING_IMAGE
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS_REFERENCE
 
@@ -112,7 +116,7 @@ class SettingsFragment : Fragment() {
     private fun pickImage() {
 
         val intent =  Intent()
-        intent.type = "image/*"
+        intent.type = INTENT_IMAGE
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(intent, mRequestCode)
     }
@@ -122,7 +126,7 @@ class SettingsFragment : Fragment() {
 
         if (requestCode == mRequestCode  && resultCode == Activity.RESULT_OK && data!!.data != null){
             imageUri = data.data
-            Toast.makeText(context, "Uploading Image...", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, UPLOADING, Toast.LENGTH_LONG).show()
             uploadImageToDatabase()
 
         }
@@ -130,12 +134,12 @@ class SettingsFragment : Fragment() {
 
     private fun uploadImageToDatabase() {
         val progressBar = ProgressDialog(context)
-        progressBar.setMessage("Image is Uploading")
+        progressBar.setMessage(UPLOADING_IMAGE)
         progressBar.show()
 
         if (imageUri != null){
             val fileReference = referenceStorage!!.child(System
-                .currentTimeMillis().toString() + ".png")
+                .currentTimeMillis().toString() + IMAGE_TYPE)
 
             val uploadTask : StorageTask<*>
             uploadTask = fileReference.putFile(imageUri!!)

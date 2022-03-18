@@ -11,8 +11,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
 import ipca.am2.projeto2122.friendschat.databinding.FragmentChatBinding
+
 import ipca.am2.projeto2122.friendschat.ui.Adapter.UserAdapter
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.CHATS_LISTS
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
@@ -46,6 +46,10 @@ class ChatFragment : Fragment() {
         recyclerViewChatListWithMessages.setHasFixedSize(true)
         recyclerViewChatListWithMessages.layoutManager = LinearLayoutManager(context,
              LinearLayoutManager.VERTICAL, false)
+
+        //adapter is not working
+        val adapterUserAdapter = userAdapter
+        binding.recyclerViewChatListMessages.adapter = adapterUserAdapter
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
         mUsersChatList = ArrayList()

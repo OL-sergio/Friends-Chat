@@ -48,14 +48,15 @@ class SearchFragment : Fragment() {
         val view: View = binding.root
 
         recyclerView = _binding!!.recyclerviewSearchList
+        recyclerView!!.setHasFixedSize(true)
         recyclerView!!.layoutManager = LinearLayoutManager(context,
             LinearLayoutManager.VERTICAL, false)
-        recyclerView!!.setHasFixedSize(true)
 
+        //adapter is not working
         val adapterUserAdapter = userAdapter
         binding.recyclerviewSearchList.adapter = adapterUserAdapter
         
-        searchUserEditText = view.findViewById(R.id.editText_search_users)
+        searchUserEditText = _binding!!.editTextSearchUsers
 
         mUsers = ArrayList()
         retrieveAllUsers()
