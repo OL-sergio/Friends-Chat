@@ -27,15 +27,15 @@ import kotlin.collections.ArrayList
 
 class SearchFragment : Fragment() {
 
-
     private var _binding            : FragmentSearchBinding? = null
+    private val binding get() = _binding!!
+
     private var recyclerView        : RecyclerView?          = null
     private var searchUserEditText  : EditText?              = null
     private var mUsers              : List<Users>?           = null
     private var userAdapter         : UserAdapter?           = null
 
 
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,

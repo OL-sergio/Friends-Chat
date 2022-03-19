@@ -46,12 +46,14 @@ public class Constants {
         const val PROFILE_URL = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/imageUsers%2FProfile-Icon.png?alt=media&token=5c46a417-9164-4bea-b4e9-8f59a24fcd6c"
         const val COVER_URL = "https://firebasestorage.googleapis.com/v0/b/friend-s-chat-dbd7b.appspot.com/o/imageUsers%2Fbase_background.png?alt=media&token=847e3e06-72bb-4ede-b858-c4806f80cced"
 
-        // Settings String
+        // Settings Strings
         const val UPLOADING = "Uploading"
         const val UPLOADING_IMAGE = "Image is uploading..."
         const val USERS_REFERENCE = "Users image"
         const val INTENT_IMAGE = "image/*"
         const val IMAGE_TYPE = ".png"
 
+        // ChatAdapter Strings
+        const val SEEN = "Seen"
     }
 }

@@ -43,15 +43,16 @@ class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
+
     private var imageUri : Uri? = null
-    private val mRequestCode = 438
+    private val mRequestCode    = 438
     private var coverChecker : String = EMPTY_STRING
 
 
 
-    var firebaseCurrentUser         : FirebaseUser?      = null
-    var userReferenceDatabase       : DatabaseReference? = null
-    var referenceStorage            : StorageReference?  = null
+    private var firebaseCurrentUser         : FirebaseUser?      = null
+    private var userReferenceDatabase       : DatabaseReference? = null
+    private var referenceStorage            : StorageReference?  = null
 
 
     override fun onCreateView(

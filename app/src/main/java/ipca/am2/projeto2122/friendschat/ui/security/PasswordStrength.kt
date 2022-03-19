@@ -12,10 +12,10 @@ class PasswordStrength : TextWatcher {
     val strengthLevel : MutableLiveData<StrengthLevel> = MutableLiveData()
     val strengthColor : MutableLiveData<Int>    = MutableLiveData()
 
-    var lowerCase: MutableLiveData<Int>     = MutableLiveData(0)
-    var upperCase: MutableLiveData<Int>     = MutableLiveData(0)
-    var digit: MutableLiveData<Int>         = MutableLiveData(0)
-    var specialChar: MutableLiveData<Int>   = MutableLiveData(0)
+    private var lowerCase   : MutableLiveData<Int>  = MutableLiveData(0)
+    private var upperCase   : MutableLiveData<Int>  = MutableLiveData(0)
+    private var digit       : MutableLiveData<Int>  = MutableLiveData(0)
+    private var specialChar : MutableLiveData<Int>  = MutableLiveData(0)
 
 
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}

@@ -19,16 +19,19 @@ import de.hdodenhof.circleimageview.CircleImageView
 import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.CHATS
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.SEEN
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.SEND_IMAGE
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.TAG_CHAT
 import ipca.am2.projeto2122.friendschat.ui.model.Chat
+
+
 
 
 class ChatAdapter (
     mContext    : Context,
     mChatList   : List<Chat>,
     imageURL    : String
-        ): RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
+        ): RecyclerView.Adapter<ChatAdapter.ViewHolder?>() {
 
             private val mContext    : Context
             private val mChatList   : List<Chat>
@@ -89,7 +92,7 @@ class ChatAdapter (
 
         val chat : Chat = mChatList[position]
 
-        //Picasso.get().load(imageURL).into(holder.userProfileImage)
+        Picasso.get().load(imageURL).into(holder.userProfileImage)
 
         if (chat.getMessage().equals(SEND_IMAGE) && !chat.getUrl().equals(EMPTY_STRING)) {
             //Image message - right side
@@ -110,37 +113,8 @@ class ChatAdapter (
             Log.d(TAG_CHAT, chat.getMessage().toString())
             holder.showTextMessage!!.visibility = View.VISIBLE
 
-            holder.showTextMessage!!.setOnClickListener {
-                val options = arrayOf<CharSequence>(
-                    "Delete" ,
-                    "Cancel"
-                )
-                val builder : AlertDialog.Builder = AlertDialog.Builder(holder.itemView.context)
-                builder.setTitle("What do you want?")
 
-                builder.setItems(options, DialogInterface.OnClickListener { dialog, which ->
-                    if (which == 0){
-                     deleteSentMessage(position, holder)
-                    }
-                })
-                builder.show()
-            }
         }
-
-    }
-    private fun deleteSentMessage(position: Int, holder: ChatAdapter.ViewHolder) {
-        val referenceDatabase = FirebaseDatabase.getInstance().reference
-            .child(CHATS).child(mChatList[position].getMessageId()!!)
-            .removeValue()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-                    Toast.makeText(holder.itemView.context,
-                        "Message Deleted", Toast.LENGTH_SHORT).show()
-                }else {
-                    Toast.makeText(holder.itemView.context,
-                        "Failed, on trying to delete message!", Toast.LENGTH_SHORT).show()
-                }
-            }
     }
 }
 

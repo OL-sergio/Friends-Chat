@@ -1,14 +1,20 @@
 package ipca.am2.projeto2122.friendschat.ui.Activitys
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.auth.api.signin.internal.Storage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageTask
 import com.squareup.picasso.Picasso
+import io.grpc.Context
 import ipca.am2.projeto2122.friendschat.databinding.ActivityMessageChatBinding
 import ipca.am2.projeto2122.friendschat.ui.Adapters.ChatAdapter
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.CHATS
@@ -35,7 +41,7 @@ class MessageChatActivity : AppCompatActivity() {
     private lateinit var recyclerViewChats: RecyclerView
 
     var mChatList: List<Chat>? = null
-    var chatsAdapter: ChatAdapter? = null
+    var mChatsAdapter: ChatAdapter? = null
     var firebaseUser: FirebaseUser? = null
 
     var userVisitID: String? = EMPTY_STRING
@@ -52,6 +58,7 @@ class MessageChatActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
+
         toolbarChatMessenger.setNavigationOnClickListener {
             finish()
         }
@@ -66,7 +73,7 @@ class MessageChatActivity : AppCompatActivity() {
         linearLayoutManager.stackFromEnd = true
         recyclerViewChats.layoutManager = linearLayoutManager
 
-        val adapterChatAdapter = chatsAdapter
+        val adapterChatAdapter = mChatsAdapter
         _binding!!.recyclerViewChats.adapter = adapterChatAdapter
 
         referenceDatabase = FirebaseDatabase.getInstance().reference
@@ -172,9 +179,9 @@ class MessageChatActivity : AppCompatActivity() {
 
                         (mChatList as ArrayList<Chat>).add(chat)
                     }
-                    chatsAdapter = ChatAdapter(baseContext!!, (mChatList!! as ArrayList<Chat>),
+                    mChatsAdapter = ChatAdapter(baseContext!!, (mChatList!! as ArrayList<Chat>),
                         receiverImageUrl!!)
-                    _binding!!.recyclerViewChats.adapter = chatsAdapter
+                    _binding!!.recyclerViewChats.adapter = mChatsAdapter
                 }
             }
 
@@ -184,4 +191,22 @@ class MessageChatActivity : AppCompatActivity() {
         })
 
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 438 && resultCode == Activity.RESULT_OK && data != null && data!!.data != null){
+
+            val fileUri = data.data
+            val storageReference = FirebaseDatabase.getInstance().reference.child("Chat Images")
+            val referenceDatabase = FirebaseDatabase.getInstance().reference
+            val messageID = referenceDatabase.push().key
+            val filePath = storageReference.child("$messageID.png")
+
+            val uploadTask : StorageTask<*>
+            //uploadTask = filePath.putFile(fileUri!!)
+
+
+        }
+    }
 }
+
