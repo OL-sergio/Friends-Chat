@@ -2,25 +2,26 @@ package ipca.am2.projeto2122.friendschat.ui.Activitys
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.auth.api.signin.internal.Storage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageTask
+import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
-import io.grpc.Context
 import ipca.am2.projeto2122.friendschat.databinding.ActivityMessageChatBinding
 import ipca.am2.projeto2122.friendschat.ui.Adapters.ChatAdapter
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.CHATS
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.CHATS_LISTS
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.ID
+import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.INTENT_IMAGE
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.IS_SEEN
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.MESSAGE
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.MESSAGE_EMPTY
@@ -32,6 +33,7 @@ import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
 import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.VISIT_USER_ID
 import ipca.am2.projeto2122.friendschat.ui.model.Chat
 import ipca.am2.projeto2122.friendschat.ui.model.Users
+
 
 
 class MessageChatActivity : AppCompatActivity() {
@@ -109,6 +111,13 @@ class MessageChatActivity : AppCompatActivity() {
                 sendMessageToVisitUser(firebaseUser!!.uid, userVisitID!!, sendMessage)
             }
             _binding!!.editTextTextMessage.setText(EMPTY_STRING)
+        }
+
+        _binding!!.imageViewAttachImageFile.setOnClickListener {
+            val intent = Intent()
+            intent.action = Intent.ACTION_GET_CONTENT
+            intent.type = INTENT_IMAGE
+            startActivityForResult(Intent.createChooser(intent, "Select Image"), 438)
         }
 
     }
@@ -197,16 +206,39 @@ class MessageChatActivity : AppCompatActivity() {
         if(requestCode == 438 && resultCode == Activity.RESULT_OK && data != null && data!!.data != null){
 
             val fileUri = data.data
-            val storageReference = FirebaseDatabase.getInstance().reference.child("Chat Images")
+            val referenceStorage = FirebaseStorage.getInstance().reference.child("Chat Images")
             val referenceDatabase = FirebaseDatabase.getInstance().reference
             val messageID = referenceDatabase.push().key
-            val filePath = storageReference.child("$messageID.png")
+            val filePath = referenceStorage.child("$messageID.png")
 
             val uploadTask : StorageTask<*>
-            //uploadTask = filePath.putFile(fileUri!!)
+            uploadTask = filePath.putFile(fileUri!!)
 
+            uploadTask.continueWithTask{ task ->
+                if (!task.isSuccessful){
+                    task.exception?.let {
+                        throw it
+                    }
+                }
+                 filePath.downloadUrl
+            }.addOnCompleteListener { task ->
+                if (task.isSuccessful){
+                    val downloadUrl = task.result
+                    val url = downloadUrl.toString()
 
+                    val uploadImageUpdateHashMap = HashMap<String, Any?>()
+                    uploadImageUpdateHashMap[SENDER_ID] = firebaseUser!!.uid
+                    uploadImageUpdateHashMap[MESSAGE] = "Sent you an image"
+                    uploadImageUpdateHashMap[MESSAGE_ID] = userVisitID
+                    uploadImageUpdateHashMap[IS_SEEN] = false
+                    uploadImageUpdateHashMap[URL] = url
+                    uploadImageUpdateHashMap[MESSAGE_ID] = messageID
+
+                    referenceDatabase.child(CHATS).child(messageID!!).setValue(uploadImageUpdateHashMap)
+                }
+            }
         }
     }
 }
+
 
