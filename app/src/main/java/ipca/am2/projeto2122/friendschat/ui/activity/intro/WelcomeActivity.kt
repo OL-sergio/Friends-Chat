@@ -1,11 +1,11 @@
-package ipca.am2.projeto2122.friendschat.ui.Activitys.intro
+package ipca.am2.projeto2122.friendschat.ui.activity.intro
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ipca.am2.projeto2122.friendschat.databinding.ActivityWelcomeBinding
-import ipca.am2.projeto2122.friendschat.ui.Activitys.entry.LoginActivity
-import ipca.am2.projeto2122.friendschat.ui.Activitys.entry.RegisterActivity
+import ipca.am2.projeto2122.friendschat.ui.activity.entry.LoginActivity
+import ipca.am2.projeto2122.friendschat.ui.activity.entry.RegisterActivity
 
 
 class WelcomeActivity : AppCompatActivity() {

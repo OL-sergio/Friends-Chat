@@ -1,28 +1,22 @@
-package ipca.am2.projeto2122.friendschat.ui.Adapters
+package ipca.am2.projeto2122.friendschat.adapters
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import ipca.am2.projeto2122.friendschat.R
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.CHATS
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.SEEN
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.SEND_IMAGE
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.TAG_CHAT
-import ipca.am2.projeto2122.friendschat.ui.model.Chat
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.EMPTY_STRING
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.SEND_IMAGE
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.TAG_CHAT
+import ipca.am2.projeto2122.friendschat.model.Chat
 
 
 

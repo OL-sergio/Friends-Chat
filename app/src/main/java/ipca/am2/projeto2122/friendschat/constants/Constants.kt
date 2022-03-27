@@ -1,6 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.Constants
-
-import android.os.ProxyFileDescriptorCallback
+package ipca.am2.projeto2122.friendschat.constants
 
 
 public class Constants {

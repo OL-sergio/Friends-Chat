@@ -17,9 +17,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import ipca.am2.projeto2122.friendschat.databinding.ActivityMainBinding
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
-import ipca.am2.projeto2122.friendschat.ui.Activitys.intro.WelcomeActivity
-import ipca.am2.projeto2122.friendschat.ui.model.Users
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.USERS
+import ipca.am2.projeto2122.friendschat.ui.activity.intro.WelcomeActivity
+import ipca.am2.projeto2122.friendschat.model.Users
 
 
 class MainActivity : AppCompatActivity() {

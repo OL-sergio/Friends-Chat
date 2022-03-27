@@ -1,8 +1,7 @@
-package ipca.am2.projeto2122.friendschat.ui.Activitys
+package ipca.am2.projeto2122.friendschat.ui.activity
 
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,26 +12,25 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageTask
-import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
 import ipca.am2.projeto2122.friendschat.databinding.ActivityMessageChatBinding
-import ipca.am2.projeto2122.friendschat.ui.Adapters.ChatAdapter
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.CHATS
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.CHATS_LISTS
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.ID
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.INTENT_IMAGE
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.IS_SEEN
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.MESSAGE
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.MESSAGE_EMPTY
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.MESSAGE_ID
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.RECEIVER_ID
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.SENDER_ID
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.URL
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.VISIT_USER_ID
-import ipca.am2.projeto2122.friendschat.ui.model.Chat
-import ipca.am2.projeto2122.friendschat.ui.model.Users
+import ipca.am2.projeto2122.friendschat.adapters.ChatAdapter
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.CHATS
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.CHATS_LISTS
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.EMPTY_STRING
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.ID
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.INTENT_IMAGE
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.IS_SEEN
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.MESSAGE
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.MESSAGE_EMPTY
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.MESSAGE_ID
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.RECEIVER_ID
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.SENDER_ID
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.URL
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.USERS
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.VISIT_USER_ID
+import ipca.am2.projeto2122.friendschat.model.Chat
+import ipca.am2.projeto2122.friendschat.model.Users
 
 
 

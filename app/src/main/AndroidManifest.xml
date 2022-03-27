@@ -24,19 +24,19 @@
         android:theme="@style/Theme.FriendsChat">
 
         <activity
-            android:name=".ui.Activitys.MessageChatActivity"
+            android:name=".ui.activity.MessageChatActivity"
             android:exported="false" />
         <activity
-            android:name="ipca.am2.projeto2122.friendschat.ui.Activitys.intro.WelcomeActivity"
+            android:name="ipca.am2.projeto2122.friendschat.ui.activity.intro.WelcomeActivity"
             android:exported="false" />
         <activity
-            android:name="ipca.am2.projeto2122.friendschat.ui.Activitys.entry.RegisterActivity"
+            android:name="ipca.am2.projeto2122.friendschat.ui.activity.entry.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name="ipca.am2.projeto2122.friendschat.ui.Activitys.entry.LoginActivity"
+            android:name="ipca.am2.projeto2122.friendschat.ui.activity.entry.LoginActivity"
             android:exported="false" />
         <activity
-            android:name="ipca.am2.projeto2122.friendschat.ui.Activitys.intro.SplashActivity"
+            android:name="ipca.am2.projeto2122.friendschat.ui.activity.intro.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

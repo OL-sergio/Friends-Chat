@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".ui.Activitys.intro.WelcomeActivity">
+    tools:context=".ui.activity.intro.WelcomeActivity">
 
     <ImageView
         android:id="@+id/imageView_friends_chat"

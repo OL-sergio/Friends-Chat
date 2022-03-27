@@ -1,7 +1,7 @@
-package ipca.am2.projeto2122.friendschat.ui.model
+package ipca.am2.projeto2122.friendschat.model
 
 import com.google.firebase.firestore.QueryDocumentSnapshot
-import ipca.am2.projeto2122.friendschat.ui.model.PrefEmail as PrefEmail
+import ipca.am2.projeto2122.friendschat.model.PrefEmail as PrefEmail
 
 class PrefEmail {
 

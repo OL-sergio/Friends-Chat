@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.security
+package ipca.am2.projeto2122.friendschat.security
 
 import android.text.Editable
 import android.text.TextWatcher

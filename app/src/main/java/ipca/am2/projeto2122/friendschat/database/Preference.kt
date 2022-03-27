@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.database
+package ipca.am2.projeto2122.friendschat.database
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -13,11 +13,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import ipca.am2.projeto2122.friendschat.databinding.FragmentChatBinding
 
-import ipca.am2.projeto2122.friendschat.ui.Adapters.UserAdapter
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.CHATS_LISTS
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
-import ipca.am2.projeto2122.friendschat.ui.model.ChatList
-import ipca.am2.projeto2122.friendschat.ui.model.Users
+import ipca.am2.projeto2122.friendschat.adapters.UserAdapter
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.CHATS_LISTS
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.USERS
+import ipca.am2.projeto2122.friendschat.model.ChatList
+import ipca.am2.projeto2122.friendschat.model.Users
 
 
 class ChatFragment : Fragment() {

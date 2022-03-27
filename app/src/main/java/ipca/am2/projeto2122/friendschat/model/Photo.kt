@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.model
+package ipca.am2.projeto2122.friendschat.model
 
 import android.graphics.Bitmap
 import com.google.firebase.firestore.QueryDocumentSnapshot

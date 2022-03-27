@@ -3,17 +3,13 @@ package ipca.am2.projeto2122.friendschat.ui.fragments.settings
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
-import android.content.Intent.ACTION_GET_CONTENT
-import android.content.Intent.ACTION_PICK
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.android.gms.auth.api.signin.internal.Storage
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -25,18 +21,18 @@ import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
 import ipca.am2.projeto2122.friendschat.databinding.FragmentSettingsBinding
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.COVER
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.IMAGE_TYPE
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.INTENT_IMAGE
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.PROFILE
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.UPLOADING
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.UPLOADING_IMAGE
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS_REFERENCE
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.COVER
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.EMPTY_STRING
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.IMAGE_TYPE
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.INTENT_IMAGE
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.PROFILE
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.UPLOADING
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.UPLOADING_IMAGE
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.USERS
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.USERS_REFERENCE
 
 
-import ipca.am2.projeto2122.friendschat.ui.model.Users
+import ipca.am2.projeto2122.friendschat.model.Users
 
 
 class SettingsFragment : Fragment() {

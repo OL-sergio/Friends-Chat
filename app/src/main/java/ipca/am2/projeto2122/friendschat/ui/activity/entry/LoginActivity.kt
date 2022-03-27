@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.Activitys.entry
+package ipca.am2.projeto2122.friendschat.ui.activity.entry
 
 
 import android.content.Intent
@@ -12,11 +12,11 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import ipca.am2.projeto2122.friendschat.MainActivity
 import ipca.am2.projeto2122.friendschat.databinding.ActivityLoginBinding
-import ipca.am2.projeto2122.friendschat.ui.database.Preference
-import ipca.am2.projeto2122.friendschat.ui.Activitys.intro.WelcomeActivity
-import ipca.am2.projeto2122.friendschat.ui.model.PrefEmail
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.TAG
+import ipca.am2.projeto2122.friendschat.database.Preference
+import ipca.am2.projeto2122.friendschat.ui.activity.intro.WelcomeActivity
+import ipca.am2.projeto2122.friendschat.model.PrefEmail
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.EMPTY_STRING
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.TAG
 
 
 class LoginActivity : AppCompatActivity() {

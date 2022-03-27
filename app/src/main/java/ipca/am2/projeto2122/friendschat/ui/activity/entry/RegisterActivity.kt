@@ -1,4 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.Activitys.entry
+package ipca.am2.projeto2122.friendschat.ui.activity.entry
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,23 +11,23 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.databinding.ActivityRegisterBinding
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.COVER
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.COVER_URL
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMAIL
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.EMPTY_STRING
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.FIREBASE_UID
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.FULL_NAME
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.PHONE_NUMBER
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.PROFILE
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.PROFILE_URL
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.SEARCH_NAME
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.STATUS
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.STATUS_OFFLINE
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USERS
-import ipca.am2.projeto2122.friendschat.ui.Constants.Constants.Companion.USER_NAME
-import ipca.am2.projeto2122.friendschat.ui.Activitys.intro.WelcomeActivity
-import ipca.am2.projeto2122.friendschat.ui.security.PasswordStrength
-import ipca.am2.projeto2122.friendschat.ui.security.StrengthLevel
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.COVER
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.COVER_URL
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.EMAIL
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.EMPTY_STRING
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.FIREBASE_UID
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.FULL_NAME
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.PHONE_NUMBER
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.PROFILE
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.PROFILE_URL
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.SEARCH_NAME
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.STATUS
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.STATUS_OFFLINE
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.USERS
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.USER_NAME
+import ipca.am2.projeto2122.friendschat.ui.activity.intro.WelcomeActivity
+import ipca.am2.projeto2122.friendschat.security.PasswordStrength
+import ipca.am2.projeto2122.friendschat.security.StrengthLevel
 import java.util.*
 import kotlin.collections.HashMap
 

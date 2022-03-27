@@ -1,9 +1,4 @@
-package ipca.am2.projeto2122.friendschat.ui.model
-
-import android.graphics.Bitmap
-import com.google.firebase.firestore.QueryDocumentSnapshot
-import com.google.firebase.firestore.auth.User
-import ipca.am2.projeto2122.friendschat.ui.model.Users as Users
+package ipca.am2.projeto2122.friendschat.model
 
 class Users {
 
