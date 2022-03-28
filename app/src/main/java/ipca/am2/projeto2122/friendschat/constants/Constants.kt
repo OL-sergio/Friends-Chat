@@ -27,7 +27,7 @@ public class Constants {
         const val URL = "uRl"
         const val MESSAGE_ID = "messageID"
         const val TAG_CHAT = "CHAT"
-        const val SEND_IMAGE = "Sent you an image"
+        const val SENT_IMAGE = "Sent you an image"
 
 
         // Register Strings

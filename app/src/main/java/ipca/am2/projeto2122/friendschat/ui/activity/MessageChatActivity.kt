@@ -26,6 +26,7 @@ import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.MESSAGE_EM
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.MESSAGE_ID
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.RECEIVER_ID
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.SENDER_ID
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.SENT_IMAGE
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.URL
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.USERS
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.VISIT_USER_ID
@@ -174,15 +175,17 @@ class MessageChatActivity : AppCompatActivity() {
         val userReference = FirebaseDatabase.getInstance().reference.child(CHATS)
 
         userReference.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
 
             override fun onDataChange(p0: DataSnapshot) {
                 (mChatList as ArrayList<Chat>).clear()
                 for (snapshot in p0.children) {
                     val chat = snapshot.getValue(Chat::class.java)
 
-                    if ((chat!!.getReceiverID() == senderId && chat.getSenderID() == receiverId) ||
-                        (chat.getReceiverID() == receiverId && chat.getSenderID() == senderId)
-                    ) {
+                    if (chat!!.getReceiverID().equals(senderId) && chat.getSenderID().equals(receiverId)
+                        || chat.getReceiverID().equals(receiverId)  && chat.getSenderID().equals(senderId)) {
 
                         (mChatList as ArrayList<Chat>).add(chat)
                     }
@@ -191,12 +194,7 @@ class MessageChatActivity : AppCompatActivity() {
                     _binding!!.recyclerViewChats.adapter = mChatsAdapter
                 }
             }
-
-            override fun onCancelled(p0: DatabaseError) {
-
-            }
         })
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -226,8 +224,8 @@ class MessageChatActivity : AppCompatActivity() {
 
                     val uploadImageUpdateHashMap = HashMap<String, Any?>()
                     uploadImageUpdateHashMap[SENDER_ID] = firebaseUser!!.uid
-                    uploadImageUpdateHashMap[MESSAGE] = "Sent you an image"
-                    uploadImageUpdateHashMap[MESSAGE_ID] = userVisitID
+                    uploadImageUpdateHashMap[MESSAGE] = SENT_IMAGE
+                    uploadImageUpdateHashMap[RECEIVER_ID] = userVisitID
                     uploadImageUpdateHashMap[IS_SEEN] = false
                     uploadImageUpdateHashMap[URL] = url
                     uploadImageUpdateHashMap[MESSAGE_ID] = messageID

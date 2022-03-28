@@ -14,11 +14,10 @@ import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.EMPTY_STRING
-import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.SEND_IMAGE
+import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.SENT_IMAGE
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.TAG_CHAT
 import ipca.am2.projeto2122.friendschat.model.Chat
-
-
+import java.net.URL
 
 
 class ChatAdapter (
@@ -86,9 +85,9 @@ class ChatAdapter (
 
         val chat : Chat = mChatList[position]
 
-        Picasso.get().load(imageURL).into(holder.userProfileImage)
+        //Picasso.get().load(imageURL).into(holder.userProfileImage)
 
-        if (chat.getMessage().equals(SEND_IMAGE) && !chat.getUrl().equals(EMPTY_STRING)) {
+        if (chat.getMessage().equals(SENT_IMAGE) && !chat.getUrl().equals(EMPTY_STRING)) {
             //Image message - right side
             if (chat.getSenderID().equals(firebaseUser.uid)){
                 holder.showTextMessage!!.visibility = View.GONE
