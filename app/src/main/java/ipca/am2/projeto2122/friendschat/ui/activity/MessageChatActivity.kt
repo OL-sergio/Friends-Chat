@@ -3,7 +3,10 @@ package ipca.am2.projeto2122.friendschat.ui.activity
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,6 +43,8 @@ class MessageChatActivity : AppCompatActivity() {
     private var _binding: ActivityMessageChatBinding? = null
     private var referenceDatabase: DatabaseReference? = null
     private lateinit var recyclerViewChats: RecyclerView
+
+    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
     var mChatList: List<Chat>? = null
     var mChatsAdapter: ChatAdapter? = null
@@ -112,11 +117,22 @@ class MessageChatActivity : AppCompatActivity() {
             _binding!!.editTextTextMessage.setText(EMPTY_STRING)
         }
 
+        resultLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    handleCameraImage(result.data)
+
+                }
+            }
+
         _binding!!.imageViewAttachImageFile.setOnClickListener {
-            val intent = Intent()
-            intent.action = Intent.ACTION_GET_CONTENT
-            intent.type = INTENT_IMAGE
-            startActivityForResult(Intent.createChooser(intent, "Select Image"), 438)
+
+            val cameraIntent = Intent()
+            cameraIntent.action = Intent.ACTION_GET_CONTENT
+            cameraIntent.type = INTENT_IMAGE
+            resultLauncher.launch(Intent.createChooser(cameraIntent,"Select image"))
+
         }
 
     }
@@ -197,43 +213,42 @@ class MessageChatActivity : AppCompatActivity() {
         })
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == 438 && resultCode == Activity.RESULT_OK && data != null && data!!.data != null){
+    private fun handleCameraImage(intent: Intent?) {
 
-            val fileUri = data.data
-            val referenceStorage = FirebaseStorage.getInstance().reference.child("Chat Images")
-            val referenceDatabase = FirebaseDatabase.getInstance().reference
-            val messageID = referenceDatabase.push().key
-            val filePath = referenceStorage.child("$messageID.png")
+        val fileUri = intent?.data
+        val referenceStorage = FirebaseStorage.getInstance().reference.child("Chat Images")
+        val referenceDatabase = FirebaseDatabase.getInstance().reference
+        val messageID = referenceDatabase.push().key
+        val filePath = referenceStorage.child("$messageID.png")
 
-            val uploadTask : StorageTask<*>
-            uploadTask = filePath.putFile(fileUri!!)
+        val uploadTask : StorageTask<*>
+        uploadTask = filePath.putFile(fileUri!!)
 
-            uploadTask.continueWithTask{ task ->
-                if (!task.isSuccessful){
-                    task.exception?.let {
-                        throw it
-                    }
-                }
-                 filePath.downloadUrl
-            }.addOnCompleteListener { task ->
-                if (task.isSuccessful){
-                    val downloadUrl = task.result
-                    val url = downloadUrl.toString()
-
-                    val uploadImageUpdateHashMap = HashMap<String, Any?>()
-                    uploadImageUpdateHashMap[SENDER_ID] = firebaseUser!!.uid
-                    uploadImageUpdateHashMap[MESSAGE] = SENT_IMAGE
-                    uploadImageUpdateHashMap[RECEIVER_ID] = userVisitID
-                    uploadImageUpdateHashMap[IS_SEEN] = false
-                    uploadImageUpdateHashMap[URL] = url
-                    uploadImageUpdateHashMap[MESSAGE_ID] = messageID
-
-                    referenceDatabase.child(CHATS).child(messageID!!).setValue(uploadImageUpdateHashMap)
+        uploadTask.continueWithTask{ task ->
+            if (!task.isSuccessful){
+                task.exception?.let {
+                    throw it
                 }
             }
+            filePath.downloadUrl
+        }.addOnCompleteListener { task ->
+            if (task.isSuccessful){
+
+                val downloadUrl = task.result
+                val url = downloadUrl.toString()
+
+                val uploadImageUpdateHashMap = HashMap<String, Any?>()
+                uploadImageUpdateHashMap[SENDER_ID] = firebaseUser!!.uid
+                uploadImageUpdateHashMap[MESSAGE] = SENT_IMAGE
+                uploadImageUpdateHashMap[RECEIVER_ID] = userVisitID
+                uploadImageUpdateHashMap[IS_SEEN] = false
+                uploadImageUpdateHashMap[URL] = url
+                uploadImageUpdateHashMap[MESSAGE_ID] = messageID
+                referenceDatabase.child(CHATS)
+                    .child(messageID!!).setValue(uploadImageUpdateHashMap)
+            }
         }
+
     }
 }
 
