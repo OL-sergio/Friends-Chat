@@ -135,7 +135,10 @@ class MessageChatActivity : AppCompatActivity() {
 
         }
 
+        isSeenMessage(userVisitID!!)
     }
+
+
 
     // Send message to intent user
     private fun sendMessageToVisitUser(senderId: String, receiverId: String?, message: String) {
@@ -250,6 +253,38 @@ class MessageChatActivity : AppCompatActivity() {
         }
 
     }
+
+    private var isSeenListener :ValueEventListener? = null
+
+    private fun isSeenMessage(userVisitID: String) {
+
+        val referenceDatabase = FirebaseDatabase.getInstance().reference.child(CHATS)
+
+        isSeenListener = referenceDatabase.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+               for (dataSnapshot in p0.children){
+                   val chat = dataSnapshot.getValue(Chat::class.java)
+                   if (chat!!.getReceiverID().equals(firebaseUser!!.uid) && chat.getSenderID().equals(userVisitID)){
+                       val hashMap = HashMap<String, Any>()
+                       hashMap[IS_SEEN] = true
+                       dataSnapshot.ref.updateChildren(hashMap)
+                   }
+               }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        referenceDatabase!!.removeEventListener(isSeenListener!!)
+
+    }
+
 }
 
 

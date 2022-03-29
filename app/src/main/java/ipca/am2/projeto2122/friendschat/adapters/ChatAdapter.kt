@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -107,6 +108,32 @@ class ChatAdapter (
             holder.showTextMessage!!.visibility = View.VISIBLE
 
 
+        }
+        if (position == mChatList.size - 1){
+            if (chat.isIsSeen()!!){
+             holder.textIsSeen!!.text = "is Seen message"
+                if (chat.getMessage().equals(SENT_IMAGE) &&
+                    !chat.getUrl().equals(EMPTY_STRING)
+                ){
+                    val lp: RelativeLayout.LayoutParams? =
+                        holder.textIsSeen!!.layoutParams as RelativeLayout.LayoutParams
+                    lp!!.setMargins(0,245,10,0)
+                    holder.textIsSeen!!.layoutParams = lp
+                }
+            } else {
+                holder.textIsSeen!!.text = "Sent"
+                if (chat.getMessage().equals(SENT_IMAGE) &&
+                        !chat.getUrl().equals(EMPTY_STRING)
+                ){
+                    val lp : RelativeLayout.LayoutParams? =
+                        holder.textIsSeen!!.layoutParams as RelativeLayout.LayoutParams
+                        lp!!.setMargins(0,245,10,0)
+                    holder.textIsSeen!!.layoutParams = lp
+
+                }
+            }
+        }else {
+            holder.textIsSeen!!.visibility = View.GONE
         }
     }
 }
