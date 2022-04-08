@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:padding="9dp"
     android:layout_margin="5dp"
-    tools:context=".ui.activity.MessageChatActivity">
+    tools:context=".MessageChatActivity">
 
     <RelativeLayout
         android:layout_width="298dp"

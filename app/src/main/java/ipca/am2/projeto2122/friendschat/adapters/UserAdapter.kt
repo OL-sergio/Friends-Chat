@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import ipca.am2.projeto2122.friendschat.R
-import ipca.am2.projeto2122.friendschat.ui.activity.MessageChatActivity
+import ipca.am2.projeto2122.friendschat.MessageChatActivity
 import ipca.am2.projeto2122.friendschat.model.Users
 
 

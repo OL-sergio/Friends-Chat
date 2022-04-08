@@ -1,10 +1,10 @@
-package ipca.am2.projeto2122.friendschat.ui.activity
+package ipca.am2.projeto2122.friendschat
 
 import android.app.Activity
-import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -43,8 +43,8 @@ class MessageChatActivity : AppCompatActivity() {
 
     private var _binding: ActivityMessageChatBinding? = null
     private var referenceDatabase: DatabaseReference? = null
-    private lateinit var recyclerViewChats: RecyclerView
 
+    private lateinit var recyclerViewChats: RecyclerView
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
     var mChatList: List<Chat>? = null
@@ -57,7 +57,7 @@ class MessageChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMessageChatBinding.inflate(layoutInflater)
         setContentView(_binding!!.root)
-        intent = intent
+
 
         val toolbarChatMessenger = _binding!!.toolbarMessageChat
         setSupportActionBar(toolbarChatMessenger)
@@ -70,6 +70,7 @@ class MessageChatActivity : AppCompatActivity() {
             finish()
         }
 
+        intent = intent
         userVisitID = intent.getStringExtra(VISIT_USER_ID)
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
@@ -137,6 +138,8 @@ class MessageChatActivity : AppCompatActivity() {
         }
 
         isSeenMessage(userVisitID!!)
+
+
     }
 
 

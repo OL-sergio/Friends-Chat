@@ -91,6 +91,7 @@ class ChatFragment : Fragment() {
                 }
                 userAdapter = context?.let { UserAdapter(it,(mUsers as ArrayList<Users>), true) }
                 recyclerViewChatListWithMessages.adapter = userAdapter
+
             }
 
             override fun onCancelled(error: DatabaseError) {
