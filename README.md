@@ -27,41 +27,7 @@
 - Gradle  
 
 ## Estrutura do Projeto
-app/src/main/java/ipca/am2/projeto2122/friendschat/
-├─ MainActivity.kt
-├─ MessageChatActivity.kt
-├─ adapters/
-│ ├─ ChatAdapter.kt
-│ └─ UserAdapter.kt
-├─ constants/
-│ └─ Constants.kt
-├─ database/
-│ └─ Preference.kt
-├─ model/
-│ ├─ Chat.kt
-│ ├─ ChatList.kt
-│ ├─ Photo.kt
-│ ├─ PrefEmail.kt
-│ └─ Users.kt
-├─ security/
-│ ├─ PasswordStrength.kt
-│ └─ StrengthLevel.kt
-└─ ui/
-├─ activity/
-│ ├─ intro/
-│ │ ├─ SplashActivity.kt
-│ │ └─ WelcomeActivity.kt
-│ └─ entry/
-│ ├─ LoginActivity.kt
-│ └─ RegisterActivity.kt
-└─ fragments/
-├─ chat/
-│ └─ ChatFragment.kt
-├─ search/
-│ └─ SearchFragment.kt
-└─ settings/
-└─ SettingsFragment.kt
-
+<img width="789" height="894" alt="Capturar" src="https://github.com/user-attachments/assets/939e0401-2e71-4afd-ada5-a7113cfbfc89" />
 
 ## Funcionalidades
 - Registo e login de utilizadores (Email/Password)  
@@ -79,9 +45,9 @@ app/src/main/java/ipca/am2/projeto2122/friendschat/
 ## Configuraçao de projeto
 1. Copiar google-services.json para app/
 2. No console do Firebase:
- - Criar projeto e app Android com pacote ipca.am2.projeto2122.friendschat
- - Ativar método Email/Password em Authentication
- - Configurar Realtime Database ou Firestore em modo de teste
+	- Criar projeto e app Android com pacote ipca.am2.projeto2122.friendschat
+ 	- Ativar método Email/Password em Authentication
+ 	- Configurar Realtime Database ou Firestore em modo de teste
 3. Abrir o projeto no Android Studio
 4. Sincronizar o Gradle
 5. Executar em emulador ou dispositivo físico
