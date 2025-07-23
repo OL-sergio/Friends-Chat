@@ -1,5 +1,31 @@
 # Friends-Chat
 
+##Descrição
+Friends-Chat é uma aplicação de chat para Android desenvolvida em Kotlin. A aplicação permite que os utilizadores se registem, façam login, procurem outros utilizadores e conversem em tempo real. Utiliza o Firebase como backend para autenticação e armazenamento de mensagens.
+
+
+## Funcionalidades
+- Autenticação de Utilizadores: Registo e login com Firebase Authentication.
+- Chat em Tempo Real: Troca de mensagens instantâneas entre utilizadores.
+- Lista de Conversas: Exibição de todas as conversas ativas do utilizador.
+- Pesquisa de Utilizadores: Permite procurar e iniciar conversas com novos utilizadores.
+- Gestão de Perfil: Ecrã para gerir informações do utilizador.
+- Verificação de Força da Palavra-passe: Feedback sobre a segurança da palavra-passe.
+
+## Estrutura do Projeto
+O projeto está organizado nos seguintes pacotes:
+
+- ui/activity/intro: Contém as Activities de introdução, como SplashActivity e WelcomeActivity.
+- ui/activity/entry: Contém as Activities de login e registo (LoginActivity, RegisterActivity).
+- ui/fragments/chat: Inclui o fragmento principal de chat (ChatFragment).
+- ui/fragments/search: Inclui o fragmento de pesquisa de utilizadores (SearchFragment).
+- ui/fragments/settings: Inclui o fragmento de configurações do utilizador (SettingsFragment).
+- adapters: Contém os adaptadores para RecyclerView (ChatAdapter, UserAdapter).
+- model: Classes de dados como Users, Chat, ChatList, Photo, PrefEmail.
+- database: Utilitários para armazenamento local, como Preference.
+- constants: Valores constantes usados na aplicação.
+- security: Classes relacionadas com segurança, como PasswordStrength e StrengthLevel.
+
 ## Componentes
 - **Activities**
   - SplashActivity.kt, WelcomeActivity.kt  
