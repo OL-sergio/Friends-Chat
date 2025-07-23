@@ -10,12 +10,12 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ipca.am2.projeto2122.friendschat.databinding.FragmentSearchBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import ipca.am2.projeto2122.friendschat.databinding.FragmentSearchBinding
 import ipca.am2.projeto2122.friendschat.adapters.UserAdapter
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.EMPTY_STRING
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.SEARCH

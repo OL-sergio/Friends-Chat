@@ -1,61 +1,47 @@
 package ipca.am2.projeto2122.friendschat.ui.activity.intro
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.*
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import ipca.am2.projeto2122.friendschat.MainActivity
 import ipca.am2.projeto2122.friendschat.databinding.ActivitySplashBinding
-import kotlinx.coroutines.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-
-
-
-@SuppressLint("CustomSplashScreen")
-@DelicateCoroutinesApi
 class SplashActivity : AppCompatActivity() {
 
-    private lateinit var _binder    : ActivitySplashBinding
-    private lateinit var _auth      : FirebaseAuth
-
-    public override fun onStart() {
-       super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-    }
+    private lateinit var binder : ActivitySplashBinding
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binder = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(_binder.root)
 
-        _auth = Firebase.auth
-        
-        val currentUser = _auth.currentUser
+        binder = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binder.root)
+        com.google.firebase.FirebaseApp.initializeApp(this)
+
+        auth = Firebase.auth
+        val currentUser = auth.currentUser
 
         supportActionBar?.hide()
 
-       if (currentUser != null) {
-            GlobalScope.launch(Dispatchers.Main) {
-                Dispatchers.Main
-                delay(3000)
-                val intent = Intent(baseContext, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-
-            }
-
+        if (currentUser != null) {
+            navigateToActivity(MainActivity::class.java)
         } else {
-            GlobalScope.launch(Dispatchers.Main) {
-                Dispatchers.Main
-                delay(3000)
-                val intent = Intent(baseContext, WelcomeActivity::class.java)
-                startActivity(intent)
-                finish()
+            navigateToActivity(WelcomeActivity::class.java)
+        }
 
-            }
+    }
+    private fun navigateToActivity(targetActivity: Class<*>) {
+        lifecycleScope.launch {
+            delay(3000)
+            val intent = Intent(baseContext, targetActivity)
+            startActivity(intent)
+            finish()
         }
     }
 }

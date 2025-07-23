@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import ipca.am2.projeto2122.friendschat.databinding.FragmentSettingsBinding
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -20,7 +21,6 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
-import ipca.am2.projeto2122.friendschat.databinding.FragmentSettingsBinding
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.COVER
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.EMPTY_STRING
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.IMAGE_TYPE

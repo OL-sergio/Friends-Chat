@@ -11,17 +11,16 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import ipca.am2.projeto2122.friendschat.databinding.ActivityMainBinding
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
-import ipca.am2.projeto2122.friendschat.databinding.ActivityMainBinding
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.USERS
 import ipca.am2.projeto2122.friendschat.ui.activity.intro.WelcomeActivity
 import ipca.am2.projeto2122.friendschat.model.Users
-
-
 class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null

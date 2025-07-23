@@ -1,5 +1,6 @@
 package ipca.am2.projeto2122.friendschat.adapters
 
+
 import android.content.Context
 import android.content.DialogInterface
 import android.util.Log
@@ -9,19 +10,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
+import ipca.am2.projeto2122.friendschat.MessageChatActivity
 import ipca.am2.projeto2122.friendschat.R
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.EMPTY_STRING
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.SENT_IMAGE
 import ipca.am2.projeto2122.friendschat.constants.Constants.Companion.TAG_CHAT
 import ipca.am2.projeto2122.friendschat.model.Chat
-import ipca.am2.projeto2122.friendschat.MessageChatActivity
 
 
 class ChatAdapter (
@@ -33,7 +33,9 @@ class ChatAdapter (
     private val mContext: Context
     private val mChatList: List<Chat>
     private val imageURL: String
-    private var firebaseUser: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
+    private val firebaseUser: FirebaseUser by lazy {
+        FirebaseAuth.getInstance().currentUser!!
+    }
 
     init {
         this.mChatList = mChatList
@@ -111,66 +113,56 @@ class ChatAdapter (
             Log.d(TAG_CHAT, chat.getMessage().toString())
 
 
-
         }
         if (position == mChatList.size - 1) {
-                if (chat.isIsSeen()!!) {
-                    holder.textIsSeen!!.text = "is Seen message"
-                    if (chat.getMessage().equals(SENT_IMAGE) &&
-                        !chat.getUrl().equals(EMPTY_STRING)
-                    ) {
-                        val lp: RelativeLayout.LayoutParams? =
-                            holder.textIsSeen!!.layoutParams as RelativeLayout.LayoutParams
-                        lp!!.setMargins(0, 245, 10, 0)
-                        holder.textIsSeen!!.layoutParams = lp
-                    }
-                } else {
-                    holder.textIsSeen!!.text = "Sent"
-                    if (chat.getMessage().equals(SENT_IMAGE) &&
-                        !chat.getUrl().equals(EMPTY_STRING)
-                    ) {
-                        val lp: RelativeLayout.LayoutParams? =
-                            holder.textIsSeen!!.layoutParams as RelativeLayout.LayoutParams
-                        lp!!.setMargins(0, 245, 10, 0)
-                        holder.textIsSeen!!.layoutParams = lp
-
-                    }
+            if (chat.isIsSeen()!!) {
+                holder.textIsSeen!!.text = "is Seen message"
+                if (chat.getMessage().equals(SENT_IMAGE) &&
+                    !chat.getUrl().equals(EMPTY_STRING)
+                ) {
+                    val lp: RelativeLayout.LayoutParams? =
+                        holder.textIsSeen!!.layoutParams as RelativeLayout.LayoutParams
+                    lp!!.setMargins(0, 245, 10, 0)
+                    holder.textIsSeen!!.layoutParams = lp
                 }
             } else {
-                holder.textIsSeen!!.visibility = View.GONE
+                holder.textIsSeen!!.text = "Sent"
+                if (chat.getMessage().equals(SENT_IMAGE) &&
+                    !chat.getUrl().equals(EMPTY_STRING)
+                ) {
+                    val lp: RelativeLayout.LayoutParams? =
+                        holder.textIsSeen!!.layoutParams as RelativeLayout.LayoutParams
+                    lp!!.setMargins(0, 245, 10, 0)
+                    holder.textIsSeen!!.layoutParams = lp
+
+                }
             }
-
-
-            holder.itemView.setOnClickListener {
-                val options = arrayOf<CharSequence>(
-                    "Delete",
-                    "Cancel"
-                )
-                val context : MessageChatActivity? = null
-
-                val builder : MaterialAlertDialogBuilder? =
-                    context?.let { it1 -> MaterialAlertDialogBuilder(it1, R.style.Theme_MaterialComponents_Dialog_Alert) }
-                builder!!.setTitle("What do you want?")
-
-                builder.setItems(options, DialogInterface.OnClickListener() { _, which ->
-                    if (which == 0) {
-                        deleteSentMessage(position, holder)
-                    }
-                })
-
-                val alert : AlertDialog = builder.create()
-                alert.show()
-            }
+        } else {
+            holder.textIsSeen!!.visibility = View.GONE
         }
 
 
-    private fun deleteSentMessage(position: Int, holder: ViewHolder) {
-        /*  val referenceDatabase = FirebaseDatabase.getInstance().reference.child(CHATS)
-        .child(mChatList.get(position).getMessageId()!!)
-        .removeValue()
-    */
+        holder.itemView.setOnClickListener {
+            val options = arrayOf<CharSequence>("Delete", "Cancel")
 
+            val builder = MaterialAlertDialogBuilder(mContext)
+            builder.setTitle("What do you want?")
+            builder.setItems(options) { _, which ->
+                if (which == 0) {
+                    deleteSentMessage(position, holder)
+                }
+            }
+            builder.create().show()
+        }
     }
 
+
+        private fun deleteSentMessage(position: Int, holder: ChatAdapter.ViewHolder) {
+            /*  val referenceDatabase = FirebaseDatabase.getInstance().reference.child(CHATS)
+            .child(mChatList.get(position).getMessageId()!!)
+            .removeValue()
+        */
+
+        }
 }
 
