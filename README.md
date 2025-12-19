@@ -2,7 +2,7 @@
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-0095D5.svg?logo=kotlin&logoColor=white) ![Firebase](https://img.shields.io/badge/Firebase-ffca28.svg?logo=firebase&logoColor=black) ![Android](https://img.shields.io/badge/Android-3DDC84.svg?logo=android&logoColor=white)
 
-##Descrição
+## Descrição
 Friends-Chat é uma aplicação de chat para Android desenvolvida em Kotlin. A aplicação permite que os utilizadores se registem, façam login, procurem outros utilizadores e conversem em tempo real. Utiliza o Firebase como backend para autenticação e armazenamento de mensagens.
 
 
